@@ -30,7 +30,7 @@ $(document).ready(function(){
         var href = $(this).attr('href');
         if(href){
             if(href.indexOf('#') == 0){
-            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('mukosame.github.io')>-1 ){
+            }else if ( href.indexOf('/') == 0 || href.toLowerCase().indexOf('yyysjz1997.github.io')>-1 ){
             }else if ($(element).has('img').length){
             }else{
                 $(this).attr('target','_blank');
