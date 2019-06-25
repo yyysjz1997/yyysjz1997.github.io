@@ -1,5 +1,5 @@
 # Site settings
-name: 三丫滴blog
+name: YYY_blog
 email: yyy_1997_sjz@126.com
 author: Yiyuan Young
 url: https://github.com/yyysjz1997/
@@ -7,7 +7,7 @@ resume_site: https://github.com/yyysjz1997/
 github: https://github.com/yyysjz1997/
 baseurl: ''
 description: Keep calm and carry on
-meta_description: 三丫;个人博客;脚踏实地;奋斗不止。
+meta_description: 三丫;个人博客;脚踏实地;奋斗不止
 motto: Keep calm and carry on
 banner: 脚踏实地
 
