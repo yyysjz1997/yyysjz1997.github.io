@@ -1,15 +1,15 @@
 # Site settings
-name: Less Or More
-email: luoyan35714@126.com
-author: Freud Kang
-url: http://www.hifreud.com
-resume_site: http://www.hifreud.com/Resume.io/
-github: https://github.com/luoyan35714/
-baseurl: "/LessOrMore"
-description: Actually, less is more!
-meta_description: 康志华;个人博客;学而不思则罔;思而不学则殆;生命不止;折腾不休
-motto: It's our wits that make us men.
-banner: 学而不思则罔，思而不学则殆。
+name: 三丫滴blog
+email: yyy_1997_sjz@126.com
+author: Yiyuan Young
+url: https://github.com/yyysjz1997/
+resume_site: https://github.com/yyysjz1997/
+github: https://github.com/yyysjz1997/
+baseurl: ''
+description: Keep calm and carry on
+meta_description: 三丫;个人博客;脚踏实地;奋斗不止。
+motto: Keep calm and carry on
+banner: 脚踏实地
 
 #permalink: /:categories/:year/:month/:day/:title/
 permalink: /:year/:month/:day/:title/
@@ -17,10 +17,10 @@ paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
 
-github_username: luoyan35714
+github_username: yyysjz1997
 
 # Build settings
 markdown: kramdown
 
-baidu_analysis: 94be4b0f9fc5d94cc0d0415ea6761ae9
+baidu_analysis: 5e5f4dfdbb6c1ee5e257d0dbd01374ca
 
