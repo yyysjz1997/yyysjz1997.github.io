@@ -1,0 +1,26 @@
+# Site settings
+name: YYY Blog
+email: yyy_1997_sjz@126.com
+author: Yiyuan Young
+url: https://github.com/yyysjz1997/
+resume_site: https://github.com/yyysjz1997/
+github: https://github.com/yyysjz1997/
+baseurl: ''
+description: Keep calm and Carry on
+meta_description: 三丫;个人博客;脚踏实地;奋斗不止
+motto: Keep calm and carry on
+banner: 脚踏实地
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: yyysjz1997
+
+# Build settings
+markdown: kramdown
+
+baidu_analysis: 5e5f4dfdbb6c1ee5e257d0dbd01374ca
+
