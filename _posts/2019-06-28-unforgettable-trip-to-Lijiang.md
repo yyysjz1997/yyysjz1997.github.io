@@ -120,13 +120,31 @@ tag: 旅游攻略
 
 早上起床，拥抱太阳！
 
+在宾馆吃过非常简易但实在的早餐后，我们就趁着太阳还没有那么毒，在湖边开始散步。
+
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_1.jpg' | prepend: site.baseurl  }})
 
+泸沽湖的早上有些冷，但是太阳很毒。这就导致了太阳晒到的地方很暖，没有晒到的地方很凉快。我们到的季节正好赶上湖水中的水性杨花开花，小小的白花成片的浮在透明的水面上，很是漂亮，而且水性杨花也是当地人的佳肴，在昨晚的纳西族人家已经吃过了，拌点儿醋还是很好吃滴~
+
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_2.jpg' | prepend: site.baseurl  }})
+
+我们集合后，开始了返程。沿路我们走走停停，随时拍风景。
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_3.jpg' | prepend: site.baseurl  }})
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_4.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_4.jpg' | prepend: site.baseurl  }})
+
+在回丽江的山路上，我们还看到了金沙江，真的是雄伟壮观鸭。下游就是我生活四年的武汉，想想觉得亲切！
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_5.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_5.jpg' | prepend: site.baseurl  }})
+
+晚上五点左右，我们回到了丽江的客栈。刚进门客栈老板就和我们说今晚又烧烤自助，而且是免费的。虽然都很累了，但是我还是去古城里面觅了食，先简单的填饱了肚子，准备着晚上9点的烧烤。
+
+烧烤食材真的丰盛，客栈的总老板丁姐还特意嘱咐小雨点儿说要贴面膜不水，说着就给了她两张面膜。两位男老板也是聊的high的不行，我就在旁边认真的听着，重点放在了食物上，由于第二天准备要登山，老板没有让我多喝，我最后也就喝了两瓶啤酒。。。。。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_6.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_6.jpg' | prepend: site.baseurl  }})
+
+晚上十一点，回到房间，洗澡，睡睡觉~~
 
 
 第五天  冰晶玉洁雪山		 {#fifthDay}
