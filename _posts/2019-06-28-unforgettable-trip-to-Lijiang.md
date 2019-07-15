@@ -110,7 +110,7 @@ tag: 旅游攻略
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_3.jpg' | prepend: site.baseurl  }})
 
-洗澡，睡觉, lswl ！!!
+洗澡，睡觉, lswml ！!!
 
 
 第四天  清澈宁静  	{#fourthDay}
@@ -120,7 +120,13 @@ tag: 旅游攻略
 
 早上起床，拥抱太阳！
 
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_1.jpg' | prepend: site.baseurl  }})
 
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_2.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_3.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_4.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day4_4.jpg' | prepend: site.baseurl  }})
 
 
 第五天  冰晶玉洁雪山		 {#fifthDay}
