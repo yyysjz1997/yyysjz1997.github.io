@@ -70,7 +70,9 @@ tag: 旅游攻略
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_2.jpg' | prepend: site.baseurl  }})
 
-本来逛的就平淡无奇，结果后来有等回程的车，等了将近1个小时。回到客栈，真的是又累又气。晚上我们在房间
+本来逛的就平淡无奇，结果后来有等回程的车，等了将近1个小时。回到客栈，真的是又累又气。晚上我们在房间整理好心情后，就在丽江古城逛了逛街，看到符合我们口味的古城夜景，我们心情好的许多~
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_3.jpg' | prepend: site.baseurl  }})
 
 
 第三天  出发宁蒗		{#thirdDay}
