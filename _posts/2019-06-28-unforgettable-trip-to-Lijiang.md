@@ -49,12 +49,14 @@ tag: 旅游攻略
 
 睡了睡了~
 
-第二天  初探丽江特色		{#secondDay}
+第二天  初探丽江  		{#secondDay}
 ====================================
 
 **(6月20号 茶马古道、拉市海湿地公园)**
 
 早上起床本来想出门透透气，结果刚一出门就被冷了回来，果断多穿了一件长袖薄外套。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_4.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_4.jpg' | prepend: site.baseurl  }})
 
 吃完早饭，刚要出客栈，被老板叫住请我们吃自家做的玫瑰鲜花饼请我们喝茶。两位老板一个是重庆涪陵人，一个是我女票的老乡，河南人，人都很善谈。我和她都不算是很健谈的人，但是感觉我们和老板们交流的特别舒服。等了一会儿，老板给我们推荐了这几天游玩的路线，并给我们推荐旅游的套餐。一开始我们还是有点儿戒备心理，感觉会不会价格不是最低的、有捆绑消费等等，但是我们对景点不是很熟（虽然在武汉做了很多的功课），所以还是准备先尝试一下老板们提供的套餐。
 
@@ -62,23 +64,46 @@ tag: 旅游攻略
 
 其实骑马没什么意思，可能刚开始还有些新鲜感，到了后来其实就没什么了。到了终点，我们在山顶俯视了拉市海。拍照留念，随后骑马下山，平淡无奇。
 
-![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_1.jpg' | prepend: site.baseurl  }})
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_1.jpg' | prepend: site.baseurl  }})
 
 在纳西族阿姨，请我们品茶以后，我们驱车前往了拉市海。
 
 拉市海其实是一片湿地，也是国家保护区。我们能到的地方就是拉市海的一边，其他地方就是扩展出来的公园还有一些纳西族特色民俗民居等等。其实我个人觉得除了空气很好以外，别的并不是很满意，可能我并没有欣赏美的能力吧。。。。
 
-![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_2.jpg' | prepend: site.baseurl  }})
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_2.jpg' | prepend: site.baseurl  }})
 
 本来逛的就平淡无奇，结果后来有等回程的车，等了将近1个小时。回到客栈，真的是又累又气。晚上我们在房间整理好心情后，就在丽江古城逛了逛街，看到符合我们口味的古城夜景，我们心情好的许多~
 
-![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day1_3.jpg' | prepend: site.baseurl  }})
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_3.jpg' | prepend: site.baseurl  }})
+
+回客栈后，和老板吐槽了一天的行程后，还是在老板这里订了泸沽湖两天一夜的自由行，550元/人，当然啦还是最低价格的套餐，这个价格高价格低仅仅是住宿的区别。。。。
+
+好困，洗澡洗澡，睡觉睡觉！！
 
 
 第三天  出发宁蒗		{#thirdDay}
 ====================================
 
 **(6月21号 宁蒗泸沽湖)**
+
+起了个大早，一早坐着8人皮卡去百公里外的沪沽湖。因为我们赶行程，不能在客栈吃早餐，所以贴心的客栈老板为我们提供了早餐包，虽然东西不是很多，但是足够我们吃了~~
+
+我们九点出发，下午两点才能到泸沽湖，中间我们在路边一起吃了团餐，腊排骨火锅。同行的除了司机兼导游阿布，还有广东顺德的一家三口，孩子刚高考完，另外就是浙江那边的三个刚毕业的学机械的三个研究生。一个高中毕业生，两个本科毕业生，三个硕士毕业生真的很巧，也很有共同语言。司机兼导游阿布人也很好，在去的路上我们聊天才知道，阿布是一个彝族小伙，和我和她一样都是1997年的。人家这么早就出来工作，而且收入可观，当时还颇是羡慕。但是后来一想，人生本来就是一个马拉松，是一个长时间的过程，现在还年轻，我们更应该抓紧时间全方面的提升自己。
+
+我特别认同我本科教师班主任周老师说的一句话，三十岁乃至四十岁人都不应该饱和，应该一直充实自己。但愿自己可以一直践行下去。
+
+到了泸沽湖，我们先在乘船在湖中游玩。因为泸沽湖是国家保护区，所以湖内只允许人工作为动力的船。
+
+观光一个小时左右，正好赶上白云遮住了太阳，并不是很晒，感谢天公作美哦！湖水很清澈加之是淡水湖，湖中间的水是可以饮用的，说着我就喝了两瓶水，就是有一点不太好，湖中间没厕所。。。。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_1.jpg' | prepend: site.baseurl  }})
+
+我们在《亲爱的客栈》拍摄地下船，虽然木屋不让进，但是我们还是回想了一下这个综艺节目的场景，最后在码头合了照。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day3_2.jpg' | prepend: site.baseurl  }})
+
+
+
 
 
 
