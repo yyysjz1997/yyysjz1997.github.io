@@ -38,6 +38,7 @@ tag: 旅游攻略
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/beforetrip.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/beforetrip.jpg' | prepend: site.baseurl  }})
 
+总之，毕业万岁，我们有缘江湖再见~
 
 飞往丽江的机票是下午六点的，所以我和她下午三点左右必须从学校出发。毕业典礼中午1点结束，我们吃了午饭就直接去学院领学位证和毕业证，然后把其余的包裹邮寄回家，直接就奔向了天河机场。
 
@@ -69,6 +70,9 @@ tag: 旅游攻略
 在纳西族阿姨，请我们品茶以后，我们驱车前往了拉市海。
 
 拉市海其实是一片湿地，也是国家保护区。我们能到的地方就是拉市海的一边，其他地方就是扩展出来的公园还有一些纳西族特色民俗民居等等。其实我个人觉得除了空气很好以外，别的并不是很满意，可能我并没有欣赏美的能力吧。。。。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_5.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_5.jpg' | prepend: site.baseurl  }})
+
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day2_2.jpg' | prepend: site.baseurl  }})
 
@@ -152,15 +156,76 @@ tag: 旅游攻略
 
 **(6月23号 玉龙雪山)**
 
+起了一大早，今天天气还是很冷，但据说今天最高气温有30度，今天就开始我们的玉龙雪山的旅程了。
 
+我们在客栈老板那里订的是450元的套餐，含早午饭，登山氧气管和羽绒服等等。接我们的是一位纳西族的阿妹，人很好，在去的路上一直给我们讲有关的注意事项。其中有一项，喝酒、熬夜、感冒等症状的人群不太适合爬山，这些症状我全都有，哈哈哈。考验我身体的时候到了！！
 
+路程大约1个小时不到，中间我们在车上吃了简单的早餐，随后到达了玉龙雪山的入口处，一路上沿途的风景，就好像是在穿越无人区一样，这些正是我喜欢的景致，不时还可以看到零散的小湖泊和牦牛。
+
+看着外面的景物我们到了停车场，停车场附近就是甘海子，一个海拔3100米的纪念碑，我们短暂的拍照留念后，就直接进入了等候区准备乘车参观蓝月谷。在密闭的等候区里面，并不是很透风，人特别多，摩肩接踵，加之海拔已经比较高了，所以有很多人已经开始用氧气瓶吸氧。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_1.jpg' | prepend: site.baseurl  }})
+
+乘大巴来到蓝月谷，蓝月谷中有四个湖泊，路程比较长，下午还要爬雪山，所以我们直接选择了接着作小车游玩。蓝月谷还是非常美丽的，它的水是雪山流下来的雪水，十分清澈透明也很凉。湖底的石头由于不同的矿物质，呈现出不同的颜色，以蓝色和绿色为主。可能是铜离子和铁离子含量比较多吧。。。。。
+
+一路沿湖走，一路赞叹大自然的鬼斧神工！
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_2.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_3.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_4.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_4.jpg' | prepend: site.baseurl  }})
+
+中午我们在彝族的家庭餐厅吃了团餐，吃的还是腊排骨+土鸡火锅。吃完后不作停留，直接开始在雪山进口处排队，大约排了1个小时吧，其实这算时间比较短的了。。
+
+登山的话，必须要坐缆车坐到海拔4506的平台上才可以继续登山。缆车很抖，速度很快，离地面有些高，不时还加减速，我有些怕。。。。。
+
+爬山的话当然很累，因为海拔已经在4506-4680之间，又因为是第一次登这么高的山可能还没有适应吧。走十几级台阶就会感觉到累，当然了休息一会儿就没有问题喽，为了加快进度我们就吸氧，一边欣赏雪山不一样的风景，一边聊天，一边登山。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_5.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_5.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_6.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_6.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_7.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_7.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_8.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_8.jpg' | prepend: site.baseurl  }})
+
+到了大约海拔4600米的时候，天空已经飘起了小雨点儿，气温也是突然就降低了，幸好穿着羽绒服，既防风又挡雨。在山下的缆车起点，我穿着长袖的薄衬衣还觉得热，到了接近山顶的地方就必须穿着羽绒服了。这就是垂直海拔的气温变化。。。
+
+穿越云层，我们登顶成功！这个山顶不是玉龙雪山的最高峰，但是仍然可以说的一览众山小。眺望远方，一些丽江古城方向的小山还都是被绿油油的植被所覆盖。
+
+下山还是很轻松滴，坐缆车还是有点儿害怕滴~~ 
+
+返程喽！
+
+从雪山回来，在古城外面漫无目的的转了转，尝试了一下虫子套餐，补了一下本来就过剩的蛋白质，爽！
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_9.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day5_9.jpg' | prepend: site.baseurl  }})
+
+回到客栈，美好的一天，洗澡，睡觉！
 
 第六天  全景丽江古城   {#sixthDay}
 ====================================
 
 **(6月24号 丽江古城、木府、大水车等)**
 
+早上起床，拥抱太阳，上午刷剧，中午再出门觅食。
 
+吃完“正宗”的蒙自过桥米线后（有秀才，举人，进士和状元四种套餐，不同套餐的区别就是里面菜种类的区别，我就要秀才就可以了，毕竟能力有限，状元可望而不可即。。），
+
+下午，丽江古城慢慢开始苏醒。我们先去了酒吧一条街，其实啊，我们很想在一些民谣酒吧里面坐一下午听听歌聊聊天的，但是时间不够，我们想去更多有意思的地方。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_1.jpg' | prepend: site.baseurl  }})
+
+走着走着，我们就来到了木府。买票进门，一个资深的讲解员为我们讲解木府的前世今生。等到木府后花园的最高点，丽江古城一望无遗。灰黑色的屋顶加上土黄色的墙壁，别有一番风味，晚上加上黄色的灯映射到墙面上，更好看~
+
+古城有过很多的小河穿行在房屋间，自然而然的将房屋与房屋隔开。沿着河边的小石路，逛着小店，悠闲啊。
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_3.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_3.jpg' | prepend: site.baseurl  }})
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_2.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day6_2.jpg' | prepend: site.baseurl  }})
+
+最后，她买了一些鲜花饼和牦牛酱，回宾馆，接着刷《我们相爱吧》，晚睡，洗澡，睡觉哦，明天一早6点出发去机场。。。
 
 
 第七天  暂别高原姑苏		{#seventhDay}
@@ -168,15 +233,61 @@ tag: 旅游攻略
 
 **(6月25号 丽江-武汉-石家庄)**
 
+一睁眼，格外冷，丽江下起了雨，而且还不小，可能丽江想暂留我们两天，可是飞机可不等人哦。我们又不是不会再来了。。。
 
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day7_1.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/day7_1.jpg' | prepend: site.baseurl  }})
+
+飞机起飞，再见丽江，你好武汉。
+
+武汉站我们又一起呆了两三个小时，为了多陪陪她，我改签了火车，和她一起多待在一起，真好。
+
+四点半，再见了武汉！七月再见~
+
+我进站的时候，我不太敢回头看她，即使这样，我眼泪还是止不住的流了出来，不是委屈，而是留恋。不善于表达的我，可能这就是我表达的方法之一吧。
+
+在火车上，感慨颇多，不想看手机，不想回复消息，就想看着窗外发呆，脑袋空空的，不想想任何事情。晚上8：30，石家庄你好！我又回家了！
+
+丽江，再见~
+
+云南，再见
+
+武汉，再见~~
 
 
 后传		{#afterTrip}
 ====================================
 
+丽江之行，让我认识了一个新的丽江，也让我认识了一个新的小雨点儿！
 
+感谢你800天的陪伴，感谢你让我越来越好。每一次我们的旅行，都是对我们爱情的升华，从第一次的成都到第二次的丽江，后面我们的旅行还有无数次。。。。。目的地你定，时间你定，包我提，只要你想出去，有时间出去。
+
+旅行真的是一件很有趣的事情，在旅行的路途中还能遇到很多有趣的人。成都之行遇到的“巴蜀大将火锅”的有趣服务员，到丽江之行遇到的司机阿布，客栈老板大表哥、你的河南老乡阿杰、年轻的丁姐、一同去往泸沽湖和雪山的旅客。
+
+旅行有很多的巧合也都被我们遇到了，我们在丽江遇到了今年的第四场雨、赶上了丽江最热的几天、赶上了
+丽江旅游淡季最后几天、赶上了我们在泸沽湖划船时白云遮住了太阳、赶上了泸沽湖的水性杨花正好盛开。。。。
+
+小雨点儿啊，下次旅行，我们去哪里呢？？
 
 
 攻略&彩蛋		{#Raiders}
 ====================================
 
+去丽江的注意事项（客栈老板给我发的）：
+
+1丽江早晚温差大，最好能带个薄羽绒。
+
+2丽江紫外线强，防晒措施一定要做好，防晒度数高的防晒霜，太阳镜一定要带。
+
+3丽江空气干燥，可以带些补水面膜来，白天出去玩，晚上回来敷一贴。
+
+4丽江古城都是石板路，景点也多是土路和山路，女士最好不要穿高跟鞋，平底鞋最好。
+
+还有就是客栈一般都会提供去景点玩的套餐，经过询问其他的人，一般客栈提供的套餐服务确实是最低的价格。
+
+推荐的景点和游玩的时间，泸沽湖两天一夜，雪山一天，丽江古城2-3天。拉市海和茶马古道我们就只会去一次，下次再来丽江就绝对不会再去了，体验过一次就好，完全没有其他景点给我们带来的有震撼。
+
+推荐的游玩方式，推荐住在丽江古城的边上，因为古城里面都是木制的房屋,所以住在古城中心晚上会很吵。第一次去丽江，最好跟团，以后再去，如果有能力最好是自驾游，尤其是去泸沽湖。自驾游去泸沽湖一定有不一样的游玩体验。还有，从泸沽湖往西北走，就是稻城、亚丁，电影《从你的全世界路过》的最后一个场景就是在稻城拍的，希望以后有机会可以自驾游去那里！
+
+丽江旅行，完结~~
+
+![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/aftertrip.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/aftertrip.jpg' | prepend: site.baseurl  }})
