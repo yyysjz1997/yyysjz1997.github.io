@@ -288,6 +288,6 @@ tag: 旅游攻略
 
 推荐的游玩方式，推荐住在丽江古城的边上，因为古城里面都是木制的房屋,所以住在古城中心晚上会很吵。第一次去丽江，最好跟团，以后再去，如果有能力最好是自驾游，尤其是去泸沽湖。自驾游去泸沽湖一定有不一样的游玩体验。还有，从泸沽湖往西北走，就是稻城、亚丁，电影《从你的全世界路过》的最后一个场景就是在稻城拍的，希望以后有机会可以自驾游去那里！
 
-**丽江旅行，完结~~~**
+**丽江旅行，完结！！**
 
 ![\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/aftertrip.jpg]({{ '\styles\images\2019-06-28-unforgettable-trip-to-Lijiang/aftertrip.jpg' | prepend: site.baseurl  }})
