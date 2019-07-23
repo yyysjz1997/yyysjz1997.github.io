@@ -45,3 +45,5 @@ tag: 软件领域
 ![\styles\images\2019-07-23-deep-learning-env-config/4.jpg]({{ '\styles\images\2019-07-23-deep-learning-env-config/4.jpg' | prepend: site.baseurl  }})
 
 ![\styles\images\2019-07-23-deep-learning-env-config/3.jpg]({{ '\styles\images\2019-07-23-deep-learning-env-config/3.jpg' | prepend: site.baseurl  }})
+
+终于可以开始搞事情喽~~
