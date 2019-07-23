@@ -226,6 +226,8 @@ nice~
 
 还是先用鲁大师看一看。。。。
 
+![\styles\images\2019-07-20-my-new-computer/ludashi12.jpg]({{ '\styles\images\2019-07-20-my-new-computer/ludashi12.jpg' | prepend: site.baseurl  }})
+
 ![\styles\images\2019-07-20-my-new-computer/test.jpg]({{ '\styles\images\2019-07-20-my-new-computer/test.jpg' | prepend: site.baseurl  }})
 
 还行，机箱基本无声音，所有硬件的温度都在55度以下。
