@@ -171,5 +171,45 @@ CPU散热：九州风神大霜塔CPU散热器标准版
 装机			{#assemble}
 ====================================
 
-前方多图预警！！！！！
+前方多图预警！！！！！非战斗人员请撤离！！！！！
+
+**CPU**
+
+![\styles\images\2019-07-20-my-new-computer/cpu.jpg]({{ '\styles\images\2019-07-20-my-new-computer/cpu.jpg' | prepend: site.baseurl  }})
+
+**主板**
+
+![\styles\images\2019-07-20-my-new-computer/zhuban.jpg]({{ '\styles\images\2019-07-20-my-new-computer/zhuban.jpg' | prepend: site.baseurl  }})
+
+**显卡**
+
+![\styles\images\2019-07-20-my-new-computer/xianka.jpg]({{ '\styles\images\2019-07-20-my-new-computer/xianka.jpg' | prepend: site.baseurl  }})
+
+**内存**
+
+![\styles\images\2019-07-20-my-new-computer/neicun.jpg]({{ '\styles\images\2019-07-20-my-new-computer/neicun.jpg' | prepend: site.baseurl  }})
+
+**固态**
+
+![\styles\images\2019-07-20-my-new-computer/gutai.jpg]({{ '\styles\images\2019-07-20-my-new-computer/gutai.jpg' | prepend: site.baseurl  }})
+
+**机械硬盘**
+
+![\styles\images\2019-07-20-my-new-computer/jixie.jpg]({{ '\styles\images\2019-07-20-my-new-computer/jixie.jpg' | prepend: site.baseurl  }})
+
+**CPU散热**
+
+![\styles\images\2019-07-20-my-new-computer/sanre.jpg]({{ '\styles\images\2019-07-20-my-new-computer/sanre.jpg' | prepend: site.baseurl  }})
+
+**电源**
+
+![\styles\images\2019-07-20-my-new-computer/dianyuan.jpg]({{ '\styles\images\2019-07-20-my-new-computer/dianyuan.jpg' | prepend: site.baseurl  }})
+
+**机箱**
+
+![\styles\images\2019-07-20-my-new-computer/jixiang.jpg]({{ '\styles\images\2019-07-20-my-new-computer/jixiang.jpg' | prepend: site.baseurl  }})
+
+**整机**
+
+![\styles\images\2019-07-20-my-new-computer/zhengji.jpg]({{ '\styles\images\2019-07-20-my-new-computer/zhengji.jpg' | prepend: site.baseurl  }})
 
