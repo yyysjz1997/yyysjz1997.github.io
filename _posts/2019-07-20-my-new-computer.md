@@ -173,39 +173,39 @@ CPU散热：九州风神大霜塔CPU散热器标准版
 
 前方多图预警！！！！！非战斗人员请撤离！！！！！
 
-**CPU**
+**CPU [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.26.43713317mOoHNe&id=586618512996&skuId=4157727452598&areaId=420100&user_id=2090337761&cat_id=2&is_b=1&rn=9e412eefe1d0c3865b5dd5fe009124f6)**
 
 ![\styles\images\2019-07-20-my-new-computer/cpu.jpg]({{ '\styles\images\2019-07-20-my-new-computer/cpu.jpg' | prepend: site.baseurl  }})
 
-**主板**
+**主板 [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.26.43713317mOoHNe&id=586618512996&skuId=4157727452598&areaId=420100&user_id=2090337761&cat_id=2&is_b=1&rn=9e412eefe1d0c3865b5dd5fe009124f6)**
 
 ![\styles\images\2019-07-20-my-new-computer/zhuban.jpg]({{ '\styles\images\2019-07-20-my-new-computer/zhuban.jpg' | prepend: site.baseurl  }})
 
-**显卡**
+**显卡 [物品网址](https://detail.tmall.com/item.htm?spm=a1z10.3-b-s.w4011-16931519960.48.6a252e9f6iOn6R&id=589349073516&rn=361a5bc2affd55bd1e6490357b6ba603&abbucket=6&skuId=4166332984113)**
 
 ![\styles\images\2019-07-20-my-new-computer/xianka.jpg]({{ '\styles\images\2019-07-20-my-new-computer/xianka.jpg' | prepend: site.baseurl  }})
 
-**内存**
+**内存 [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.36.59d02b25MP7tRn&id=566881872350&skuId=4325987190564&areaId=420100&user_id=1910514611&cat_id=2&is_b=1&rn=2ed6d35e14e8cf6b559d61d9337d6d59)**
 
 ![\styles\images\2019-07-20-my-new-computer/neicun.jpg]({{ '\styles\images\2019-07-20-my-new-computer/neicun.jpg' | prepend: site.baseurl  }})
 
-**固态**
+**固态 [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.11.b2e52197JFMxkJ&id=595955963115&skuId=4168178260185&areaId=420100&user_id=2201411472188&cat_id=2&is_b=1&rn=dd2c3ba0d8634a7ed7114733c62cf250)**
 
 ![\styles\images\2019-07-20-my-new-computer/gutai.jpg]({{ '\styles\images\2019-07-20-my-new-computer/gutai.jpg' | prepend: site.baseurl  }})
 
-**机械硬盘**
+**机械硬盘 [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.6fda5f905VBwnx&id=540210701968&skuId=3968951909393&areaId=420100&user_id=2864394693&cat_id=2&is_b=1&rn=843be80c3d88aa0a511bb4d31b6dff7c)**
 
 ![\styles\images\2019-07-20-my-new-computer/jixie.jpg]({{ '\styles\images\2019-07-20-my-new-computer/jixie.jpg' | prepend: site.baseurl  }})
 
-**CPU散热**
+**CPU散热 [物品网址](https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.7.21a988dcCbKTd7&id=36389366182&skuId=3775082308270&areaId=420100&standard=1&user_id=1810416032&cat_id=2&is_b=1&rn=c19392df80eef6a6199a4c5da61e1724)**
 
 ![\styles\images\2019-07-20-my-new-computer/sanre.jpg]({{ '\styles\images\2019-07-20-my-new-computer/sanre.jpg' | prepend: site.baseurl  }})
 
-**电源**
+**电源 [物品网址](https://item.jd.com/4931551.html#crumb-wrap)**
 
 ![\styles\images\2019-07-20-my-new-computer/dianyuan.jpg]({{ '\styles\images\2019-07-20-my-new-computer/dianyuan.jpg' | prepend: site.baseurl  }})
 
-**机箱**
+**机箱 [物品网址](https://detail.tmall.com/item.htm?id=559780008035&skuId=4018652569536)**
 
 ![\styles\images\2019-07-20-my-new-computer/jixiang.jpg]({{ '\styles\images\2019-07-20-my-new-computer/jixiang.jpg' | prepend: site.baseurl  }})
 
@@ -248,7 +248,7 @@ AIDA64：烤机专用，各种参数。
 
 而且就算我看4k的视频，核显的现存也仅仅有25%足够我用了。
 
-![\styles\images\2019-07-20-my-new-computer/final.jpg]({{ '\styles\images\2019-07-20-my-new-computer/final.jpg' | prepend: site.baseurl  }})
+![\styles\images\2019-07-20-my-new-computer/final.png]({{ '\styles\images\2019-07-20-my-new-computer/final.png' | prepend: site.baseurl  }})
 
 一边跑着网络，一边看着视频，两不误，妙啊~~
 
