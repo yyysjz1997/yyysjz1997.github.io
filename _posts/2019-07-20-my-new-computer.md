@@ -213,3 +213,43 @@ CPU散热：九州风神大霜塔CPU散热器标准版
 
 ![\styles\images\2019-07-20-my-new-computer/zhengji.jpg]({{ '\styles\images\2019-07-20-my-new-computer/zhengji.jpg' | prepend: site.baseurl  }})
 
+CPU散热的一个风扇会把内存挡住，直接把一个不能变速的风扇固定到机箱后板上了，最后只用了两个风扇（CPU散热一个、机箱散热一个）。隔音效果非常好。
+
+nice~
+
+烤机测试		{#test}
+====================================
+
+还是先用鲁大师看一看。。。。
+
+![\styles\images\2019-07-20-my-new-computer/test.jpg]({{ '\styles\images\2019-07-20-my-new-computer/test.jpg' | prepend: site.baseurl  }})
+
+还行，机箱基本无声音，所有硬件的温度都在55度以下。
+
+当然了有更多的测试软件，比如三星的固态硬盘可以直接在三星的官网下载专门测试的软件。
+
+下面再推荐几个烤机软件吧：
+
+尝试超频的msi after burner
+
+GPUZ:看GPU的参数
+
+CINEBENTER：看硬件参数
+
+AIDA64：烤机专用，各种参数。
+
+当然辣，鲁大师也可以滴。。
+
+
+结尾     	{#finall}
+====================================
+
+买独显是想用它来做机器学习，并没有想过用它玩游戏，所以呀，我就再bios里把核显打开并设置为默认显示设备，显示器插到了主板的HDMI接口上，这样看视频什么的就用的是核显，独显就完全用来搞学习了。跑网络的时候图形界面也就不会卡了。
+
+而且就算我看4k的视频，核显的现存也仅仅有25%足够我用了。
+
+![\styles\images\2019-07-20-my-new-computer/final.jpg]({{ '\styles\images\2019-07-20-my-new-computer/final.jpg' | prepend: site.baseurl  }})
+
+一边跑着网络，一边看着视频，两不误，妙啊~~
+
+下面就要配深度学习的环境喽，爽~
