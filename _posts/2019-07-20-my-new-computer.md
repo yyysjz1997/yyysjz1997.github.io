@@ -248,7 +248,7 @@ AIDA64：烤机专用，各种参数。
 
 而且就算我看4k的视频，核显的现存也仅仅有25%足够我用了。
 
-![\styles\images\2019-07-20-my-new-computer/final.png]({{ '\styles\images\2019-07-20-my-new-computer/final.png' | prepend: site.baseurl  }})
+![\styles\images\2019-07-20-my-new-computer/final.jpg]({{ '\styles\images\2019-07-20-my-new-computer/final.jpg' | prepend: site.baseurl  }})
 
 一边跑着网络，一边看着视频，两不误，妙啊~~
 
