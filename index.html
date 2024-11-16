@@ -801,18 +801,18 @@ in Saint Petersburg, Russia, 2021.
                 container.style.alignItems = 'center';
                 container.style.height = '100vh';
                 container.style.width = '100%';
-
-                mapElement.style.transform = 'scale(0.3)';
+                container.style.overflow = 'hidden';
+                mapElement.style.transform = 'scale(0.2)';
                 mapElement.style.transformOrigin = 'center';
 
                 mapElement.parentNode.insertBefore(container, mapElement);
                 container.appendChild(mapElement);
             }
         };
-
         document.body.appendChild(script);
     })();
 </script>
+
 
 
  
