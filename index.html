@@ -786,30 +786,34 @@ in Saint Petersburg, Russia, 2021.
 </div>
 
 <script type="text/javascript">
-
     (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.id = 'clustrmaps';
+        script.src = "//clustrmaps.com/map_v2.js?d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&cl=ffffff&w=a";
 
-        var container = document.createElement('div');
-        container.style.display = 'flex';
-        container.style.justifyContent = 'center';
-        container.style.alignItems = 'center';
-        container.style.height = '100vh';
-        container.style.width = '100%';
+        script.onload = function() {
+            var mapElement = document.querySelector('#clustrmaps img, #clustrmaps div');
+            if (mapElement) {
+                var container = document.createElement('div');
+                container.style.display = 'flex';
+                container.style.justifyContent = 'center';
+                container.style.alignItems = 'center';
+                container.style.height = '100vh';
+                container.style.width = '100%';
 
+                mapElement.style.transform = 'scale(0.3)';
+                mapElement.style.transformOrigin = 'center';
 
-        document.body.appendChild(container);
+                mapElement.parentNode.insertBefore(container, mapElement);
+                container.appendChild(mapElement);
+            }
+        };
 
-        var iframe = document.createElement('iframe');
-        iframe.style.transform = 'scale(0.2)';
-        iframe.style.transformOrigin = 'center';
-        iframe.style.border = 'none';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-
-        iframe.src = "//clustrmaps.com/map_v2.js?d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&cl=ffffff&w=a";
-        container.appendChild(iframe);
+        document.body.appendChild(script);
     })();
 </script>
+
 
  
 <!-- <script>
