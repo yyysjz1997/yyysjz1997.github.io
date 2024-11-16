@@ -785,7 +785,32 @@ in Saint Petersburg, Russia, 2021.
 <div class="stick"></div>
 </div>
 
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&cl=ffffff&w=a"></script>
+<script type="text/javascript">
+
+    (function() {
+
+        var container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.justifyContent = 'center';
+        container.style.alignItems = 'center';
+        container.style.height = '100vh';
+        container.style.width = '100%';
+
+
+        document.body.appendChild(container);
+
+        var iframe = document.createElement('iframe');
+        iframe.style.transform = 'scale(0.2)';
+        iframe.style.transformOrigin = 'center';
+        iframe.style.border = 'none';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+
+        iframe.src = "//clustrmaps.com/map_v2.js?d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&cl=ffffff&w=a";
+        container.appendChild(iframe);
+    })();
+</script>
+
  
 <!-- <script>
 $(function(){
