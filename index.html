@@ -1,894 +1,1748 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="index, follow" />
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="keywords" content="Yiyuan Yang, 杨毅远, time series, machine learning, deep learning, audio, data mining, University of Oxford" />
-<link rel="stylesheet" href="./Files/jemdoc.css" type="text/css" />
-<script src="jquery.min.js"></script>
+<meta name="keywords" content="Yiyuan Yang, 杨毅远, time series, machine learning, deep learning, audio, speech, data mining, LLM, University of Oxford" />
+<meta name="description" content="Yiyuan Yang (杨毅远) — D.Phil. candidate and Clarendon Scholar in the Department of Computer Science at the University of Oxford. Research on time series, audio & speech, data mining, and large language models." />
+<meta property="og:title" content="Yiyuan Yang (杨毅远)" />
+<meta property="og:description" content="D.Phil. candidate and Clarendon Scholar at the University of Oxford. Time series · Audio & Speech · Data Mining · LLMs." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yyysjz1997.github.io/" />
+<meta property="og:image" content="https://yyysjz1997.github.io/Files/Yang_photo_2022.jpeg" />
+<link rel="canonical" href="https://yyysjz1997.github.io/" />
 <link rel="shortcut icon" href="./Files/favicon.ico" />
 <title>Yiyuan Yang (杨毅远)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>
+/* Theme: light by default; only honor an explicit saved choice */
+(function () {
+  var t = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+<style>
+:root {
+  --page: #f1efeb;
+  --bg: #ffffff;
+  --side-bg: #f7f6f2;
+  --surface: #ffffff;
+  --card: #fbfaf8;
+  --text: #2b303b;
+  --muted: #6a7180;
+  --faint: #98a0ad;
+  --heading: #1b2437;
+  --line: #e7e5df;
+  --line-soft: #efede8;
+  --accent: #1c5aa0;
+  --accent-strong: #133f72;
+  --accent-soft: #e9f0f8;
+  --gold: #9a6a10;
+  --gold-soft: #f9f1dd;
+  --crimson: #b03a2e;
+  --crimson-soft: #fbeeec;
+  --green: #1d6f47;
+  --green-soft: #e7f3ec;
+  --slate: #5b6472;
+  --slate-soft: #eceef2;
+  --shadow: 0 1px 2px rgba(27, 36, 55, .05), 0 10px 28px -16px rgba(27, 36, 55, .18);
+  --shadow-sm: 0 1px 2px rgba(27, 36, 55, .06);
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  --page: #0a0e16;
+  --bg: #10151f;
+  --side-bg: #141a27;
+  --surface: #171e2c;
+  --card: #161d2a;
+  --text: #d9dfe9;
+  --muted: #98a2b3;
+  --faint: #6c7689;
+  --heading: #edf0f6;
+  --line: #29334a;
+  --line-soft: #222b3e;
+  --accent: #85abe2;
+  --accent-strong: #adc8ef;
+  --accent-soft: #1c2940;
+  --gold: #d5a64a;
+  --gold-soft: #2d2514;
+  --crimson: #dd8478;
+  --crimson-soft: #34211d;
+  --green: #6fbf94;
+  --green-soft: #17281f;
+  --slate: #a4adbd;
+  --slate-soft: #222a3b;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.55);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 15.5px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+::selection { background: var(--accent-soft); }
+
+/* ============ Shell: sidebar + main ============ */
+.shell {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  max-width: 1210px;
+  margin: 0 auto;
+  background: var(--bg);
+  min-height: 100vh;
+  box-shadow: 0 0 0 1px var(--line-soft), 0 18px 60px -30px rgba(27, 36, 55, .25);
+}
+
+/* ---------- Sidebar ---------- */
+.side {
+  background: var(--side-bg);
+  border-right: 1px solid var(--line);
+  padding: 44px 30px 30px;
+  text-align: center;
+}
+.side-inner { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 4px 2px 10px; scrollbar-width: thin; }
+.avatar {
+  width: 172px; height: 172px; border-radius: 50%;
+  object-fit: cover; object-position: 50% 22%;
+  border: 4px solid var(--surface);
+  box-shadow: var(--shadow);
+  margin: 0 auto 16px; display: block;
+}
+.side h1 {
+  font-family: "Lora", Georgia, "Songti SC", serif;
+  font-size: 1.62rem; font-weight: 700; color: var(--heading);
+  margin: 0; line-height: 1.3; letter-spacing: .01em;
+}
+.side .zh-name {
+  font-family: "Lora", Georgia, "Songti SC", serif;
+  font-size: 1.14rem; font-weight: 600; color: var(--heading);
+  margin: 1px 0 10px;
+}
+.side .role { font-size: .88rem; color: var(--text); margin: 0 0 2px; line-height: 1.55; }
+.side .role b { color: var(--heading); }
+.side .org { font-size: .88rem; margin: 0 0 12px; line-height: 1.55; }
+.side-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 0 16px; }
+.tag {
+  font-size: .72rem; font-weight: 600; letter-spacing: .02em;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--accent-soft); color: var(--accent);
+}
+.tag.gold { background: var(--gold-soft); color: var(--gold); }
+.tag.market { background: var(--crimson-soft); color: var(--crimson); }
+.icon-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 14px; }
+.icon-btn {
+  width: 35px; height: 35px; border-radius: 50%;
+  display: inline-grid; place-items: center;
+  background: var(--surface); color: var(--muted);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: color .15s, border-color .15s, transform .15s;
+  cursor: pointer;
+}
+.icon-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+.icon-btn svg { width: 16px; height: 16px; }
+.icon-btn .rg { font-family: Georgia, serif; font-weight: 700; font-size: .78rem; }
+.side .emails { font-size: .78rem; color: var(--muted); line-height: 1.9; margin: 0 0 18px; }
+.side .emails a { color: var(--muted); }
+.side .emails a:hover { color: var(--accent); }
+.side-nav { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 2px; }
+.side-nav a {
+  display: block; padding: 6px 12px; margin: 1px 0;
+  font-size: .87rem; font-weight: 500; color: var(--muted);
+  border-radius: 8px; border-left: 2.5px solid transparent;
+  text-align: left;
+}
+.side-nav a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+.side-nav a.active { color: var(--accent); background: var(--accent-soft); border-left-color: var(--accent); font-weight: 600; }
+.side-foot { margin-top: 18px; font-size: .72rem; color: var(--faint); }
+
+/* ---------- Mobile top bar ---------- */
+.topbar {
+  display: none;
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.topbar-inner { display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 50px; }
+.topbar .brand {
+  font-family: "Lora", Georgia, "Songti SC", serif;
+  font-weight: 700; font-size: .98rem; color: var(--heading); white-space: nowrap;
+}
+.topbar-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
+.topbar-links::-webkit-scrollbar { display: none; }
+.topbar-links a {
+  color: var(--muted); font-size: .8rem; font-weight: 500;
+  padding: 5px 8px; border-radius: 7px; white-space: nowrap;
+}
+.topbar-links a.active { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+
+/* ---------- Theme button ---------- */
+.theme-btn { border: 1px solid var(--line); background: var(--surface); }
+html[data-theme="light"] .icon-sun { display: none; }
+html[data-theme="dark"] .icon-moon { display: none; }
+.topbar .theme-btn { width: 30px; height: 30px; flex: 0 0 auto; }
+
+/* ---------- Main ---------- */
+.main { min-width: 0; padding: 10px 48px 30px; }
+section { padding: 34px 0 4px; scroll-margin-top: 60px; }
+.sec-head {
+  font-family: "Lora", Georgia, "Songti SC", serif;
+  font-size: 1.5rem; font-weight: 700; color: var(--heading);
+  margin: 0 0 16px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  position: relative; letter-spacing: .01em;
+}
+.sec-head::after {
+  content: ""; position: absolute; left: 0; bottom: -1px;
+  width: 58px; height: 2.5px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+}
+.sec-sub { color: var(--muted); font-size: .9rem; margin: -6px 0 16px; }
+.subhead {
+  font-family: "Lora", Georgia, serif;
+  font-size: 1.08rem; font-weight: 600; color: var(--heading);
+  margin: 26px 0 12px; display: flex; align-items: baseline; gap: 8px;
+}
+.subhead .count { font-family: "Inter", sans-serif; font-size: .76rem; color: var(--faint); font-weight: 500; }
+
+/* ---------- Prose (justified, full width) ---------- */
+.prose p {
+  margin: 0 0 14px;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* ---------- Stats ---------- */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line); border-radius: 14px;
+  background: var(--card); box-shadow: var(--shadow-sm);
+  margin: 20px 0 6px; overflow: hidden;
+}
+.stat {
+  padding: 14px 10px 12px; text-align: center;
+  border-left: 1px solid var(--line-soft);
+}
+.stat:first-child { border-left: 0; }
+.stat b {
+  display: block; font-family: "Lora", Georgia, serif;
+  font-size: 1.42rem; font-weight: 700; color: var(--heading); line-height: 1.3;
+}
+.stat span { font-size: .75rem; color: var(--muted); font-weight: 500; letter-spacing: .03em; }
+a.stat { text-decoration: none; transition: background .15s; }
+a.stat:hover { background: var(--accent-soft); text-decoration: none; }
+
+.callout {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px; padding: 12px 16px; margin: 18px 0 8px;
+  font-size: .94rem;
+}
+
+/* ---------- News ---------- */
+.news-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  max-height: 324px; overflow-y: auto; padding: 4px 0;
+}
+.news-item {
+  display: flex; gap: 14px; padding: 9px 18px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .92rem;
+}
+.news-item:last-child { border-bottom: 0; }
+.news-date {
+  flex: 0 0 84px; color: var(--faint); font-weight: 600;
+  font-size: .78rem; padding-top: 2px; letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+}
+.news-text { flex: 1; }
+.news-text .hot { color: var(--crimson); font-weight: 600; }
+
+/* ---------- Research interests ---------- */
+.ri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 4px 0 4px; }
+.ri-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 13px;
+  padding: 16px 17px 13px; box-shadow: var(--shadow-sm);
+}
+.ri-card .ri-ico {
+  width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+  background: var(--accent-soft); color: var(--accent); margin-bottom: 10px;
+}
+.ri-card .ri-ico svg { width: 18px; height: 18px; }
+.ri-card h3 { margin: 0 0 5px; font-size: .96rem; font-weight: 600; color: var(--heading); }
+.ri-card p { margin: 0; font-size: .85rem; color: var(--muted); }
+
+/* ---------- Timeline ---------- */
+.tl { list-style: none; margin: 4px 0 0; padding: 0 0 0 2px; }
+.tl > li {
+  position: relative; padding: 0 0 16px 24px;
+  border-left: 2px solid var(--line);
+  margin-left: 8px;
+}
+.tl > li:last-child { padding-bottom: 4px; }
+.tl > li::before {
+  content: ""; position: absolute; left: -6.5px; top: 6px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--bg); border: 2.5px solid var(--accent);
+}
+.tl .when {
+  display: inline-block; font-size: .77rem; font-weight: 700; color: var(--accent);
+  letter-spacing: .03em; margin-bottom: 1px;
+}
+.tl .what { font-size: .94rem; }
+.tl .what b { color: var(--heading); }
+.tl .note { color: var(--muted); font-size: .86rem; }
+
+/* ---------- Publications ---------- */
+.pub-list { margin: 0; padding: 0; list-style: none; }
+.pub {
+  display: flex; gap: 13px; padding: 12px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.pub:last-child { border-bottom: 0; }
+.pub-idx {
+  flex: 0 0 26px; text-align: right;
+  color: var(--faint); font-size: .78rem; font-weight: 600; padding-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+.pub-body { flex: 1; min-width: 0; }
+.pub-title {
+  margin: 0 0 3px; font-size: .97rem; font-weight: 600; color: var(--heading);
+  line-height: 1.45;
+}
+.pub-authors { margin: 0 0 6px; font-size: .86rem; color: var(--muted); }
+.pub-authors strong { color: var(--text); font-weight: 700; }
+.pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+.venue {
+  font-size: .72rem; font-weight: 700; letter-spacing: .02em;
+  padding: 2.5px 9px; border-radius: 6px;
+}
+.v-conf { background: var(--accent-soft); color: var(--accent); }
+.v-jrnl { background: var(--green-soft); color: var(--green); }
+.v-book { background: var(--gold-soft); color: var(--gold); }
+.v-pre  { background: var(--slate-soft); color: var(--slate); }
+.pub-note { font-size: .77rem; color: var(--muted); }
+.pub-award { font-size: .79rem; color: var(--crimson); font-weight: 600; }
+.plinks { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.plink {
+  font-size: .72rem; font-weight: 600; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 6px; padding: 1.5px 8px;
+  transition: color .12s, border-color .12s, background .12s;
+}
+.plink:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+
+/* Books */
+.book-list { display: flex; flex-direction: column; gap: 14px; }
+.book-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px 18px; box-shadow: var(--shadow-sm); display: flex; gap: 18px;
+}
+.book-cover { flex: 0 0 92px; }
+.book-cover img {
+  width: 92px; height: 126px; object-fit: cover; border-radius: 7px; display: block;
+  box-shadow: var(--shadow); border: 1px solid var(--line-soft);
+}
+.book-info { min-width: 0; }
+.book-info h4 { margin: 0 0 2px; font-size: .98rem; color: var(--heading); line-height: 1.4; }
+.book-info .zh-title { font-size: .82rem; color: var(--muted); margin: 0 0 4px; }
+.book-info .bauthors { font-size: .8rem; color: var(--muted); margin: 0 0 7px; }
+.book-info .bauthors strong { color: var(--text); }
+.book-award { font-size: .78rem; color: var(--crimson); font-weight: 600; margin: 0 0 8px; line-height: 1.5; }
+
+/* ---------- Projects ---------- */
+.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 4px; }
+.proj-card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 17px 19px 15px; box-shadow: var(--shadow-sm);
+  transition: transform .15s, border-color .15s;
+  display: flex; flex-direction: column;
+}
+.proj-card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.proj-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.proj-top h3 { margin: 0; font-size: 1.02rem; font-weight: 700; margin-right: 2px; }
+.gh-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .73rem; font-weight: 600; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 2px 9px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.gh-badge svg { width: 12px; height: 12px; flex: 0 0 auto; }
+.proj-card p { margin: 0 0 8px; font-size: .88rem; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.proj-fine { font-size: .79rem; color: var(--muted); margin: 2px 0 8px; }
+.proj-links { margin-top: auto; padding-top: 4px; }
+
+/* ---------- Awards ---------- */
+.award-list { list-style: none; margin: 4px 0 0; padding: 0; }
+.award-list li {
+  display: flex; gap: 14px; padding: 7px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .92rem;
+}
+.award-list li:last-child { border-bottom: 0; }
+.award-year { flex: 0 0 42px; font-weight: 700; color: var(--faint); font-size: .83rem; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.award-body { flex: 1; }
+.award-list li.major .award-year { color: var(--gold); }
+.award-list li.major .award-title { color: var(--heading); font-weight: 650; }
+.award-star { color: var(--gold); margin-right: 6px; }
+
+/* ---------- Service ---------- */
+.svc-block { margin-bottom: 20px; }
+.svc-inline { font-size: .91rem; line-height: 1.9; }
+.svc-cols {
+  columns: 3; column-gap: 24px; font-size: .86rem; color: var(--text);
+  margin: 4px 0 0; padding: 0; list-style: none;
+}
+.svc-cols li { break-inside: avoid; padding: 2.5px 0; }
+.svc-list { list-style: none; margin: 4px 0 0; padding: 0; font-size: .92rem; }
+.svc-list li { padding: 5px 0 5px 18px; position: relative; }
+.svc-list li::before {
+  content: ""; position: absolute; left: 2px; top: 13px;
+  width: 6px; height: 6px; border-radius: 2px; background: var(--accent);
+  opacity: .55;
+}
+
+/* ---------- Talks ---------- */
+.talk-links { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+.talk-links .plink { font-size: .69rem; padding: 1px 7px; }
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 44px; border-top: 1px solid var(--line);
+  padding: 26px 0 34px; text-align: center; color: var(--muted); font-size: .84rem;
+}
+.map-wrap { display: flex; justify-content: center; margin: 16px auto 4px; opacity: .9; max-width: 400px; overflow: hidden; }
+.map-wrap img { max-width: 100%; height: auto; }
+footer .foot-note { margin-top: 10px; color: var(--faint); }
+
+/* ---------- Back to top ---------- */
+#toTop {
+  position: fixed; right: 22px; bottom: 26px; z-index: 40;
+  width: 40px; height: 40px; border-radius: 12px;
+  background: var(--surface); color: var(--muted);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  cursor: pointer; display: grid; place-items: center;
+  opacity: 0; pointer-events: none; transform: translateY(8px);
+  transition: opacity .2s, transform .2s, color .15s, border-color .15s;
+}
+#toTop.show { opacity: 1; pointer-events: auto; transform: none; }
+#toTop:hover { color: var(--accent); border-color: var(--accent); }
+#toTop svg { width: 17px; height: 17px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1080px) {
+  .main { padding: 6px 34px 26px; }
+  .svc-cols { columns: 2; }
+  .ri-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 980px) {
+  .shell { grid-template-columns: 1fr; box-shadow: none; }
+  .topbar { display: block; }
+  .side {
+    border-right: 0; border-bottom: 1px solid var(--line);
+    padding: 30px 20px 22px;
+  }
+  .side-inner { position: static; max-height: none; overflow: visible; }
+  .side-nav { display: none; }
+  .side-foot { display: none; }
+  .avatar { width: 140px; height: 140px; }
+  section { scroll-margin-top: 58px; }
+}
+@media (max-width: 720px) {
+  body { font-size: 15px; }
+  .main { padding: 2px 18px 22px; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(3) { border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+  .ri-grid, .proj-grid { grid-template-columns: 1fr; }
+  .svc-cols { columns: 1; }
+  .pub-idx { display: none; }
+  .book-card { flex-direction: row; }
+  .prose p, .proj-card p { text-align: left; }
+}
+@media print {
+  .topbar, #toTop, .theme-btn, .map-wrap, .side-nav { display: none !important; }
+  body { background: #fff; }
+  .shell { display: block; }
+  .side { border: 0; }
+}
+</style>
 </head>
- 
 
 <body>
 
-<a id="home" class="anchor"></a>
-<div id="container"> 
-<div class="container"> 
+<!-- Mobile top bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand">Yiyuan Yang · 杨毅远</span>
+    <div class="topbar-links">
+      <a class="navlink" href="#Home">About</a>
+      <a class="navlink" href="#News">News</a>
+      <a class="navlink" href="#Interest">Research</a>
+      <a class="navlink" href="#EducationInternships">Background</a>
+      <a class="navlink" href="#Publications">Publications</a>
+      <a class="navlink" href="#Projects">Projects</a>
+      <a class="navlink" href="#HonorsAwards">Awards</a>
+      <a class="navlink" href="#ActivitiesServices">Service</a>
+      <a class="navlink" href="#InvitedTalksLiveStreams">Talks</a>
+    </div>
+    <button class="icon-btn theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+    </button>
+  </div>
+</div>
 
-<table class="imgtable"><tr><td>
-<a href="./"><img src="./Files/Yang_photo_2022.jpeg" alt="" height="210px" /></a>&nbsp;</td>
+<div class="shell">
 
-<td align="left"><p><font size="5">Yiyuan Yang </font><font size="5" style="font-family:Microsoft YaHei">杨毅远</font><font size="5"></font><br />
+<!-- ================= Sidebar ================= -->
+<aside class="side">
+  <div class="side-inner">
+    <img class="avatar" src="./Files/Yang_photo_2022.jpeg" alt="Portrait of Yiyuan Yang" />
+    <h1>Yiyuan Yang</h1>
+    <div class="zh-name">杨毅远</div>
+    <p class="role"><b>Ph.D. (D.Phil.) Candidate</b></p>
+    <p class="org">
+      <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a><br />
+      <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a>
+    </p>
+    <div class="side-chips">
+      <span class="tag gold">Clarendon Scholar</span>
+      <span class="tag">Merton College</span>
+      <span class="tag market" title="Assistant Professor (academia) · Research Scientist / Applied Scientist (industry)">💼 On the Job Market</span>
+    </div>
+    <div class="icon-row">
+      <a class="icon-btn" href="https://www.cs.ox.ac.uk/people/yiyuan.yang/" target="_blank" rel="noopener" title="Oxford Official Profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+      </a>
+      <a class="icon-btn" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener" title="Google Scholar">
+        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M256 411.12 0 202.667 256 0l256 202.667-256 208.453zM256 446c-52.7 0-95.4-42.7-95.4-95.4S203.3 255.3 256 255.3s95.4 42.7 95.4 95.4S308.7 446 256 446z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://github.com/yyysjz1997" target="_blank" rel="noopener" title="GitHub">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://www.linkedin.com/in/yiyuan-yang-8154941ab/" target="_blank" rel="noopener" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+      </a>
+      <a class="icon-btn" href="https://www.researchgate.net/profile/Yiyuan-Yang-3" target="_blank" rel="noopener" title="ResearchGate">
+        <span class="rg">R<sup>G</sup></span>
+      </a>
+      <a class="icon-btn" href="./Files/weixin.jpeg" target="_blank" rel="noopener" title="WeChat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </a>
+      <a class="icon-btn" href="mailto:yiyuan.yang@cs.ox.ac.uk" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
+      <button class="icon-btn theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
+      </button>
+    </div>
+    <p class="emails">
+      <a href="mailto:yiyuan.yang@cs.ox.ac.uk">yiyuan.yang@cs.ox.ac.uk</a> (primary)<br />
+      yyy1997sjz@gmail.com<br />
+      yangyy19@tsinghua.org.cn
+    </p>
+    <nav class="side-nav" aria-label="Sections">
+      <a class="navlink" href="#Home">About</a>
+      <a class="navlink" href="#News">News</a>
+      <a class="navlink" href="#Interest">Research Interests</a>
+      <a class="navlink" href="#EducationInternships">Education &amp; Experience</a>
+      <a class="navlink" href="#Publications">Publications</a>
+      <a class="navlink" href="#Projects">Open-Source Projects</a>
+      <a class="navlink" href="#HonorsAwards">Honors &amp; Awards</a>
+      <a class="navlink" href="#ActivitiesServices">Service &amp; Activities</a>
+      <a class="navlink" href="#InvitedTalksLiveStreams">Talks &amp; Media</a>
+    </nav>
+    <div class="side-foot">Last updated: Aug 2026</div>
+  </div>
+</aside>
 
-<a href="https://www.cs.ox.ac.uk/people/yiyuan.yang/" target="_blank">Official Website</a>
-<br />
-Ph.D. Candidate, <a href="https://www.cs.ox.ac.uk/" target="_blank">Department of Computer Science</a>, <a href="https://www.ox.ac.uk/" target="_blank">University of Oxford</a><br />
-<br />
-<span class="staffshortcut">
- | <A HREF="#Home">Biography</A> | 
- <A HREF="#Interest">Research Interests</A> | 
- <A HREF="#EducationInternships">Education and Internships</A> | 
- <A HREF="#Publications">Selected Publications</A> | 
- <A HREF="#Projects">Projects</A> | 
- <A HREF="#HonorsAwards">Honors and Awards</A> |
- <A HREF="#ActivitiesServices">Activities and Services</A> | 
- <A HREF="#InvitedTalksLiveStreams">Invited Talks and Live Streams</A> |
-</span>
-<br />
-<br />
- 
-Email: yiyuan.yang@cs.ox.ac.uk (primary) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yyy1997sjz@gmail.com  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; yangyy19@tsinghua.org.cn <br />
+<!-- ================= Main ================= -->
+<main class="main">
 
-[<a href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank">Google Scholar</a>] 
-[<a href="https://www.researchgate.net/profile/Yiyuan-Yang-3" target="_blank">ResearchGate</a>] 
-[<a href="https://github.com/yyysjz1997" target="_blank">GitHub</a>] 
-[<a href="https://www.linkedin.com/in/yiyuan-yang-8154941ab/" target="_blank">LinkedIn</a>]
-[<a href="./Files/weixin.jpeg" target="_blank">WeChat</a>]
-</td></tr></table>
+<section id="Home">
+  <h2 class="sec-head">About Me</h2>
+  <div class="prose">
+    <p>
+      Yiyuan Yang is a D.Phil. (Ph.D.) student and <b>Clarendon Scholar</b> in the Department of Computer Science at the
+      University of Oxford, specializing in data mining, time series, audio/speech, signal processing, and large language models.
+      He holds a master's degree from the Department of Automation at <b>Tsinghua University</b> and a bachelor's degree from the
+      School of Artificial Intelligence and Automation (Innovation Honors Class) and Qiming College at
+      <b>Huazhong University of Science and Technology</b>. He has also interned at the <b>Microsoft</b> Applied Sciences Group,
+      <b>Microsoft Research</b>, and <b>Alibaba DAMO Academy</b>.
+    </p>
+    <p>
+      Yiyuan is an avid open-source contributor, with projects amassing over <b>37,000 GitHub stars</b>. He has authored
+      <b>three books</b> based on his tutorials — two of them bestsellers — and published over <b>40 papers</b> in top journals
+      and conferences, including TKDE, CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, with over
+      <b>2,000 citations</b>. He also serves as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
+      TIFS, TOS, TNNLS, TOMM, TCYB, TCSVT, TII, IoT, SPL, TITS, Neurocomputing, NeurIPS, KDD, WWW, AAAI, ACL, and SDM.
+      In his free time, Yiyuan enjoys singing and playing various sports.
+    </p>
+  </div>
+  <div class="stats">
+    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,000+</b><span>Citations</span></a>
+    <a class="stat" href="#Publications"><b>40+</b><span>Publications</span></a>
+    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>17</b><span>h-index</span></a>
+    <a class="stat" href="#Projects"><b>37,000+</b><span>GitHub Stars</span></a>
+  </div>
+</section>
 
+<section id="News">
+  <h2 class="sec-head">News</h2>
+  <div class="news-box">
+    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">📣 I am on the job market!</span> Open to <b>Assistant Professor</b> positions in academia and <b>Research Scientist / Applied Scientist</b> roles in industry — feel free to <a href="mailto:yiyuan.yang@cs.ox.ac.uk">reach out</a>!</span></div>
+    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">🎓 Milestone:</span> Completed my D.Phil. (Ph.D.) viva at the <b>University of Oxford</b>!</span></div>
+    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text">📢 Presented our hands-on tutorial <i>End-to-End Learning for Partially-Observed Time Series with PyPOTS</i> at <b>KDD 2026</b> in Jeju, Korea.</span></div>
+    <div class="news-item"><span class="news-date">2026</span><span class="news-text">💼 I will be joining the Superintelligence Lab at <b>Meta</b> (Bellevue, WA) as a Research Scientist Intern, working on speech/audio and multimodal LLMs — start date to be confirmed.</span></div>
+    <div class="news-item"><span class="news-date">2026.07</span><span class="news-text"><span class="hot">🏆 Award:</span> Chinese Government Award for Outstanding Self-financed Students Abroad — <b>Class A Special Excellence</b> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council.</span></div>
+    <div class="news-item"><span class="news-date">2026.06</span><span class="news-text"><span class="hot">🏆 Award:</span> Named one of the Most Anticipated Academic Rising Stars (最受瞩目学术新星) at BAAI QingYuan InnoVibe 2026. <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></div>
+    <div class="news-item"><span class="news-date">2026.06</span><span class="news-text">📄 <i>Geometry-Informed Distributed Acoustic Scene Understanding</i> accepted at <b>Interspeech 2026</b>.</span></div>
+    <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">📄 <i>Time-RA</i> (time series reasoning with LLM feedback) accepted to the Findings of <b>ACL 2026</b>.</span></div>
+    <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">💼 Joined the Applied Sciences Group at <b>Microsoft</b> as an Applied Scientist Intern (Apr – Jul 2026).</span></div>
+    <div class="news-item"><span class="news-date">2026.02</span><span class="news-text"><span class="hot">🏆 Award:</span> Our fiddler-crab bioacoustics study in the <i>Journal of Experimental Biology</i> was shortlisted for the JEB Outstanding Paper Prize 2025.</span></div>
+    <div class="news-item"><span class="news-date">2025.09</span><span class="news-text">📄 Two papers accepted at <b>NeurIPS 2025</b>: <i>ScatterAD</i> and <i>Target Speaker Extraction</i>.</span></div>
+    <div class="news-item"><span class="news-date">2025.06</span><span class="news-text">💼 Research internship at <b>Microsoft Research</b> on adaptive speech separation in conversational scenarios (Jun – Aug 2025).</span></div>
+    <div class="news-item"><span class="news-date">2025.05</span><span class="news-text">📄 <i>Time-MQA</i> accepted at <b>ACL 2025</b> (main conference), our multivariate time-series imputation survey at <b>IJCAI 2025</b>, and <i>Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization</i> at <b>Interspeech 2025</b>.</span></div>
+    <div class="news-item"><span class="news-date">2024.12</span><span class="news-text">📚 Our book <i>深度学习详解</i> (LeeDL-Tutorial) was selected as one of <b>JD's 2024 Annual Best Books (overall Top 50)</b> and a PTP Excellent New Book of 2024.</span></div>
+  </div>
+</section>
 
-<A NAME="Home"><h2>Biography</h2></A>
-Yiyuan Yang is a D.Phil. (Ph.D.) student and Clarendon Scholar in the Department of Computer Science at the University of Oxford, specializing in data mining, time series, audio/speech, signal processing, and large language models. He holds a master's degree from the Department of Automation at Tsinghua University and a bachelor's degree from the Experimental Class of the School of Artificial Intelligence and Automation and Qiming College at Huazhong University of Science and Technology. He has also gained valuable experience through internships at Microsoft Applied Sciences Group, Microsoft Research, and Alibaba DAMO Academy.
-<br /><br />
-Yiyuan is an avid open-source contributor, with projects amassing over 35,000 GitHub stars. He has authored two bestselling books based on his tutorials and published over 40 papers with over 1,800 citations in top journals and conferences, including TKDE, CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech. He also serves as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD, TIFS, TOS, TNNLS, TOMM, TCYB, TCSVT, TII, IoT, SPL, TITS, Neurocomputing, NeurIPS, KDD, WWW, AAAI, ACL, and SDM. In his free time, Yiyuan enjoys singing and participating in various sports.
+<section id="Interest">
+  <h2 class="sec-head">Research Interests</h2>
+  <p class="sec-sub">Currently, I focus on the following research topics:</p>
+  <div class="ri-grid">
+    <div class="ri-card">
+      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+      <h3>Spatio-Temporal Data Mining</h3>
+      <p>Spatio-temporal data mining and signal processing for real-world sensing systems.</p>
+    </div>
+    <div class="ri-card">
+      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+      <h3>Time Series &amp; LLMs</h3>
+      <p>Time-series analysis, anomaly detection, and reasoning with large language models.</p>
+    </div>
+    <div class="ri-card">
+      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
+      <h3>Audio &amp; Multimodal Learning</h3>
+      <p>Acoustic scene understanding, speech enhancement, separation, and localization, and audio-centric multimodal learning.</p>
+    </div>
+    <div class="ri-card">
+      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></div>
+      <h3>Real-World AI Deployment</h3>
+      <p>Deploying algorithms in real-world applications — efficient, robust, and fault-tolerant models for industrial sensing, monitoring, and production AI systems.</p>
+    </div>
+  </div>
+  <div class="callout">
+    <b>I love collaborating with others!</b> If you're interested in working together, feel free to reach out — don't hesitate! 😊
+  </div>
+</section>
 
- 
-<A NAME="Interest"><h2>Research Interests</h2></A>
-Currently, I focus on the following research topics:
-<ul>
-<li>Spatio-temporal data mining and signal processing</li>
-<li>Time series and LLMs</li>
-<li>Audio and multimodal learning</li>
-</ul>
-<b>I love collaborating with others! If you're interested in working together, feel free to reach out — don't hesitate!</b>😊😊
+<section id="EducationInternships">
+  <h2 class="sec-head">Education &amp; Experience</h2>
+  <h3 class="subhead">Education</h3>
+  <ul class="tl">
+    <li>
+      <span class="when">2023.01 – Present</span>
+      <div class="what"><b>D.Phil. in Computer Science</b>, <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a>, <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a> (<a href="https://www.merton.ox.ac.uk/" target="_blank" rel="noopener">Merton College</a>)</div>
+      <div class="note">Supervised by <a href="https://www.cs.ox.ac.uk/people/niki.trigoni/" target="_blank" rel="noopener">Prof. Niki Trigoni</a> and <a href="https://www.cs.ox.ac.uk/people/andrew.markham/" target="_blank" rel="noopener">Prof. Andrew Markham</a> · Fully funded by the <a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholarship</a> and Merton College Scholarship</div>
+    </li>
+    <li>
+      <span class="when">2019.09 – 2022.07</span>
+      <div class="what"><b>M.Eng.</b>, <a href="http://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a>, <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Tsinghua University</a></div>
+      <div class="note">GPA 3.98 / 4.0 · Rank 1 / 65</div>
+    </li>
+    <li>
+      <span class="when">2015.09 – 2019.06</span>
+      <div class="what"><b>B.Eng.</b>, <a href="http://aia.hust.edu.cn/" target="_blank" rel="noopener">School of Artificial Intelligence and Automation</a> &amp; Qiming College, <a href="http://english.hust.edu.cn/" target="_blank" rel="noopener">Huazhong University of Science and Technology</a></div>
+      <div class="note">Innovation Honors Class (Automation and Science) · GPA 3.91 / 4.0 (Top 1%)</div>
+    </li>
+  </ul>
 
+  <h3 class="subhead">Internships &amp; Exchange</h3>
+  <ul class="tl">
+    <li>
+      <span class="when">Incoming · 2026</span>
+      <div class="what"><b>Research Scientist Intern</b>, Superintelligence Lab, Meta</div>
+      <div class="note">Speech/audio and multimodal LLMs · Bellevue, WA, USA · start date to be confirmed</div>
+    </li>
+    <li>
+      <span class="when">2026.04 – 2026.07</span>
+      <div class="what"><b>Applied Scientist Intern</b>, Applied Sciences Group, Microsoft</div>
+      <div class="note">Supervised by <a href="https://www.microsoft.com/applied-sciences/people/eric-sommerlade" target="_blank" rel="noopener">Dr. Eric Sommerlade</a> · LLM-driven code generation that automatically produces explanatory videos · Reading, UK</div>
+    </li>
+    <li>
+      <span class="when">2025.06 – 2025.08</span>
+      <div class="what"><b>Research Intern</b>, Applied Sciences Group, Microsoft Research</div>
+      <div class="note">Supervised by <a href="https://scholar.google.de/citations?user=UHUOlCwAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dr. Soumitro Chakrabarty</a> · Adaptive speech separation in conversational scenarios · Munich, Germany</div>
+    </li>
+    <li>
+      <span class="when">2022.10 – 2023.02</span>
+      <div class="what"><b>Research Intern</b>, <a href="https://damo.alibaba.com/?lang=en" target="_blank" rel="noopener">Alibaba DAMO Academy</a>, Decision Intelligence Lab</div>
+      <div class="note">Supervised by <a href="https://sites.google.com/site/qingsongwen8/" target="_blank" rel="noopener">Dr. Qingsong Wen</a> and <a href="https://scholar.google.com/citations?user=8JbrsgUAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Dr. Liang Sun</a> · Time-series anomaly detection — work that led to a granted patent and the DCdetector paper (KDD 2023) · Hangzhou, China</div>
+    </li>
+    <li>
+      <span class="when">2019.01 – 2019.02</span>
+      <div class="what"><b>Exchange Student</b>, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></div>
+    </li>
+  </ul>
+</section>
 
- 
-<A NAME="EducationInternships"><h2>Education and Internships</h2></A>
+<section id="Publications">
+  <h2 class="sec-head">Selected Publications</h2>
+  <p class="sec-sub">Full list on my <a href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a>.</p>
 
-<p><b>Education</b>: </p>
-<ul>
-<li>2023.01- &nbsp; D.Phil. in the <a href="https://www.cs.ox.ac.uk/" target="_blank">Department of Computer Science</a> at the <a href="https://www.ox.ac.uk/" target="_blank">University of Oxford</a> (<a href="https://www.merton.ox.ac.uk/" target="_blank">Merton College</a>), supervised by <a href="https://www.cs.ox.ac.uk/people/niki.trigoni/" target="_blank">Prof. Niki Trigoni</a> and <a href="https://www.cs.ox.ac.uk/people/andrew.markham/" target="_blank">Prof. Andrew Markham</a>, with the fully funded <a href="https://www.ox.ac.uk/clarendon" target="_blank">Clarendon Scholarship</a> and Merton College Scholarship.</li>
-<li>2019.09-2022.07 &nbsp; Master's degree in the <a href="http://www.au.tsinghua.edu.cn/" target="_blank">Department of Automation</a> at <a href="https://www.tsinghua.edu.cn/en/" target="_blank">Tsinghua University</a>. GPA 3.98/4.0, Rank 1/65.</li>
-<li>2015.09-2019.06 &nbsp; Bachelor's degree in the <a href="http://aia.hust.edu.cn/" target="_blank">School of Artificial Intelligence and Automation</a> and Qiming College at <a href="http://english.hust.edu.cn/" target="_blank">Huazhong University of Science and Technology</a>. (Honor Class on Innovation of Automation and Science) GPA 3.91/4.0.</li>
-</ul>
+  <h3 class="subhead">Conference Papers <span class="count">19 entries</span></h3>
+  <ul class="pub-list">
 
-<p><b>Intern & Exchange</b>: </p>
-<ul>
-<li>2026.04-2026.07 &nbsp; Applied Scientist Intern in the Applied Sciences Group at Microsoft, supervised by <a href="https://www.microsoft.com/applied-sciences/people/eric-sommerlade" target="_blank">Dr. Eric Sommerlade</a>.</li>   
-<li>2025.06-2025.08 &nbsp; Research Intern in the Applied Sciences Group at Microsoft Research, supervised by <a href="https://scholar.google.de/citations?user=UHUOlCwAAAAJ&amp;hl=en" target="_blank">Dr. Soumitro Chakrabarty</a>. Focused on adaptive speech separation in conversational scenarios.</li>   
-<li>2022.10-2023.02 &nbsp; Research Intern in the <a href="https://damo.alibaba.com/?lang=en" target="_blank">Alibaba DAMO Academy</a>, supervised by <a href="https://sites.google.com/site/qingsongwen8/" target="_blank">Dr. Qingsong Wen</a> and <a href="https://scholar.google.com/citations?user=8JbrsgUAAAAJ&amp;hl=en&amp;oi=ao" target="_blank">Dr. Liang Sun</a>. Focused on time series anomaly detection.</li>   
-<li>2019.01-2019.02 &nbsp; Exchange student at the <a href="https://www.cam.ac.uk/" target="_blank">University of Cambridge</a>.</li>
-</ul> 
- 
+    <li class="pub"><span class="pub-idx">19</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Geometry-Informed Distributed Acoustic Scene Understanding</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, S. Xu, N. Trigoni, A. Markham</p>
+        <div class="pub-meta"><span class="venue v-conf">Interspeech 2026</span></div>
+      </div>
+    </li>
 
+    <li class="pub"><span class="pub-idx">18</span>
+      <div class="pub-body">
+        <h4 class="pub-title">End-to-End Learning for Partially-Observed Time Series with PyPOTS</h4>
+        <p class="pub-authors">W. Du, <strong>Y. Yang</strong>, T. Zhan, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-conf">KDD Tutorial 2026</span></div>
+      </div>
+    </li>
 
-<A NAME="Publications"><h2>Selected Publications</h2></A>
-Please see my full list at <a href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank">[Google Scholar Profile]</a>
-<br /><br />
+    <li class="pub"><span class="pub-idx">17</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Time-RA: Towards Time Series Reasoning for Anomaly Diagnosis with LLM Feedback</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, Z. Liu, L. Song, K. Ying, Z. Wang, T. Bamford, S. Vyetrenko, J. Bian, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-conf">ACL Findings 2026</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/pdf/2507.15066" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/yyysjz1997/Time-RA" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="https://huggingface.co/datasets/Time-RA/RATs40K/tree/main" target="_blank" rel="noopener">Dataset</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p><b>Conferences</b>: </p>
-<font size="3"> 
-<ul>  
+    <li class="pub"><span class="pub-idx">16</span>
+      <div class="pub-body">
+        <h4 class="pub-title">ScatterAD: Temporal-Topological Scattering Mechanism for Time Series Anomaly Detection</h4>
+        <p class="pub-authors">T. Yin, S. Fu, Z. Zhang, L. Huang, X. Zhang, <strong>Y. Yang</strong>, K. Yang, M. Yan</p>
+        <div class="pub-meta"><span class="venue v-conf">NeurIPS 2025</span>
+          <span class="plinks"><a class="plink" href="https://openreview.net/pdf?id=UB5u3KvOS1" target="_blank" rel="noopener">Link</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[19] <b>Y. Yang</b>, S. Xu, N. Trigoni, A. Markham,
-'Geometry-Informed Distributed Acoustic Scene Understanding,'
- <i><b>Interspeech 2026</b></i>
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[18] W. Du, <b>Y. Yang</b>, T. Zhan, Q. Wen,
-'End-to-End Learning for Partially-Observed Time Series with PyPOTS,'
- <i><b>KDD tutorial 2026</b></i>
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[17] <b>Y. Yang</b>, Z. Liu, L. Song, K. Ying, Z. Wang, T. Bamford, S. Vyetrenko, J. Bian, Q. Wen,
-'Time-RA: Towards Time Series Reasoning for Anomaly Diagnosis with LLM Feedback,'
- <i><b>ACL Findings 2026</b></i>
-[<a href= "https://arxiv.org/pdf/2507.15066" target="_blank">ArXiv</a>]
-[<a href= "https://github.com/yyysjz1997/Time-RA" target="_blank">Code</a>]
-[<a href= "https://huggingface.co/datasets/Time-RA/RATs40K/tree/main" target="_blank">Dataset</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">15</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Target Speaker Extraction through Comparing Noisy Positive and Negative Audio Enrollments</h4>
+        <p class="pub-authors">S. Xu, <strong>Y. Yang</strong>, N. Trigoni, A. Markham</p>
+        <div class="pub-meta"><span class="venue v-conf">NeurIPS 2025</span>
+          <span class="plinks"><a class="plink" href="https://arxiv.org/pdf/2502.16611" target="_blank" rel="noopener">ArXiv</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[16] T. Yin, S. Fu, Z. Zhang, L. Huang, X. Zhang, <b>Y. Yang</b>, K. Yang, M. Yan, 
-'ScatterAD: Temporal-Topological Scattering Mechanism for Time Series Anomaly Detection,'
- <i><b>NeurIPS 2025</b></i>
-[<a href= "https://openreview.net/pdf?id=UB5u3KvOS1" target="_blank">Link</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[15] S. Xu, <b>Y. Yang</b>, N. Trigoni, A. Markham,
-'Target Speaker Extraction through Comparing Noisy Positive and Negative Audio Enrollments,'
- <i><b>NeurIPS 2025</b></i>
-[<a href= "https://arxiv.org/pdf/2502.16611" target="_blank">ArXiv</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[14] <b>Y. Yang</b>, S. Xu, N. Trigoni, A. Markham,
-'Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization,'
- <i><b>Interspeech 2025</b></i>
-[<a href= "https://arxiv.org/pdf/2505.20961" target="_blank">ArXiv</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[13] Y. Kong*, <b>Y. Yang*</b>, Y. Hwang, W. Du, S. Zohren, Z. Wang, M. Jin, Q. Wen,
-'Time-MQA: Time Series Multi-Task Question Answering with Context Enhancement,'
- <i><b>ACL-Main 2025</b></i> 
-[<a href= "https://arxiv.org/pdf/2503.01875" target="_blank">ArXiv</a>]
-[<a href= "https://huggingface.co/datasets/Time-MQA/TSQA/blob/main/README.md" target="_blank">Dataset</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">14</span>
+      <div class="pub-body">
+        <h4 class="pub-title">OxBioZ: Wearable Continuous Bioimpedance Monitoring System and Multi-Activity Dataset with Physiological and Motion Signals</h4>
+        <p class="pub-authors">X. Hou, <strong>Y. Yang</strong>, J. Beuchert, H. Kayan, Q. Xie, K. T. Ly, Q. Deng, N. Pham, A. Markham, N. Trigoni</p>
+        <div class="pub-meta"><span class="venue v-conf">ACM SmartWear Workshop 2025</span><span class="pub-note">3rd ACM Workshop on Smart Wearable Systems and Applications, co-located with ACM MobiCom</span>
+          <span class="plinks"><a class="plink" href="https://dl.acm.org/doi/10.1145/3737903.3768566" target="_blank" rel="noopener">Link</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[12] J. Wang, W. Du, <b>Y. Yang</b>, L. Qian, W. Cao, K. Zhang, W. Wang, Y. Liang, Q. Wen,
-'Deep learning for multivariate time series imputation: A survey,'
- <i><b>IJCAI 2025</b></i> 
-[<a href= "https://arxiv.org/abs/2402.04059" target="_blank">Link</a>]
-[<a href= "https://github.com/WenjieDu/Awesome_Imputation" target="_blank">Github Repo</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">13</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, S. Xu, N. Trigoni, A. Markham</p>
+        <div class="pub-meta"><span class="venue v-conf">Interspeech 2025</span>
+          <span class="plinks"><a class="plink" href="https://arxiv.org/pdf/2505.20961" target="_blank" rel="noopener">ArXiv</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[11] C. Zhang, Y. Zhang, L. Peng, Q. Wen, <b>Y. Yang</b>, C. Fan, M. Jiang, L. Fan and L. Sun,  
-'Advancing Multivariate Time Series Anomaly Detection: A Comprehensive Benchmark with Real-World Data from Alibaba Cloud,' 
- <i><b>CIKM 2024</b></i>
-[<a href= "https://dl.acm.org/doi/10.1145/3627673.3679128" target="_blank">Link</a>]
-[<a href= "https://github.com/KingsleyPattinson/AnomalyDetectionBenchmark" target="_blank">Code</a>]
-[<a href= "https://figshare.com/articles/dataset/_b_BigDataAD_Benchmark_Dataset_b_/24040563" target="_blank">Dataset</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[10] <b>Y. Yang</b>, N. Trigoni, A. Markham,  
-'Pre-training Feature Guided Diffusion Model for Speech Enhancement,' 
- <i><b>Interspeech 2024</b></i>
-[<a href= "https://arxiv.org/abs/2406.07646" target="_blank">Arxiv</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[9] L Qian, Z Ibrahim, W Du, <b>Y. Yang</b>, R.JB Dobson, 
-'Unveiling the Secrets: How Masking Strategies Shape Time Series Imputation,' 
- <i>IJCAI24 - AI4TS: AI for time series analysis workshop (<b>IJCAI Workshop 2024</b>) </i>
-[<a href= "https://arxiv.org/abs/2405.17508" target="_blank">Arxiv</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">12</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Time-MQA: Time Series Multi-Task Question Answering with Context Enhancement</h4>
+        <p class="pub-authors">Y. Kong*, <strong>Y. Yang</strong>*, Y. Hwang, W. Du, S. Zohren, Z. Wang, M. Jin, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-conf">ACL Main 2025</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/pdf/2503.01875" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://huggingface.co/datasets/Time-MQA/TSQA/blob/main/README.md" target="_blank" rel="noopener">Dataset</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[8] <b>Y. Yang</b>, K. Zhou, N. Trigoni, A. Markham, 
-'SSL-Net: A Synergistic Spectral and Learning-based Network for Efficient Bird Sound Classification,' 
- <i><b>ICASSP 2024</b></i>
-[<a href= "https://arxiv.org/abs/2309.08072" target="_blank">Arxiv</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[7] C.Zhu, <b>Y.Yang</b>, K. Yang, H. Zhang, Q. Yang, C. L. Philip Chen,
-'AI-based Energy Transportation Safety: Pipeline Radial Threat Estimation using Intelligent Sensing System',
-<i><b>AAAI 2024</b></i>
-[<a href= "https://arxiv.org/abs/2312.11583" target="_blank">Arxiv</a>]
-[<a href= "https://github.com/zhuchengyuan517/AAAI-7856-CODE" target="_blank">Code</a>]
-[<a href= "https://github.com/zhuchengyuan517/AAAI-7856-DATA" target="_blank">Public Data</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[6] K.Zhou, J.Zhong, S.Shin, K.Lu, <b>Y.Yang</b>, A.Markham, N.Trigoni,
-'DynPoint: Dynamic Neural Point For View Synthesis',
-<i><b>NeurIPS 2023</b></i>
-[<a href= "https://arxiv.org/abs/2310.18999" target="_blank">ArXiv</a>]
-[<a href= "https://github.com/kaichen-z/DynPoint" target="_blank">Code</a>]
-[<a href= "./Files/DynPoint_poster.png" target="_blank">Poster</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[5] <b>Y.Yang</b>, C.Zhang, T.Zhou, Q.Wen, L.Sun, 
-'DCdetector: Dual Attention Contrastive Representation Learning for Time Series Anomaly Detection',
-<i><b>KDD 2023</b></i>
-[<a href= "https://arxiv.org/abs/2306.10347" target="_blank">ArXiv</a>]
-[<a href= "https://github.com/DAMO-DI-ML/KDD2023-DCdetector" target="_blank">Code</a>]
-[<a href= "https://www.youtube.com/watch?v=zjxSNNWJ9AE&list=PLn0nrSd4xjjaJCYKwjTdC7AvGrBKbu_yd&index=94" target="_blank">Video</a>]
-[<a href= "./Files/Yang-DCdetector-poster.pdf" target="_blank">Poster</a>]
-[<a href= "./Files/Yang-DCdetector-KDD2023.pdf" target="_blank">Slides</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">11</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Deep Learning for Multivariate Time Series Imputation: A Survey</h4>
+        <p class="pub-authors">J. Wang, W. Du, <strong>Y. Yang</strong>, L. Qian, W. Cao, K. Zhang, W. Wang, Y. Liang, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-conf">IJCAI 2025</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2402.04059" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="https://github.com/WenjieDu/Awesome_Imputation" target="_blank" rel="noopener">GitHub Repo</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[4] <b>Y.Yang</b>, R.Li, Q.Shi, X.Li, G.Hu, X.Li and M.Yuan,
-'SGDP: A Stream-Graph Neural Network Based Data Prefetcher,' 
-<i><b>IJCNN 2023</b></i>
-[<a href= "https://arxiv.org/abs/2304.03864" target="_blank">ArXiv</a>]
-[<a href= "./Files/Yang_2023_IJCNN.pdf" target="_blank">PDF</a>]
-[<a href= "https://github.com/yyysjz1997/SGDP" target="_blank">Code</a>]
-[<a href= "./Files/Yang-IJCNN2023-Slide.pdf" target="_blank">Slides</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">10</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Advancing Multivariate Time Series Anomaly Detection: A Comprehensive Benchmark with Real-World Data from Alibaba Cloud</h4>
+        <p class="pub-authors">C. Zhang, Y. Zhang, L. Peng, Q. Wen, <strong>Y. Yang</strong>, C. Fan, M. Jiang, L. Fan, L. Sun</p>
+        <div class="pub-meta"><span class="venue v-conf">CIKM 2024</span>
+          <span class="plinks">
+            <a class="plink" href="https://dl.acm.org/doi/10.1145/3627673.3679128" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="https://github.com/KingsleyPattinson/AnomalyDetectionBenchmark" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="https://figshare.com/articles/dataset/_b_BigDataAD_Benchmark_Dataset_b_/24040563" target="_blank" rel="noopener">Dataset</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[3] X.Li, Q.Shi, G.Hu, L.Chen, H.Mao, <b>Y.Yang</b>, M.Yuan, J.Zeng and Z.Cheng,
-'Block Access Pattern Discovery via Compressed Full Tensor Transformer,' 
-<i><b>CIKM 2021</b></i>
-[<a href= "https://dl.acm.org/doi/abs/10.1145/3459637.3482323" target="_blank">Link</a>]
-[<a href= "https://dl.acm.org/doi/pdf/10.1145/3459637.3482323" target="_blank">PDF</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[2] <b>Y. Yang</b>, Y. Li, H. Zhang, 
-'Pipeline Safety Early Warning Method for Distributed Signal using Bilinear CNN and LightGBM,' 
-<i><b>ICASSP 2021</b></i> 
-[<a href="https://ieeexplore.ieee.org/document/9414544" target="_blank">Link</a>]
-[<a href="./Files/Yang_2021_ICASSP.pdf" target="_blank">PDF</a>]
-[<a href="./Files/Yang_2021_ICASSP_poster.pdf" target="_blank">Poster</a>] 
-[<a href="https://ieeeicassp-virtual.org/presentation/poster/pipeline-safety-early-warning-method-distributed-signal-using-bilinear-cnn-and" target="_blank">Slides</a>] 
-[<a href="https://ieeeicassp-virtual.org/presentation/poster/pipeline-safety-early-warning-method-distributed-signal-using-bilinear-cnn-and" target="_blank">Video</a>] 
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">9</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Pre-training Feature Guided Diffusion Model for Speech Enhancement</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, N. Trigoni, A. Markham</p>
+        <div class="pub-meta"><span class="venue v-conf">Interspeech 2024</span>
+          <span class="plinks"><a class="plink" href="https://arxiv.org/abs/2406.07646" target="_blank" rel="noopener">ArXiv</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[1] <b>Y. Yang</b>, Y. Li, T. Zhang, Y. Zhou, and H. Zhang, 
-'Early Safety Warnings for Long-Distance Pipelines: A Distributed Optical Fiber Sensor Machine Learning Approach,' 
-<i><b>AAAI 2021</b></i>
-[<a href="https://ojs.aaai.org/index.php/AAAI/article/view/17759" target="_blank">Link</a>]
-[<a href="./Files/Yang_2021_AAAI.pdf" target="_blank">PDF</a>]
-[<a href= "./Files/Yang_2021_ICASSP_poster.pdf" target="_blank">Poster</a>] 
-[<a href="https://virtual.2021.aaai.org/paper_AISI-2820.html" target="_blank">Slides</a>] 
-[<a href="https://virtual.2021.aaai.org/paper_AISI-2820.html" target="_blank">Video</a>] 
-</span>
-</p>
-</ul>
-</font>
+    <li class="pub"><span class="pub-idx">8</span>
+      <div class="pub-body">
+        <h4 class="pub-title">SSL-Net: A Synergistic Spectral and Learning-based Network for Efficient Bird Sound Classification</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, K. Zhou, N. Trigoni, A. Markham</p>
+        <div class="pub-meta"><span class="venue v-conf">ICASSP 2024</span>
+          <span class="plinks"><a class="plink" href="https://arxiv.org/abs/2309.08072" target="_blank" rel="noopener">ArXiv</a></span>
+        </div>
+      </div>
+    </li>
 
+    <li class="pub"><span class="pub-idx">7</span>
+      <div class="pub-body">
+        <h4 class="pub-title">AI-based Energy Transportation Safety: Pipeline Radial Threat Estimation using Intelligent Sensing System</h4>
+        <p class="pub-authors">C. Zhu, <strong>Y. Yang</strong>, K. Yang, H. Zhang, Q. Yang, C. L. Philip Chen</p>
+        <div class="pub-meta"><span class="venue v-conf">AAAI 2024</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2312.11583" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/zhuchengyuan517/AAAI-7856-CODE" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="https://github.com/zhuchengyuan517/AAAI-7856-DATA" target="_blank" rel="noopener">Public Data</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p><b>Journals</b>: </p>
-<font size="3"> 
-<ul>
+    <li class="pub"><span class="pub-idx">6</span>
+      <div class="pub-body">
+        <h4 class="pub-title">DynPoint: Dynamic Neural Point for View Synthesis</h4>
+        <p class="pub-authors">K. Zhou, J. Zhong, S. Shin, K. Lu, <strong>Y. Yang</strong>, A. Markham, N. Trigoni</p>
+        <div class="pub-meta"><span class="venue v-conf">NeurIPS 2023</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2310.18999" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/kaichen-z/DynPoint" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="./Files/DynPoint_poster.png" target="_blank" rel="noopener">Poster</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[12] C. Zhu, Y. Pu, <b>Y. Yang</b>, Y. Ji, K. Li, X. Jiao,
-'Enhanced pipeline radial threat monitoring system with distributed acoustic sensing and multi-view information fusion,'
-<i>Measurement</i>, 
-2026.
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[11] C. Zhu, <b>Y. Yang</b>, K. Yang, W. Zhu, Q. Yang,
-'Monitoring landslide disturbances using distributed acoustic sensing under extreme weather conditions,'
-<i>npj Natural Hazards</i>, 
-2026.
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">5</span>
+      <div class="pub-body">
+        <h4 class="pub-title">DCdetector: Dual Attention Contrastive Representation Learning for Time Series Anomaly Detection</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, C. Zhang, T. Zhou, Q. Wen, L. Sun</p>
+        <div class="pub-meta"><span class="venue v-conf">KDD 2023</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2306.10347" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/DAMO-DI-ML/KDD2023-DCdetector" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="https://www.youtube.com/watch?v=zjxSNNWJ9AE&amp;list=PLn0nrSd4xjjaJCYKwjTdC7AvGrBKbu_yd&amp;index=94" target="_blank" rel="noopener">Video</a>
+            <a class="plink" href="./Files/Yang-DCdetector-poster.pdf" target="_blank" rel="noopener">Poster</a>
+            <a class="plink" href="./Files/Yang-DCdetector-KDD2023.pdf" target="_blank" rel="noopener">Slides</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[10] <b>Y. Yang</b>, M. Jin, H. Wen, C. Zhang, Y. Liang, L. Ma, Y. Wang, C. Liu, B. Yang, Z. Xu, J. Bian, S. Pan, Q. Wen,
-'A Survey on Diffusion Models for Time Series and Spatio-Temporal Data,'
-<i>ACM Computing Surveys (<b>CSUR</b>)</i>, 
-2025.
-(<b>Q1, IF=28.0</b>) 
-[<a href="https://arxiv.org/abs/2404.18886" target="_blank">ArXiv</a>]
-[<a href="https://github.com/yyysjz1997/Awesome-TimeSeries-SpatioTemporal-Diffusion-Model" target="_blank">Github Repo</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">4</span>
+      <div class="pub-body">
+        <h4 class="pub-title">SGDP: A Stream-Graph Neural Network Based Data Prefetcher</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, R. Li, Q. Shi, X. Li, G. Hu, X. Li, M. Yuan</p>
+        <div class="pub-meta"><span class="venue v-conf">IJCNN 2023</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2304.03864" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="./Files/Yang_2023_IJCNN.pdf" target="_blank" rel="noopener">PDF</a>
+            <a class="plink" href="https://github.com/yyysjz1997/SGDP" target="_blank" rel="noopener">Code</a>
+            <a class="plink" href="./Files/Yang-IJCNN2023-Slide.pdf" target="_blank" rel="noopener">Slides</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[9] T. Mulder, <b>Y. Yang</b>, E. Morley, T. E Miller, D. Hending, G. K Taylor, B. Mortimer,
-'Constraints on percussive seismic signals in a noisy environment by European fiddler crabs, Afruca tangeri,'
-<i>Journal of Experimental Biology (<b>JEB</b>)</i>, 
-2025.
-(<b>JEB Outstanding Paper Prize (Shortlisted) 2025</b>) 
-[<a href= "https://journals.biologists.com/jeb/article/228/7/jeb249323/367607" target="_blank">Paper</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">3</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Block Access Pattern Discovery via Compressed Full Tensor Transformer</h4>
+        <p class="pub-authors">X. Li, Q. Shi, G. Hu, L. Chen, H. Mao, <strong>Y. Yang</strong>, M. Yuan, J. Zeng, Z. Cheng</p>
+        <div class="pub-meta"><span class="venue v-conf">CIKM 2021</span>
+          <span class="plinks">
+            <a class="plink" href="https://dl.acm.org/doi/abs/10.1145/3459637.3482323" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="https://dl.acm.org/doi/pdf/10.1145/3459637.3482323" target="_blank" rel="noopener">PDF</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[8] Z. Zhong, Z. Yu, <b>Y. Yang</b>, W. Wang, K. Yang,
-'PatchAD: A Lightweight Patch-based MLP-Mixer for Time Series Anomaly Detection,'
-<i>IEEE Transactions on Big Data (<b>IEEE T BIG DATA</b>)</i>, 
-2025.
-(<b>Q1, IF=5.7</b>) 
-[<a href= "https://arxiv.org/abs/2401.09793" target="_blank">Paper</a>]
-[<a href= "https://github.com/EmorZz1G/PatchAD" target="_blank">Code</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">2</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Pipeline Safety Early Warning Method for Distributed Signal using Bilinear CNN and LightGBM</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, Y. Li, H. Zhang</p>
+        <div class="pub-meta"><span class="venue v-conf">ICASSP 2021</span>
+          <span class="plinks">
+            <a class="plink" href="https://ieeexplore.ieee.org/document/9414544" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="./Files/Yang_2021_ICASSP.pdf" target="_blank" rel="noopener">PDF</a>
+            <a class="plink" href="./Files/Yang_2021_ICASSP_poster.pdf" target="_blank" rel="noopener">Poster</a>
+            <a class="plink" href="https://ieeeicassp-virtual.org/presentation/poster/pipeline-safety-early-warning-method-distributed-signal-using-bilinear-cnn-and" target="_blank" rel="noopener">Slides</a>
+            <a class="plink" href="https://ieeeicassp-virtual.org/presentation/poster/pipeline-safety-early-warning-method-distributed-signal-using-bilinear-cnn-and" target="_blank" rel="noopener">Video</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[7] Z. Zhong, Z. Yu, X. Xi, Y. Xu, W. Cao, J. Chen, <b>Y. Yang</b>, K. Yang,
-'SimAD: A Simple Dissimilarity-based Approach for Time Series Anomaly Detection,'
-<i>IEEE Transactions on Neural Networks and Learning Systems (<b>TNNLS</b>)</i>, 
-2025.
-(<b>Q1, IF=14.255</b>) 
-[<a href= "https://arxiv.org/abs/2405.11238" target="_blank">Paper</a>]
-[<a href= "https://github.com/EmorZz1G/SimAD" target="_blank">Code</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">1</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Early Safety Warnings for Long-Distance Pipelines: A Distributed Optical Fiber Sensor Machine Learning Approach</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, Y. Li, T. Zhang, Y. Zhou, H. Zhang</p>
+        <div class="pub-meta"><span class="venue v-conf">AAAI 2021</span><span class="pub-note">Oral</span>
+          <span class="plinks">
+            <a class="plink" href="https://ojs.aaai.org/index.php/AAAI/article/view/17759" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="./Files/Yang_2021_AAAI.pdf" target="_blank" rel="noopener">PDF</a>
+            <a class="plink" href="./Files/Yang_2021_AAAI_poster.pdf" target="_blank" rel="noopener">Poster</a>
+            <a class="plink" href="https://virtual.2021.aaai.org/paper_AISI-2820.html" target="_blank" rel="noopener">Slides</a>
+            <a class="plink" href="https://virtual.2021.aaai.org/paper_AISI-2820.html" target="_blank" rel="noopener">Video</a>
+          </span>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[6] Z. Z. Darban, <b>Y. Yang</b>, G. I. Webb, C. C. Aggarwal, Q. Wen, M. Salehi,
-'DACAD: Domain Adaptation Contrastive Learning for Anomaly Detection in Multivariate Time Series,'
-<i>IEEE Transactions on Knowledge and Data Engineering (<b>TKDE</b>)</i>, 
-2025.
-(<b>Q1, IF=10.4</b>) 
-[<a href= "https://arxiv.org/abs/2404.11269" target="_blank">Paper</a>]
-[<a href= "https://github.com/zamanzadeh/DACAD" target="_blank">Code</a>]
-</span>
-</p> 
+  <h3 class="subhead">Journal Articles <span class="count">12 entries</span></h3>
+  <ul class="pub-list">
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[5] S. Du, H. Zhang, C. Gong, <b>Y. Yang</b>, X. Jiang, L. Zhou, T. Zhang, Y. Ma, J. Meng, Y. Li, 
-'A Pipeline Inspection Gauge Positioning Method Based on Distributed Fiber Optic Vibration Sensing,' 
-<i>IEEE Sensors Journal (<b>IEEE SENS J</b>)</i>, 
-2024.
-(<b>Q1, IF=4.776</b>) 
-[<a href= "https://ieeexplore.ieee.org/abstract/document/10719668" target="_blank">Link</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[4] C. Gong*, <b>Y. Yang*</b>, H. Zhang, J. Meng, Y. Ma, S. Du, Y. Li, 
-'A Pipeline Intrusion Detection Method Based on Temporal Modeling and Hierarchical Classification in Optical Fiber Sensing,' 
-<i>IEEE Sensors Journal (<b>IEEE SENS J</b>)</i>, 
-2024.
-(<b>Q1, IF=4.776, equal contribution</b>) 
-[<a href= "https://ieeexplore.ieee.org/abstract/document/10508302" target="_blank">Link</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">12</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Enhanced Pipeline Radial Threat Monitoring System with Distributed Acoustic Sensing and Multi-View Information Fusion</h4>
+        <p class="pub-authors">C. Zhu, Y. Pu, <strong>Y. Yang</strong>, Y. Ji, K. Li, X. Jiao</p>
+        <div class="pub-meta"><span class="venue v-jrnl">Measurement · 2026</span><span class="pub-note">Q1, IF = 5.6</span></div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[3] C. Zhu, Y. Pu, <b>Y. Yang</b>, Z. Lyu, C. Li, Q. Yang, 
-'Localizing and tracking of in-pipe inspection robots based on distributed optical fiber sensing,' 
-<i>Advanced Engineering Informatics (<b>AEI</b>)</i>, 
-2024.
-(<b>Q1, IF=9.9</b>) 
-[<a href= "https://www.sciencedirect.com/science/article/pii/S1474034624000727" target="_blank">Link</a>]
-[<a href= "Files/Yang_2024_AEI.pdf" target="_blank">PDF</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">11</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Monitoring Landslide Disturbances using Distributed Acoustic Sensing under Extreme Weather Conditions</h4>
+        <p class="pub-authors">C. Zhu, <strong>Y. Yang</strong>, K. Yang, W. Zhu, Q. Yang</p>
+        <div class="pub-meta"><span class="venue v-jrnl">npj Natural Hazards · 2026</span><span class="pub-note">Nature Portfolio</span></div>
+      </div>
+    </li>
 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[2] <b>Y. Yang</b>, H. Zhang, Y. Li, 
-'Pipeline Safety Early Warning by Multi-feature-fusion CNN and LightGBM Analysis of Signals from Distributed Optical Fiber Sensors,' 
-<i>IEEE Transactions on Instrumentation and Measurement (<b>IEEE T INSTRUM MEAS</b>)</i>, 
-2021.
-(<b>Q1, IF=5.9</b>) 
-[<a href= "https://ieeexplore.ieee.org/document/9541184" target="_blank">Link</a>]
-[<a href= "Files/Yang_2021_TIM.pdf" target="_blank">PDF</a>]
-</span>
-</p>
+    <li class="pub"><span class="pub-idx">10</span>
+      <div class="pub-body">
+        <h4 class="pub-title">A Survey on Diffusion Models for Time Series and Spatio-Temporal Data</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, M. Jin, H. Wen, C. Zhang, Y. Liang, L. Ma, Y. Wang, C. Liu, B. Yang, Z. Xu, J. Bian, S. Pan, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-jrnl">ACM Computing Surveys (CSUR) · 2025</span><span class="pub-note">Q1, IF = 30.4</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2404.18886" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/yyysjz1997/Awesome-TimeSeries-SpatioTemporal-Diffusion-Model" target="_blank" rel="noopener">GitHub Repo</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[1] <b>Y. Yang</b>, H. Zhang, Y. Li, 
-'Long-Distance Pipeline Safety Early Warning: A Distributed Optical Fiber Sensing Semi-Supervised Learning Method,' 
-<i>IEEE Sensors Journal (<b>IEEE SENS J</b>)</i>, 
-2021.
-(<b>Q1, IF=4.776</b>) 
-[<a href= "https://ieeexplore.ieee.org/abstract/document/9448237" target="_blank">Link</a>] 
-[<a href= "Files/Yang_2021_IEEE_sensors_J.pdf" target="_blank">PDF</a>]
-</span>
-</p>
-</ul>
-</font>
+    <li class="pub"><span class="pub-idx">9</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Constraints on Percussive Seismic Signals in a Noisy Environment by European Fiddler Crabs, Afruca tangeri</h4>
+        <p class="pub-authors">T. Mulder, <strong>Y. Yang</strong>, E. Morley, T. E Miller, D. Hending, G. K Taylor, B. Mortimer</p>
+        <div class="pub-meta"><span class="venue v-jrnl">Journal of Experimental Biology (JEB) · 2025</span><span class="pub-note">IF = 3.0</span><span class="pub-award">★ JEB Outstanding Paper Prize (Shortlisted) 2025</span>
+          <span class="plinks"><a class="plink" href="https://journals.biologists.com/jeb/article/228/7/jeb249323/367607" target="_blank" rel="noopener">Paper</a></span>
+        </div>
+      </div>
+    </li>
 
+    <li class="pub"><span class="pub-idx">8</span>
+      <div class="pub-body">
+        <h4 class="pub-title">PatchAD: A Lightweight Patch-based MLP-Mixer for Time Series Anomaly Detection</h4>
+        <p class="pub-authors">Z. Zhong, Z. Yu, <strong>Y. Yang</strong>, W. Wang, K. Yang</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE Transactions on Big Data · 2025</span><span class="pub-note">Q1, IF = 5.7</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2401.09793" target="_blank" rel="noopener">Paper</a>
+            <a class="plink" href="https://github.com/EmorZz1G/PatchAD" target="_blank" rel="noopener">Code</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p><b>Books</b>: </p>
-<font size="3"> 
-<ul>
+    <li class="pub"><span class="pub-idx">7</span>
+      <div class="pub-body">
+        <h4 class="pub-title">SimAD: A Simple Dissimilarity-based Approach for Time Series Anomaly Detection</h4>
+        <p class="pub-authors">Z. Zhong, Z. Yu, X. Xi, Y. Xu, W. Cao, J. Chen, <strong>Y. Yang</strong>, K. Yang</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE TNNLS · 2025</span><span class="pub-note">Q1, IF = 9.7</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2405.11238" target="_blank" rel="noopener">Paper</a>
+            <a class="plink" href="https://github.com/EmorZz1G/SimAD" target="_blank" rel="noopener">Code</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[3] J. Jiang, Q. Wang, <b>Y. Yang</b>,
-'Joy-RL: Reinforcement Learning Practical Tutorial' &nbsp; <a href= "./Files/Yang_2025_mogu.jpg" target="_blank">(Joy-RL：强化学习实践教程)</a>, Posts & Telecom Press, 2025.
-[<a href= "https://github.com/datawhalechina/joyrl-book" target="_blank">GitHub Repo</a>]
-[<a href= "https://datawhalechina.github.io/joyrl-book/" target="_blank">E-book</a>]
-[<a href= "https://github.com/datawhalechina/joyrl" target="_blank">Code</a>]
-[<a href= "https://item.jd.com/14990878.html" target="_blank">Jingdong</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[2] Q. Wang, <b>Y. Yang</b>, J. Jiang, 
-'LeeDL-Tutorial' &nbsp; <a href= "./Files/Yang_2024_pingguo.jpg" target="_blank">(深度学习详解)</a>, Posts & Telecom Press, 2024. <b><font color="#FF0000">(JD 2024 Annual Best Books (All the Top 50), 京东2024年度好书 and Excellent new book for 2024 in PTP, 人民邮电出版社年度影响力新书)</font></b>
-[<a href= "https://github.com/datawhalechina/leedl-tutorial" target="_blank">GitHub Repo</a>]
-[<a href= "https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank">E-book</a>]
-[<a href= "https://book.douban.com/subject/36997460/" target="_blank">Douban</a>]
-[<a href= "https://product.dangdang.com/29766946.html" target="_blank">Dangdang</a>] 
-[<a href= "https://item.jd.com/14245179.html" target="_blank">Jingdong</a>]
-</span>
-</p>
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[1] Q. Wang, <b>Y. Yang</b>, J. Jiang, 
-'Easy-RL: Reinforcement Learning Tutorial' &nbsp; <a href= "./Files/Yang_2022_mougu.png" target="_blank">(Easy-RL：强化学习教程)</a>, Posts & Telecom Press, 2022. <b><font color="#FF0000">(Excellent book for 2022 in PTP)</font></b>
-[<a href= "https://github.com/datawhalechina/easy-rl" target="_blank">GitHub Repo</a>]
-[<a href= "https://datawhalechina.github.io/easy-rl" target="_blank">Online version</a>]
-[<a href= "https://github.com/datawhalechina/easy-rl/releases" target="_blank">E-book</a>]
-[<a href= "https://book.douban.com/subject/35781275" target="_blank">Douban</a>]
-[<a href= "https://detail.tmall.com/item.htm?spm=a230r.1.14.63.73f8bf5d3pzHU3&id=669396714456&ns=1&abbucket=17" target="_blank">Taobao</a>] 
-[<a href= "http://product.dangdang.com/29374163.html" target="_blank">Dangdang</a>] 
-[<a href= "https://item.jd.com/13075567.html" target="_blank">Jingdong</a>]
-</span>
-</p>
-</ul>
-</font>
+    <li class="pub"><span class="pub-idx">6</span>
+      <div class="pub-body">
+        <h4 class="pub-title">DACAD: Domain Adaptation Contrastive Learning for Anomaly Detection in Multivariate Time Series</h4>
+        <p class="pub-authors">Z. Z. Darban, <strong>Y. Yang</strong>, G. I. Webb, C. C. Aggarwal, Q. Wen, M. Salehi</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE TKDE · 2025</span><span class="pub-note">Q1, IF = 9.1</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2404.11269" target="_blank" rel="noopener">Paper</a>
+            <a class="plink" href="https://github.com/zamanzadeh/DACAD" target="_blank" rel="noopener">Code</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
- 
-<p><b>Preprints</b>: </p>
-<font size="3"> 
-<ul>
+    <li class="pub"><span class="pub-idx">5</span>
+      <div class="pub-body">
+        <h4 class="pub-title">A Pipeline Inspection Gauge Positioning Method Based on Distributed Fiber Optic Vibration Sensing</h4>
+        <p class="pub-authors">S. Du, H. Zhang, C. Gong, <strong>Y. Yang</strong>, X. Jiang, L. Zhou, T. Zhang, Y. Ma, J. Meng, Y. Li</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE Sensors Journal · 2024</span><span class="pub-note">Q1, IF = 5.0</span>
+          <span class="plinks"><a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10719668" target="_blank" rel="noopener">Link</a></span>
+        </div>
+      </div>
+    </li>
 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[5] R. Hua, Z. Liu, K Zhang, <b>Y. Yang*</b>,
-'Diversified Scaling Inference in Time Series Foundation Models,' 2026.
-[<a href= "https://arxiv.org/pdf/2601.17376" target="_blank">ArXiv</a>]
-[<a href= "https://github.com/zichuan-liu/Diversified-Scaling-Inference-in-TSFMs" target="_blank">Code</a>]
-</span>
-</p> 
-  
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[4] W. Du, <b>Y. Yang</b>, L. Qian, J. Wang, Q. Wen,
-'PyPOTS: A Python Toolkit for Machine Learning on Partially-Observed Time Series,' 2025.
-[<a href= "https://arxiv.org/pdf/2305.18811" target="_blank">ArXiv</a>]
-[<a href= "https://pypots.com/" target="_blank">Website</a>]
-[<a href= "https://github.com/WenjieDu/PyPOTS" target="_blank">Repo</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[3] Y. Kong*, <b>Y. Yang*</b>, S. Wang, C. Liu, Y. Liang, M. Jin, S. Zohren, D. Pei, Y. Liu, Q. Wen,
-'Position: Empowering Time Series Reasoning with Multimodal LLMs,' 2025.
-[<a href= "https://arxiv.org/abs/2502.01477" target="_blank">ArXiv</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[2] <b>Y. Yang</b>, Z. Wu, Y. Chu, Z. Chen, Z. Xu, Q. Wen,
-'Intelligent Cross-Organizational Process Mining: A Survey and New Perspectives,' 2024.
-[<a href= "https://arxiv.org/abs/2407.11280v1" target="_blank">ArXiv</a>]
-</span>
-</p> 
- 
-<p style="text-indent: -2.5rem;margin-left: 0rem;">
-<span>[1] W. Du*, J. Wang*, L. Qian*, <b>Y. Yang*</b>, F. Liu, Z. Wang, Z. Ibrahim, H. Liu, Z. Zhao, Y. Zhou, W. Wang, K. Ding, Y. Liang, B. A. Prakash, Q. Wen,
-'TSI-Bench: Benchmarking Time Series Imputation,' 2024.
-[<a href= "https://arxiv.org/abs/2406.12747" target="_blank">ArXiv</a>]
-[<a href= "https://github.com/wenjiedu/awesome_imputation" target="_blank">Code</a>]
-</span>
-</p> 
+    <li class="pub"><span class="pub-idx">4</span>
+      <div class="pub-body">
+        <h4 class="pub-title">A Pipeline Intrusion Detection Method Based on Temporal Modeling and Hierarchical Classification in Optical Fiber Sensing</h4>
+        <p class="pub-authors">C. Gong*, <strong>Y. Yang</strong>*, H. Zhang, J. Meng, Y. Ma, S. Du, Y. Li</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE Sensors Journal · 2024</span><span class="pub-note">Q1, IF = 5.0 · equal contribution</span>
+          <span class="plinks"><a class="plink" href="https://ieeexplore.ieee.org/abstract/document/10508302" target="_blank" rel="noopener">Link</a></span>
+        </div>
+      </div>
+    </li>
 
- 
-</ul>
-</font>
+    <li class="pub"><span class="pub-idx">3</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Localizing and Tracking of In-Pipe Inspection Robots Based on Distributed Optical Fiber Sensing</h4>
+        <p class="pub-authors">C. Zhu, Y. Pu, <strong>Y. Yang</strong>, Z. Lyu, C. Li, Q. Yang</p>
+        <div class="pub-meta"><span class="venue v-jrnl">Advanced Engineering Informatics (AEI) · 2024</span><span class="pub-note">Q1, IF = 11.5</span>
+          <span class="plinks">
+            <a class="plink" href="https://www.sciencedirect.com/science/article/pii/S1474034624000727" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="./Files/Yang_2024_AEI.pdf" target="_blank" rel="noopener">PDF</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
+    <li class="pub"><span class="pub-idx">2</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Pipeline Safety Early Warning by Multi-feature-fusion CNN and LightGBM Analysis of Signals from Distributed Optical Fiber Sensors</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, H. Zhang, Y. Li</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE Trans. on Instrumentation and Measurement · 2021</span><span class="pub-note">Q1, IF = 7.0</span>
+          <span class="plinks">
+            <a class="plink" href="https://ieeexplore.ieee.org/document/9541184" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="./Files/Yang_2021_TIM.pdf" target="_blank" rel="noopener">PDF</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
-<A NAME="Projects"><h2>Projects</h2></A>
+    <li class="pub"><span class="pub-idx">1</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Long-Distance Pipeline Safety Early Warning: A Distributed Optical Fiber Sensing Semi-Supervised Learning Method</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, H. Zhang, Y. Li</p>
+        <div class="pub-meta"><span class="venue v-jrnl">IEEE Sensors Journal · 2021</span><span class="pub-note">Q1, IF = 5.0</span>
+          <span class="plinks">
+            <a class="plink" href="https://ieeexplore.ieee.org/abstract/document/9448237" target="_blank" rel="noopener">Link</a>
+            <a class="plink" href="./Files/Yang_2021_IEEE_sensors_J.pdf" target="_blank" rel="noopener">PDF</a>
+          </span>
+        </div>
+      </div>
+    </li>
+  </ul>
 
-<font size="3"> 
-<ul>
+  <h3 class="subhead">Books <span class="count">3 entries</span></h3>
+  <div class="book-list">
+    <div class="book-card">
+      <a class="book-cover" href="./Files/Yang_2025_mogu.jpg" target="_blank" rel="noopener"><img src="./Files/Yang_2025_mogu.jpg" alt="Joy-RL book cover" loading="lazy" /></a>
+      <div class="book-info">
+        <h4>Joy-RL: Reinforcement Learning Practical Tutorial</h4>
+        <p class="zh-title">Joy-RL：强化学习实践教程 · Posts &amp; Telecom Press, 2025</p>
+        <p class="bauthors">J. Jiang, Q. Wang, <strong>Y. Yang</strong></p>
+        <span class="plinks">
+          <a class="plink" href="https://github.com/datawhalechina/joyrl-book" target="_blank" rel="noopener">GitHub Repo</a>
+          <a class="plink" href="https://datawhalechina.github.io/joyrl-book/" target="_blank" rel="noopener">E-book</a>
+          <a class="plink" href="https://github.com/datawhalechina/joyrl" target="_blank" rel="noopener">Code</a>
+          <a class="plink" href="https://item.jd.com/14990878.html" target="_blank" rel="noopener">Jingdong</a>
+        </span>
+      </div>
+    </div>
+    <div class="book-card">
+      <a class="book-cover" href="./Files/Yang_2024_pingguo.jpg" target="_blank" rel="noopener"><img src="./Files/Yang_2024_pingguo.jpg" alt="LeeDL-Tutorial book cover" loading="lazy" /></a>
+      <div class="book-info">
+        <h4>LeeDL-Tutorial</h4>
+        <p class="zh-title">深度学习详解 · Posts &amp; Telecom Press, 2024</p>
+        <p class="bauthors">Q. Wang, <strong>Y. Yang</strong>, J. Jiang</p>
+        <p class="book-award">★ JD 2024 Annual Best Books (overall Top 50, 京东2024年度好书) · PTP Excellent New Book of 2024 (人民邮电出版社年度影响力新书)</p>
+        <span class="plinks">
+          <a class="plink" href="https://github.com/datawhalechina/leedl-tutorial" target="_blank" rel="noopener">GitHub Repo</a>
+          <a class="plink" href="https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank" rel="noopener">E-book</a>
+          <a class="plink" href="https://book.douban.com/subject/36997460/" target="_blank" rel="noopener">Douban</a>
+          <a class="plink" href="https://product.dangdang.com/29766946.html" target="_blank" rel="noopener">Dangdang</a>
+          <a class="plink" href="https://item.jd.com/14245179.html" target="_blank" rel="noopener">Jingdong</a>
+        </span>
+      </div>
+    </div>
+    <div class="book-card">
+      <a class="book-cover" href="./Files/Yang_2022_mougu.png" target="_blank" rel="noopener"><img src="./Files/Yang_2022_mougu.png" alt="Easy-RL book cover" loading="lazy" /></a>
+      <div class="book-info">
+        <h4>Easy-RL: Reinforcement Learning Tutorial</h4>
+        <p class="zh-title">Easy-RL：强化学习教程（蘑菇书） · Posts &amp; Telecom Press, 2022</p>
+        <p class="bauthors">Q. Wang, <strong>Y. Yang</strong>, J. Jiang</p>
+        <p class="book-award">★ PTP Excellent Book of 2022</p>
+        <span class="plinks">
+          <a class="plink" href="https://github.com/datawhalechina/easy-rl" target="_blank" rel="noopener">GitHub Repo</a>
+          <a class="plink" href="https://datawhalechina.github.io/easy-rl" target="_blank" rel="noopener">Online Version</a>
+          <a class="plink" href="https://github.com/datawhalechina/easy-rl/releases" target="_blank" rel="noopener">E-book</a>
+          <a class="plink" href="https://book.douban.com/subject/35781275" target="_blank" rel="noopener">Douban</a>
+          <a class="plink" href="https://detail.tmall.com/item.htm?spm=a230r.1.14.63.73f8bf5d3pzHU3&amp;id=669396714456&amp;ns=1&amp;abbucket=17" target="_blank" rel="noopener">Taobao</a>
+          <a class="plink" href="http://product.dangdang.com/29374163.html" target="_blank" rel="noopener">Dangdang</a>
+          <a class="plink" href="https://item.jd.com/13075567.html" target="_blank" rel="noopener">Jingdong</a>
+        </span>
+      </div>
+    </div>
+  </div>
 
+  <h3 class="subhead">Preprints <span class="count">5 entries</span></h3>
+  <ul class="pub-list">
 
-<li>
-    <a href="https://pypots.com/" target="_blank"><b>PyPOTS</b>:</a>
-    A machine learning ecosystem for unified time series analysis. I am a researcher in PyPOTS and have developed an open-source toolkit for data mining with partially observed multivariate time series. PyPOTS integrates <b>50+ SOTA algorithms</b> to handle multiple analysis tasks (imputation/forecasting/classification/clustering/anomaly detection). Since its release, PyPOTS has gained nearly <b><font color="#FF0000" id="pypots-star-count">stars</font></b> on GitHub and over <b><font color="#FF0000">2M PyPI downloads</font></b>, with users from <b>200+</b> top universities and companies, demonstrating strong community adoption. PyPOTS has been selected to join the <a href="https://landscape.pytorch.org/?item=modeling--specialized--pypots" target="_blank"><b>PyTorch Ecosystem</b></a> since 2023. 
-</li>
+    <li class="pub"><span class="pub-idx">5</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Diversified Scaling Inference in Time Series Foundation Models</h4>
+        <p class="pub-authors">R. Hua, Z. Liu, K. Zhang, <strong>Y. Yang</strong>*</p>
+        <div class="pub-meta"><span class="venue v-pre">Preprint 2026</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/pdf/2601.17376" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/zichuan-liu/Diversified-Scaling-Inference-in-TSFMs" target="_blank" rel="noopener">Code</a>
+          </span>
+        </div>
+      </div>
+    </li>
 
- 
-<li>
-    <a href="https://github.com/datawhalechina/leedl-tutorial" target="_blank"><b>LeeDL-Tutorial</b>:</a> 
-    A Chinese deep learning tutorial that has already collected <b><font color="#FF0000" id="star-count">stars</font></b> and 
-    <b><font color="#FF0000" id="fork-count">forks</font></b> on GitHub, including 
-    <a href="https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank">an e-book</a> and 
-    <a href="https://github.com/datawhalechina/leedl-tutorial/tree/master/Homework" target="_blank">code</a>. Here are some links to our book. 
-    [<a href="https://book.douban.com/subject/36997460/" target="_blank">Douban</a>] 
-    [<a href="https://product.dangdang.com/29766946.html" target="_blank">Dangdang</a>] 
-    [<a href="https://item.jd.com/14245179.html" target="_blank">Jingdong</a>]
-    <br /><font size="2">
-    Our book topped the list of new books in the AI field on Jingdong for about 30 days. The paper version won the Excellent New Book for 2024 in PTP and JD 2024 Annual Best Book (Top 50 overall).
-    </font><br />
-</li>
+    <li class="pub"><span class="pub-idx">4</span>
+      <div class="pub-body">
+        <h4 class="pub-title">PyPOTS: A Python Toolkit for Machine Learning on Partially-Observed Time Series</h4>
+        <p class="pub-authors">W. Du, <strong>Y. Yang</strong>, L. Qian, J. Wang, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-pre">Preprint 2025</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/pdf/2305.18811" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://pypots.com/" target="_blank" rel="noopener">Website</a>
+            <a class="plink" href="https://github.com/WenjieDu/PyPOTS" target="_blank" rel="noopener">Repo</a>
+          </span>
+        </div>
+      </div>
+    </li>
+
+    <li class="pub"><span class="pub-idx">3</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Achieving Time Series Reasoning Requires Rethinking Model Design, Tasks Formulation, and Evaluation</h4>
+        <p class="pub-authors">Y. Kong*, <strong>Y. Yang</strong>*, S. Wang, C. Liu, Y. Liang, M. Jin, S. Zohren, D. Pei, Y. Liu, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-pre">Preprint 2025</span><span class="pub-note">formerly "Position: Empowering Time Series Reasoning with Multimodal LLMs"</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2502.01477" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/Eleanorkong/Awesome-Time-Series-Reasoning" target="_blank" rel="noopener">Repo</a>
+          </span>
+        </div>
+      </div>
+    </li>
+
+    <li class="pub"><span class="pub-idx">2</span>
+      <div class="pub-body">
+        <h4 class="pub-title">Intelligent Cross-Organizational Process Mining: A Survey and New Perspectives</h4>
+        <p class="pub-authors"><strong>Y. Yang</strong>, Z. Wu, Y. Chu, Z. Chen, Z. Xu, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-pre">Preprint 2024</span>
+          <span class="plinks"><a class="plink" href="https://arxiv.org/abs/2407.11280v1" target="_blank" rel="noopener">ArXiv</a></span>
+        </div>
+      </div>
+    </li>
+
+    <li class="pub"><span class="pub-idx">1</span>
+      <div class="pub-body">
+        <h4 class="pub-title">TSI-Bench: Benchmarking Time Series Imputation</h4>
+        <p class="pub-authors">W. Du*, J. Wang*, L. Qian*, <strong>Y. Yang</strong>*, F. Liu, Z. Wang, Z. Ibrahim, H. Liu, Z. Zhao, Y. Zhou, W. Wang, K. Ding, Y. Liang, B. A. Prakash, Q. Wen</p>
+        <div class="pub-meta"><span class="venue v-pre">Preprint 2024</span>
+          <span class="plinks">
+            <a class="plink" href="https://arxiv.org/abs/2406.12747" target="_blank" rel="noopener">ArXiv</a>
+            <a class="plink" href="https://github.com/wenjiedu/awesome_imputation" target="_blank" rel="noopener">Code</a>
+          </span>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<section id="Projects">
+  <h2 class="sec-head">Open-Source Projects</h2>
+  <p class="sec-sub">Community projects with 37,000+ GitHub stars in total. Star counts update live.</p>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3><a href="https://pypots.com/" target="_blank" rel="noopener">PyPOTS</a></h3>
+        <span class="gh-badge" data-repo="WenjieDu/PyPOTS" title="WenjieDu/PyPOTS"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg><span class="gh-stars">2,000+</span></span>
+        <span class="gh-badge" data-repo-forks="WenjieDu/PyPOTS" title="WenjieDu/PyPOTS"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">180+</span></span>
+      </div>
+      <p>A machine learning ecosystem for unified time-series analysis. As a core contributor, I help build this open-source toolkit for modeling partially observed multivariate time series; it integrates <b>50+ SOTA algorithms</b> across imputation, forecasting, classification, clustering, and anomaly detection.</p>
+      <p class="proj-fine">Over <b>3M PyPI downloads</b>, with users from <b>200+</b> top universities and companies. Part of the <a href="https://landscape.pytorch.org/?item=modeling--specialized--pypots" target="_blank" rel="noopener"><b>PyTorch Ecosystem</b></a> since 2023.</p>
+      <div class="proj-links plinks">
+        <a class="plink" href="https://pypots.com/" target="_blank" rel="noopener">Website</a>
+        <a class="plink" href="https://github.com/WenjieDu/PyPOTS" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3><a href="https://github.com/datawhalechina/leedl-tutorial" target="_blank" rel="noopener">LeeDL-Tutorial</a></h3>
+        <span class="gh-badge" data-repo="datawhalechina/leedl-tutorial" title="datawhalechina/leedl-tutorial"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg><span class="gh-stars">16,700+</span></span>
+        <span class="gh-badge" data-repo-forks="datawhalechina/leedl-tutorial" title="datawhalechina/leedl-tutorial"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">3,000+</span></span>
+      </div>
+      <p>A Chinese deep learning tutorial (深度学习详解), including <a href="https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank" rel="noopener">an e-book</a> and <a href="https://github.com/datawhalechina/leedl-tutorial/tree/master/Homework" target="_blank" rel="noopener">code</a>.</p>
+      <p class="proj-fine">Topped Jingdong's new-AI-book chart for about 30 days. The print edition was named a <b>PTP Excellent New Book of 2024</b> and one of <b>JD's 2024 Annual Best Books (overall Top 50)</b>.</p>
+      <div class="proj-links plinks">
+        <a class="plink" href="https://book.douban.com/subject/36997460/" target="_blank" rel="noopener">Douban</a>
+        <a class="plink" href="https://product.dangdang.com/29766946.html" target="_blank" rel="noopener">Dangdang</a>
+        <a class="plink" href="https://item.jd.com/14245179.html" target="_blank" rel="noopener">Jingdong</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3><a href="https://github.com/datawhalechina/easy-rl" target="_blank" rel="noopener">Easy-RL</a></h3>
+        <span class="gh-badge" data-repo="datawhalechina/easy-rl" title="datawhalechina/easy-rl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg><span class="gh-stars">14,500+</span></span>
+        <span class="gh-badge" data-repo-forks="datawhalechina/easy-rl" title="datawhalechina/easy-rl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">2,200+</span></span>
+      </div>
+      <p>A reinforcement learning tutorial (蘑菇书) with <a href="https://github.com/datawhalechina/easy-rl/releases" target="_blank" rel="noopener">an e-book</a> and <a href="https://datawhalechina.github.io/easy-rl" target="_blank" rel="noopener">an online tutorial</a>, plus <a href="https://aistudio.baidu.com/aistudio/education/group/info/27444" target="_blank" rel="noopener">an online course</a> with Baidu PaddlePaddle AI Studio that attracted <b>2,000+ learners</b>.</p>
+      <p class="proj-fine">Topped the new-book charts for computer books on Dangdang and AI books on Jingdong within ten days, with related posts drawing 100,000+ reads. The book is held by the <a href="http://www.nlc.cn/" target="_blank" rel="noopener"><b>National Library of China</b></a> and the libraries of Tsinghua University, Shanghai Jiao Tong University, Zhejiang University, the Chinese Academy of Sciences, and Merton College, Oxford, among others. The e-book has been downloaded 10,000+ times, and the print edition was selected as a PTP key book and a PTP Excellent Book of Q1 2022.</p>
+      <div class="proj-links plinks">
+        <a class="plink" href="https://book.douban.com/subject/35781275" target="_blank" rel="noopener">Douban</a>
+        <a class="plink" href="https://detail.tmall.com/item.htm?spm=a230r.1.14.63.73f8bf5d3pzHU3&amp;id=669396714456&amp;ns=1&amp;abbucket=17" target="_blank" rel="noopener">Taobao</a>
+        <a class="plink" href="http://product.dangdang.com/29374163.html" target="_blank" rel="noopener">Dangdang</a>
+        <a class="plink" href="https://item.jd.com/13075567.html" target="_blank" rel="noopener">Jingdong</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3><a href="https://github.com/datawhalechina/team-learning-data-mining/tree/master/AcademicTrends" target="_blank" rel="noopener">Academic Trends Analysis</a></h3>
+        <span class="gh-badge" data-repo="datawhalechina/team-learning-data-mining" title="datawhalechina/team-learning-data-mining"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg><span class="gh-stars">1,850+</span></span>
+        <span class="gh-badge" data-repo-forks="datawhalechina/team-learning-data-mining" title="datawhalechina/team-learning-data-mining"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">820+</span></span>
+      </div>
+      <p>A data-mining tutorial on analyzing academic trends on arXiv, which I led. It includes <a href="https://tianchi.aliyun.com/course/live/1602" target="_blank" rel="noopener">a video</a> and <a href="https://tianchi.aliyun.com/competition/entrance/531866/introduction" target="_blank" rel="noopener">a competition</a> on the Alibaba Tianchi platform that drew <b>4,300+ participating teams</b>.</p>
+      <div class="proj-links plinks">
+        <a class="plink" href="./Files/AcademicTrends_Analysis_poster.jpg" target="_blank" rel="noopener">Poster</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/EPORF-OdQ4cLH1y1foLIHw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/t1w7bSWnT4bn99__A0zf_Q" target="_blank" rel="noopener">Link 2</a>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-top">
+        <h3><a href="https://github.com/datawhalechina/team-learning-data-mining/tree/master/EnsembleLearning" target="_blank" rel="noopener">Ensemble Learning</a></h3>
+        <span class="gh-badge" data-repo="datawhalechina/team-learning-data-mining" title="datawhalechina/team-learning-data-mining"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg><span class="gh-stars">1,850+</span></span>
+        <span class="gh-badge" data-repo-forks="datawhalechina/team-learning-data-mining" title="datawhalechina/team-learning-data-mining"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">820+</span></span>
+      </div>
+      <p>An ensemble learning tutorial with <a href="https://www.bilibili.com/video/BV1R54y137Q5?p=38" target="_blank" rel="noopener">a case-study video</a>.</p>
+      <div class="proj-links plinks">
+        <a class="plink" href="https://t.bilibili.com/134239128?type=2" target="_blank" rel="noopener">Link</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="HonorsAwards">
+  <h2 class="sec-head">Honors &amp; Awards</h2>
+  <ul class="award-list">
+    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Chinese Government Award for Outstanding Self-financed Students Abroad — Class A Special Excellence Award</span> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council <a href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%BC%98%E7%A7%80%E8%87%AA%E8%B4%B9%E7%95%99%E5%AD%A6%E7%94%9F%E5%A5%96%E5%AD%A6%E9%87%91/9083689" target="_blank" rel="noopener">(Intro)</a></span></li>
+    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Most Anticipated Academic Rising Star, QingYuan InnoVibe 2026</span> (青源InnoVibe 2026——最受瞩目学术新星), <a href="https://www.baai.ac.cn/en" target="_blank" rel="noopener">Beijing Academy of Artificial Intelligence (BAAI)</a> <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></li>
+    <li><span class="award-year">2026</span><span class="award-body">Google PhD Fellowship Nominee (nominated by the University of Oxford)</span></li>
+    <li><span class="award-year">2026</span><span class="award-body">2025 Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress</span></li>
+    <li><span class="award-year">2025</span><span class="award-body">JEB Outstanding Paper Prize 2025 (Shortlisted), <i>Journal of Experimental Biology</i>, The Company of Biologists</span></li>
+    <li><span class="award-year">2025</span><span class="award-body">Interspeech 2025 Conference Travel Grant</span></li>
+    <li><span class="award-year">2025</span><span class="award-body">Graduate Research Grant, Merton College, University of Oxford</span></li>
+    <li><span class="award-year">2024</span><span class="award-body">2024 Excellent New Book (深度学习详解) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress; one of JD's 2024 Annual Best Books (overall Top 50)</span></li>
+    <li><span class="award-year">2023</span><span class="award-body">2022 Bestselling Book (Easy-RL：强化学习教程) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress <a href="https://mp.weixin.qq.com/s/qq5Ked9fYERNgP4iPigR4Q" target="_blank" rel="noopener">[Link]</a> <a href="./Files/2023_Yang_EasyRL_bestyearbook.jpg" target="_blank" rel="noopener">[Picture 1]</a> <a href="./Files/2023_Yang_bestyearauthor.jpg" target="_blank" rel="noopener">[Picture 2]</a> <a href="./Files/Yang-2023-EasyRLPTP1.jpeg" target="_blank" rel="noopener">[Certification]</a> <a href="./Files/Yang-2023-EasyRLPTP2.jpeg" target="_blank" rel="noopener">[Trophy]</a></span></li>
+    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title"><a href="https://www.ox.ac.uk/clarendon/offer-holders/scholars-association" target="_blank" rel="noopener">Clarendon Scholar</a>, University of Oxford</span></span></li>
+    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Outstanding Graduate, Beijing</span></span></li>
+    <li><span class="award-year">2022</span><span class="award-body">Outstanding Master's Thesis, Tsinghua University</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">Outstanding Graduate, Department of Automation, Tsinghua University</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">First-Class Internship Scholarship, SIGS, Tsinghua University (15,000 CNY)</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">PTP Excellent Book Author, Q1 2022 <a href="./Files/Yang_2022_xibao.jpeg" target="_blank" rel="noopener">[Picture]</a></span></li>
+    <li class="major"><span class="award-year">2021</span><span class="award-body"><span class="award-star">★</span><span class="award-title">China National Scholarship</span></span></li>
+    <li><span class="award-year">2021</span><span class="award-body"><a href="https://datawhale.club/" target="_blank" rel="noopener">Datawhale</a> Contributor</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">National Second Prize, 17th National Postgraduate Mathematical Modelling Competition</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">Second-class Scholarship, Tsinghua University</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">Kaggle Competitions Expert, top 1,000 worldwide (0.67%)</span></li>
+    <li><span class="award-year">2019</span><span class="award-body">Outstanding Graduate, Huazhong University of Science and Technology</span></li>
+    <li class="major"><span class="award-year">2018</span><span class="award-body"><span class="award-star">★</span><span class="award-title">First Prize (National Champion), 13th National Student Smart Car Competition</span>, Wireless Energy Saving Category</span></li>
+    <li><span class="award-year">2018</span><span class="award-body">First-Class (Grand Prize) Goodix Scholarship (15,000 CNY)</span></li>
+    <li><span class="award-year">2018</span><span class="award-body">National Encouragement Scholarship, Ministry of Education in China</span></li>
+    <li><span class="award-year">2017</span><span class="award-body">First Prize in South China, 12th National Student Smart Car Competition, Optoelectronic Balance Category</span></li>
+  </ul>
+</section>
+
+<section id="ActivitiesServices">
+  <h2 class="sec-head">Academic Service &amp; Activities</h2>
+
+  <div class="svc-block">
+    <h3 class="subhead">Conference Reviewing &amp; Committees</h3>
+    <p class="svc-inline">
+      <b>Reviewer:</b> NeurIPS (2023–2025) · AAAI (2023–2027) · ACL (2025) · KDD (2023–2024) · WWW (2025) · Interspeech (2026) · SLT (2026) · SDM (2024)<br />
+      <b>Program Committee:</b> <a href="https://kdd-milets.github.io/milets2023/" target="_blank" rel="noopener">9th–11th SIGKDD Workshop on Mining and Learning from Time Series (MILETS)</a><br />
+      <b>Technical Program Committee:</b> IJCNN (2023–2025)
+    </p>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Journal Reviewing <span class="count">30+ journals</span></h3>
+    <ul class="svc-cols">
+      <li>IEEE TPAMI</li>
+      <li>IEEE TKDE</li>
+      <li>ACM TKDD</li>
+      <li>IEEE TIFS</li>
+      <li>ACM TOS</li>
+      <li>IEEE TNNLS</li>
+      <li>ACM TOMM</li>
+      <li>ACM TIST</li>
+      <li>IEEE TCYB</li>
+      <li>IEEE TCSVT</li>
+      <li>IEEE TCAS-I</li>
+      <li>IEEE TII</li>
+      <li>IEEE IoT Journal</li>
+      <li>IEEE TITS</li>
+      <li>IEEE TSMC</li>
+      <li>IEEE TBD</li>
+      <li>IEEE SPL</li>
+      <li>IEEE JBHI</li>
+      <li>IEEE/CAA J. Automatica Sinica</li>
+      <li>Information Fusion</li>
+      <li>Pattern Recognition</li>
+      <li>Neural Networks</li>
+      <li>Neurocomputing</li>
+      <li>Knowledge-Based Systems</li>
+      <li>Signal Processing</li>
+      <li>Mechanical Systems and Signal Processing</li>
+      <li>Information Processing &amp; Management</li>
+      <li>Applied Soft Computing</li>
+      <li>Engineering Applications of AI</li>
+      <li>Computer Networks</li>
+      <li>Ecological Informatics</li>
+      <li>Measurement</li>
+      <li>J. of Medical Internet Research</li>
+    </ul>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Teaching</h3>
+    <ul class="svc-list">
+      <li><b>2025.02</b> — Co-leader of the <a href="https://intelligent-earth.ox.ac.uk/" target="_blank" rel="noopener">iECDT</a> Deep Learning Course, University of Oxford</li>
+      <li><b>2024.04 – 06</b> — Teaching Assistant, "Machine Learning", Department of Computer Science, University of Oxford</li>
+      <li><b>2024.04 – 06</b> — Teaching Assistant, "Artificial Intelligence", Department of Computer Science, University of Oxford</li>
+      <li><b>2020</b> — Teaching Assistant for <a href="http://niclane.org/" target="_blank" rel="noopener">Nicholas Lane</a>'s "Introduction to Deep Learning" course, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></li>
+      <li><b>2020</b> — Teaching Assistant for <a href="http://passat.crhc.illinois.edu/" target="_blank" rel="noopener">Rakesh Kumar</a>'s "Artificial Intelligence for Undergraduates" course, <a href="https://ece.illinois.edu/" target="_blank" rel="noopener">UIUC</a></li>
+    </ul>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Community &amp; Leadership</h3>
+    <ul class="svc-list">
+      <li><b>2023.03 – 2024.03</b> — <a href="https://mertonmcr.co.uk/" target="_blank" rel="noopener">MCR</a> Social Secretary, Merton College, University of Oxford</li>
+      <li><b>2020.06 – Now</b> — <a href="https://datawhale.club/" target="_blank" rel="noopener">Datawhale member</a> (an open-source AI organization), helping data science enthusiasts get involved in the AI community</li>
+      <li><b>2019 – 2022</b> — Member of the Tsinghua University Shenzhen TAP Choir</li>
+      <li><b>2019</b> — Debate chair of the Shenzhen government-sponsored university debate tournament <a href="./Files/Yang_2019_debate.png" target="_blank" rel="noopener">[Picture]</a></li>
+      <li><b>2017</b> — Top 10 Singer of the School of Artificial Intelligence and Automation, HUST <a href="https://mp.weixin.qq.com/s/YTVqZu-4K57TxGNujTE6GQ" target="_blank" rel="noopener">[Link]</a></li>
+      <li><b>2015 – 2019</b> — Member of the college emcee team; hosted two welcome parties and a graduation gala</li>
+    </ul>
+  </div>
+</section>
+
+<section id="InvitedTalksLiveStreams">
+  <h2 class="sec-head">Invited Talks &amp; Live Streams</h2>
+  <ul class="tl" style="margin-top: 14px;">
+    <li>
+      <span class="when">2026.03</span>
+      <div class="what">Invited talk on time series foundation models and LLMs for time series, <b>Shanghai AI Lab</b></div>
+    </li>
+    <li>
+      <span class="when">2026.03</span>
+      <div class="what">Invited talk on sequence intelligence for real-world applications, <b>Shanghai Jiao Tong University</b></div>
+    </li>
+    <li>
+      <span class="when">2024.12</span>
+      <div class="what">Talk on "New Concepts, Methods, and Directions of AI-Enabled Digital Courses", <b>Beijing Normal University</b></div>
+    </li>
+    <li>
+      <span class="when">2024.08</span>
+      <div class="what">Talk on time series and artificial intelligence, <b>1st Computational Decision Neuroscience (CDN) Summer School</b> and Decision Neuroscience Symposium</div>
+      <div class="talk-links"><a class="plink" href="https://mp.weixin.qq.com/s/mnjlHVaZtpJOkhdLBPeSGQ" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2024.05</span>
+      <div class="what">AI+X University Tour at <b>Northwestern Polytechnical University</b>, Datawhale</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/4J1WlRyCtT-VlYcBC3toqw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/L-0R9ExgLyN3JI_HXP03OA" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/LT_TGZC5mBVcTPa-4i3KoQ" target="_blank" rel="noopener">Link 3</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2024.04</span>
+      <div class="what">AI+X University Tour at <b>Tsinghua University</b>, Datawhale</div>
+      <div class="talk-links"><a class="plink" href="https://mp.weixin.qq.com/s/Pzvnr43OAAAEAgcTnB-pdw" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2024.04</span>
+      <div class="what">PhD debate live stream on <b>Mamba</b>, AI Time</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/6uEFW0HnizDr4F705HcYNw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/By0xmyAHk1x8ag0bv2anFA" target="_blank" rel="noopener">Link 2</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2024.01</span>
+      <div class="what">PhD debate live stream on <b>Agent</b>, AI Time</div>
+      <div class="talk-links"><a class="plink" href="https://www.bilibili.com/video/BV165411q7gX/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener">Video</a></div>
+    </li>
+    <li>
+      <span class="when">2023.07</span>
+      <div class="what">KDD paper-sharing presentation, <b>AI Time</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://www.bilibili.com/video/BV18M4y1s7UN/?spm_id_from=333.337.search-card.all.click&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/N3OkPlCQwN_c5sxxOZFy2A" target="_blank" rel="noopener">Link</a>
+        <a class="plink" href="./Files/Yang-KDDAITIME-2023.jpg" target="_blank" rel="noopener">Picture</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2023.07</span>
+      <div class="what">Presentation at <b>WAIC 2023</b>, Shanghai</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/9-TE0dFngwRg4MmwYSoyIA" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/TpCpH0JViv4J6NOea3-Rig" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="./Files/Yang-WAIC1-2023.jpg" target="_blank" rel="noopener">Picture 1</a>
+        <a class="plink" href="./Files/Yang-WAIC2-2023.jpg" target="_blank" rel="noopener">Picture 2</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV13x4y197ZN/?spm_id_from=333.788&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2023.07</span>
+      <div class="what">Easy-RL book-sharing session at <b>WAIC 2023</b>, Shanghai</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/aJukezDwfGISMnSYU1qArQ" target="_blank" rel="noopener">Link</a>
+        <a class="plink" href="./Files/Yang-WAIC3-2023.jpg" target="_blank" rel="noopener">Picture</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2023.06</span>
+      <div class="what">Presentation at <b>Oxford Computer Science Conference 2023</b></div>
+      <div class="talk-links"><a class="plink" href="https://www.cs.ox.ac.uk/teaching/dphil/schedule.pdf" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2023.02</span>
+      <div class="what">Experience-sharing article</div>
+      <div class="talk-links"><a class="plink" href="https://mp.weixin.qq.com/s/UkxYEznCKzqTw2eOCCCrUw" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2022.11</span>
+      <div class="what">Video about Easy-RL and open source</div>
+      <div class="talk-links"><a class="plink" href="https://www.bilibili.com/video/BV1i84y1t7uA/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2022.11</span>
+      <div class="what">Live stream introducing AI and ML</div>
+      <div class="talk-links"><a class="plink" href="./Files/Yang_IntroAIML.jpeg" target="_blank" rel="noopener">Poster</a></div>
+    </li>
+    <li>
+      <span class="when">2022.11</span>
+      <div class="what"><a href="https://aistudio.baidu.com/aistudio/education/group/info/27444" target="_blank" rel="noopener">Online tutorial</a> with <b>Baidu PaddlePaddle AI Studio</b> (over 2,000 participants)</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/NME5FTJ2620pSP867SPgFA" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/NF365pEUV3Z9Y_GlN3E6pA" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="./Files/Yang_baidu_paddle.jpeg" target="_blank" rel="noopener">Picture 1</a>
+        <a class="plink" href="./Files/Yang_baidu_paddle2.jpeg" target="_blank" rel="noopener">Picture 2</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.10</span>
+      <div class="what">Experience-sharing session at SIGS, <b>Tsinghua University</b></div>
+      <div class="talk-links"><a class="plink" href="https://mp.weixin.qq.com/s/IDYyGDE0mIogtbES_HmIbw" target="_blank" rel="noopener">Link</a></div>
+    </li>
+    <li>
+      <span class="when">2022.09</span>
+      <div class="what">Live stream about open source at <a href="http://www.aitime.cn/" target="_blank" rel="noopener"><b>AI Time</b></a></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/2BZpccwPmAIu446Cm81DYw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/dhRBjchqYu2R3a1alXt5Lw" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/FIulkNTsNMYCOqjc-OWc5Q" target="_blank" rel="noopener">Link 3</a>
+        <a class="plink" href="./Files/Yang_2022_AITime_1.jpg" target="_blank" rel="noopener">Picture 1</a>
+        <a class="plink" href="./Files/Yang_2022_AITime_2.jpeg" target="_blank" rel="noopener">Picture 2</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.09</span>
+      <div class="what">Experience-sharing session for new students at SIGS, <b>Tsinghua University</b></div>
+    </li>
+    <li>
+      <span class="when">2022.09</span>
+      <div class="what">Invited talk at the <a href="https://www.worldaic.com.cn/" target="_blank" rel="noopener"><b>2022 World Artificial Intelligence Conference</b></a> (Dishui Lake AI Developer Innovation Forum)</div>
+      <div class="talk-links">
+        <a class="plink" href="https://online2022.worldaic.com.cn/forumdetail?uuid=c412de9a58604519940f06cac98fd1fb&amp;type=video" target="_blank" rel="noopener">Video 1</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1xW4y1B72o?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/xQwPAt6750uShbCiaAXV0w" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/d-xrmlGXz28SJsM-VaJLeg" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/2I_tp4K3rkEeAPTT1dXgww" target="_blank" rel="noopener">Link 3</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/1br3Xs5-t2UjgH-wqEF04g" target="_blank" rel="noopener">Link 4</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.09</span>
+      <div class="what">Invited talk at the <a href="https://www.worldaic.com.cn/" target="_blank" rel="noopener"><b>2022 World Artificial Intelligence Conference</b></a> (<a href="http://www.aiwin.org.cn/" target="_blank" rel="noopener">AIWIN</a> 5th Anniversary Gala and "AI Developer Nurturing and Growth" Forum)</div>
+      <div class="talk-links">
+        <a class="plink" href="https://online2022.worldaic.com.cn/forumdetail?uuid=ea28f4bd2a6b466d90345d2a8d4d7b12&amp;type=video" target="_blank" rel="noopener">Video</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/-q6T8cBOk6n4VRlhduZKMA" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/8XuF2O_nmArDGJBpE7xjgw" target="_blank" rel="noopener">Link 2</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.08</span>
+      <div class="what">Internal invited talk at <a href="http://www.aitime.cn/" target="_blank" rel="noopener"><b>AI Time</b></a></div>
+    </li>
+    <li>
+      <span class="when">2022.08</span>
+      <div class="what">Graduate feature interview, SIGS, <b>Tsinghua University</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/e7yCVMBkmw9G0CTeViM_kQ" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/3tkRXxXQPXeV90py2NF_Aw" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/E4sHhiWZCihdIPpgrD78TQ" target="_blank" rel="noopener">Link 3</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.07</span>
+      <div class="what">Bilibili program on reading classic IT books</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/bM42g9uQxdbSG6edP243Og" target="_blank" rel="noopener">Link</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1Dr4y1M7VR?spm_id_from=333.999.0.0" target="_blank" rel="noopener">Video 1</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1yv4y1M7Mj?spm_id_from=333.999.0.0&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video 2</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1Dr4y1M7VR?spm_id_from=333.999.0.0&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video 3</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1qF411c79X?spm_id_from=333.999.0.0&amp;vd_source=642fa389e9e78cff4881c038963ac312" target="_blank" rel="noopener">Video 4</a>
+        <a class="plink" href="./Files/Yang_2022_Bilibili.jpeg" target="_blank" rel="noopener">Picture</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.05</span>
+      <div class="what">Easy-RL live book-sharing session on the WeChat platform "Gu-Yue-Ju"</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/a4Imkewd-Isrbo5hmf-faw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/Vyecxr3M22MpgzUq4DlhDA" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="./Files/Yang_2022_Guyueju.jpg" target="_blank" rel="noopener">Picture</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.05</span>
+      <div class="what">Ph.D. application experience sharing and an Easy-RL live book-sharing session, "Bright Top" Forum</div>
+    </li>
+    <li>
+      <span class="when">2022.04</span>
+      <div class="what">Easy-RL live book-sharing session with <b>Posts and Telecommunications Press</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/IjVGT56U6mWuNUOyBpa_3w" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/-Iu9YfFD5y1qeEaSiyy0TQ" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/K7Ued8dJ23gIy6B51dN7Ag" target="_blank" rel="noopener">Link 3</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/0EPoHUyj-tbQvvWLALBvHw" target="_blank" rel="noopener">Link 4</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/Oki4RLBjWDRHt02tEn5p6g" target="_blank" rel="noopener">Link 5</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/X78pucoPq4RJTkDV4hGykg" target="_blank" rel="noopener">Link 6</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/svAmAiP2JAs8k_qBbvrLGw" target="_blank" rel="noopener">Link 7</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/VHhb3QCXHmwuOaaAMn9u7w" target="_blank" rel="noopener">Link 8</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/F88p--uG3T3kOzEzxnJXEQ" target="_blank" rel="noopener">Link 9</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/5mMkjJlldIIUbnV3D6ZFrw" target="_blank" rel="noopener">Link 10</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/nrDVH11ZHhRpg-a2v-d6CQ" target="_blank" rel="noopener">Link 11</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/xfwZOSOc9BCXigsS8RwnAA" target="_blank" rel="noopener">Link 12</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/f2yJGOof0X-VQUjvjVePkw" target="_blank" rel="noopener">Link 13</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/pTo2QkxsfdCZcFN5bBglcg" target="_blank" rel="noopener">Link 14</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/zfaiATqU2PC0OYHNSeenvA" target="_blank" rel="noopener">Link 15</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/DX6x_F_DjzoQ-D0K9h4HXw" target="_blank" rel="noopener">Link 16</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/3FZ0ZGQBYWwUm0voJwM_Mg" target="_blank" rel="noopener">Link 17</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/WUSCpS1We3XNFp_wBrNrhQ" target="_blank" rel="noopener">Link 18</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/UP81cFbF73yZ-CWyqcXIgA" target="_blank" rel="noopener">Link 19</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/wAxKF1M5Z4Sy7C-kWG-RJA" target="_blank" rel="noopener">Link 20</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl1.png" target="_blank" rel="noopener">Picture 1</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl2.jpeg" target="_blank" rel="noopener">Picture 2</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl3.jpeg" target="_blank" rel="noopener">Picture 3</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl4.jpeg" target="_blank" rel="noopener">Picture 4</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl5.jpeg" target="_blank" rel="noopener">Picture 5</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl6.jpeg" target="_blank" rel="noopener">Picture 6</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl7.jpeg" target="_blank" rel="noopener">Picture 7</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl8.jpeg" target="_blank" rel="noopener">Picture 8</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl9.png" target="_blank" rel="noopener">Picture 9</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl10.png" target="_blank" rel="noopener">Picture 10</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl11.png" target="_blank" rel="noopener">Picture 11</a>
+        <a class="plink" href="./Files/Yang_2022_easyrl12.png" target="_blank" rel="noopener">Picture 12</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2022.03</span>
+      <div class="what">Easy-RL book recommendation video</div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/DX6x_F_DjzoQ-D0K9h4HXw" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/f2yJGOof0X-VQUjvjVePkw" target="_blank" rel="noopener">Link 2</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1rb4y1x7Zd?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click" target="_blank" rel="noopener">Video</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2021.11</span>
+      <div class="what">China National Scholarship experience-sharing session, SIGS, <b>Tsinghua University</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/zpTlWnmxoq6DxQ3lRCBmzQ" target="_blank" rel="noopener">Link 1</a>
+        <a class="plink" href="https://mp.weixin.qq.com/s/PgZix8hhdDNsdV3-tIm0uQ" target="_blank" rel="noopener">Link 2</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2021.05</span>
+      <div class="what">Live Q&amp;A and case-study session for the ensemble learning tutorial, <b>Datawhale</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/MTQROZIz4kqq9Pcmp1syvA" target="_blank" rel="noopener">Link</a>
+        <a class="plink" href="https://www.bilibili.com/video/BV1R54y137Q5?p=38" target="_blank" rel="noopener">Video</a>
+      </div>
+    </li>
+    <li>
+      <span class="when">2021.01</span>
+      <div class="what">Live baseline walkthrough for the "Academic Trends Analysis" competition, <b>Alibaba Tianchi</b></div>
+      <div class="talk-links">
+        <a class="plink" href="https://mp.weixin.qq.com/s/EPORF-OdQ4cLH1y1foLIHw" target="_blank" rel="noopener">Link</a>
+        <a class="plink" href="https://tianchi.aliyun.com/course/live/1602" target="_blank" rel="noopener">Video</a>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<footer>
+  <div>© 2015 – 2026 Yiyuan Yang (杨毅远) · All rights reserved</div>
+  <div class="map-wrap">
+    <script type="text/javascript" id="clustrmaps" src="https://cdn.clustrmaps.com/map_v2.js?cl=080808&amp;w=380&amp;t=n&amp;d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&amp;co=ffffff&amp;cmo=3acc3a&amp;cmn=ff5353&amp;ct=808080"></script>
+  </div>
+  <div class="foot-note">Last updated: August 2026 · Made with ❤️ at Oxford</div>
+</footer>
+
+</main>
+</div><!-- /shell -->
+
+<button id="toTop" title="Back to top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
 
 <script>
-    async function updateGitHubData() {
-        try {
-            const response = await fetch('https://api.github.com/repos/datawhalechina/leedl-tutorial');
-            const data = await response.json();
-            const starCount = data.stargazers_count;
-            const forkCount = data.forks_count;
+/* ---------- Theme toggle (all instances) ---------- */
+document.querySelectorAll('.theme-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+});
 
-            document.getElementById('star-count').innerText = `${starCount} stars`;
-            document.getElementById('fork-count').innerText = `${forkCount} forks`;
-        } catch (error) {
-            console.error('Error fetching GitHub data:', error);
-        }
-    }
+/* ---------- Live GitHub stats (progressive enhancement) ---------- */
+(function () {
+  var fmt = function (n) { return typeof n === 'number' ? n.toLocaleString('en-US') : n; };
+  var repos = {};
+  document.querySelectorAll('[data-repo]').forEach(function (el) { var r = el.getAttribute('data-repo'); (repos[r] = repos[r] || []).push(el); });
+  document.querySelectorAll('[data-repo-forks]').forEach(function (el) { var r = el.getAttribute('data-repo-forks'); (repos[r] = repos[r] || []).push(el); });
+  Object.keys(repos).forEach(function (repo) {
+    var cacheKey = 'gh:' + repo;
+    var apply = function (d) {
+      repos[repo].forEach(function (el) {
+        var s = el.querySelector('.gh-stars'), f = el.querySelector('.gh-forks');
+        if (s && d.stargazers_count != null) s.textContent = fmt(d.stargazers_count);
+        if (f && d.forks_count != null) f.textContent = fmt(d.forks_count);
+      });
+    };
+    try {
+      var cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        var c = JSON.parse(cached);
+        if (Date.now() - c.t < 3600000) { apply(c.d); return; }
+      }
+    } catch (e) {}
+    fetch('https://api.github.com/repos/' + repo)
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d || d.stargazers_count == null) return;
+        apply(d);
+        try { sessionStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), d: { stargazers_count: d.stargazers_count, forks_count: d.forks_count } })); } catch (e) {}
+      })
+      .catch(function () {});
+  });
+})();
 
-    updateGitHubData();
+/* ---------- Scroll spy (sidebar + topbar) ---------- */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
+  var ids = [];
+  links.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    if (ids.indexOf(id) === -1) ids.push(id);
+  });
+  var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var onScroll = function () {
+    var y = window.scrollY + 100;
+    var current = sections.length ? sections[0].id : '';
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+
+/* ---------- Back to top ---------- */
+(function () {
+  var btn = document.getElementById('toTop');
+  window.addEventListener('scroll', function () {
+    btn.classList.toggle('show', window.scrollY > 500);
+  }, { passive: true });
+  btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+
 </script>
- 
-<li>
-    <a href="https://github.com/datawhalechina/easy-rl" target="_blank"><b>Easy-RL</b>:</a>
-    A reinforcement learning tutorial that has already collected <b><font color="#FF0000" id="easy-rl-star-count">stars</font></b> and
-    <b><font color="#FF0000" id="easy-rl-fork-count">forks</font></b> on GitHub, which includes
-    <a href="https://github.com/datawhalechina/easy-rl/releases" target="_blank">an e-book</a> and
-    <a href="https://datawhalechina.github.io/easy-rl" target="_blank">an online tutorial</a>. There is also
-    <a href="https://aistudio.baidu.com/aistudio/education/group/info/27444" target="_blank">an online tutorial</a> in collaboration with Baidu PaddlePaddle AI Studio, and <b>more than 2,000 learners</b> participated in this class. Here are some links to our book.
-    [<a href="https://book.douban.com/subject/35781275" target="_blank">Douban</a>]
-    [<a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.63.73f8bf5d3pzHU3&id=669396714456&ns=1&abbucket=17" target="_blank">Taobao</a>]
-    [<a href="http://product.dangdang.com/29374163.html" target="_blank">Dangdang</a>]
-    [<a href="https://item.jd.com/13075567.html" target="_blank">Jingdong</a>]
-    <br /><font size="2">
-    Our book topped the list of new computer books on Dangdang and the list of new AI books on Jingdong within ten days. The number of related tweets exceeded 100,000, and it was recommended to the libraries of North China Electric Power University, Shanghai Ocean University, and Tsinghua University. Also, <font color="#FF0000">it has been included in the <a href="http://www.nlc.cn/" target="_blank">National Library of China</a></font>, the Library of Tsinghua University, the Library of Shanghai Jiao Tong University, the Library of Zhejiang University, the Library of the Chinese Academy of Sciences, the Library of Merton College, Oxford, and others. The electronic version has been downloaded over 10,000 times, and the paper version won the PTP key book selection and Excellent Book for Q1 2022 in PTP.
-    </font><br />
-</li>
 
-<li>
-    <a href="https://github.com/datawhalechina/team-learning-data-mining/tree/master/AcademicTrends" target="_blank"><b>Academic Trends Analysis</b>:</a>
-    A data-mining-based tutorial on the analysis of academic trends on the arXiv platform. I am the main person in charge. It includes
-    <a href="https://tianchi.aliyun.com/course/live/1602" target="_blank">a video</a> and
-    <a href="https://tianchi.aliyun.com/competition/entrance/531866/introduction" target="_blank">a competition</a> on the Alibaba Tianchi platform. <b>More than 4,300 teams</b> participated in this competition. Here are some introductions to the tutorial.
-    [<a href="./Files/AcademicTrends_Analysis_poster.jpg" target="_blank">Poster</a>]
-    [<a href="https://mp.weixin.qq.com/s/EPORF-OdQ4cLH1y1foLIHw" target="_blank">Link1</a>]
-    [<a href="https://mp.weixin.qq.com/s/t1w7bSWnT4bn99__A0zf_Q" target="_blank">Link2</a>]
-</li>
-
-<li>
-    <a href="https://github.com/datawhalechina/team-learning-data-mining/tree/master/EnsembleLearning" target="_blank"><b>Ensemble Learning</b>:</a>
-    An ensemble learning tutorial. Here is
-    <a href="https://www.bilibili.com/video/BV1R54y137Q5?p=38" target="_blank">a video</a> of the case study and an introduction to the tutorial.
-    [<a href="https://t.bilibili.com/134239128?type=2" target="_blank">Link</a>]
-</li>
-
-<script>
-    async function updateGitHubData(repo, starId, forkId) {
-        try {
-            const response = await fetch(`https://api.github.com/repos/${repo}`);
-            const data = await response.json();
-            const starElement = document.getElementById(starId);
-            const forkElement = document.getElementById(forkId);
-            if (starElement) starElement.innerText = `${data.stargazers_count} stars`;
-            if (forkElement) forkElement.innerText = `${data.forks_count} forks`;
-        } catch (error) {
-            console.error('Error fetching GitHub data:', error);
-        }
-    }
-
-    // Update GitHub star and fork counts for each repository
-    updateGitHubData('datawhalechina/easy-rl', 'easy-rl-star-count', 'easy-rl-fork-count');
-    updateGitHubData('WenjieDu/PyPOTS', 'pypots-star-count', 'pypots-fork-count');
-</script>
-
-
-</ul>
-</font>
-
- 
-
-
-
-
-<A NAME="HonorsAwards"><h2>Honors and Awards</h2></A>
-<font size="3"> 
-<ul>
-<li>
-2026, 国家优秀自费留学生奖学金，A类特别优秀奖，中国国家留学基金委 （Chinese Government Award for Outstanding Self-financed Students Abroad, Class A Special Excellence Award, China Scholarship Council）
-(<a href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%BC%98%E7%A7%80%E8%87%AA%E8%B4%B9%E7%95%99%E5%AD%A6%E7%94%9F%E5%A5%96%E5%AD%A6%E9%87%91/9083689" target="_blank">Intro</a>).
-</li>
-<li>
-2026, 青源InnoVibe 2026——最受瞩目学术新星，北京智源研究院
-(<a href="https://www.baai.ac.cn/en" target="_blank">BAAI</a>).
-[<a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank">Link</a>]
-</li>
-<li>2026, 2025 Influential Author, <a href= "https://www.epubit.com/" target="_blank">Epubit</a>, PTPress.</li>
-<li>2025, Interspeech 2025 Conference Travel Grant.</li> 
-<li>2025, Graduate Research Grant, Merton College, University of Oxford.</li> 
-<li>2024, 2024 Excellent New Book (深度学习详解) and Influential Author, <a href= "https://www.epubit.com/" target="_blank">Epubit</a>, PTPress, and JD 2024 Annual Best Book (all the top 50).</li>
-<li>2023, 2022 Bestselling Book (Easy-RL：强化学习教程) and Influential Author, <a href= "https://www.epubit.com/" target="_blank">Epubit</a>, PTPress.[<a href= "https://mp.weixin.qq.com/s/qq5Ked9fYERNgP4iPigR4Q" target="_blank">Link</a>][<a href= "./Files/2023_Yang_EasyRL_bestyearbook.jpg" target="_blank">Picture1</a>][<a href= "./Files/2023_Yang_bestyearauthor.jpg" target="_blank">Picture2</a>][<a href= "./Files/Yang-2023-EasyRLPTP1.jpeg" target="_blank">Certification</a>][<a href= "./Files/Yang-2023-EasyRLPTP2.jpeg" target="_blank">Trophy</a>]</li>
-<li>2022, <a href= "https://www.ox.ac.uk/clarendon/offer-holders/scholars-association" target="_blank">Clarendon Scholar</a>, University of Oxford.</li>  
-<li><b><font color="#FF0000">2022, Outstanding Graduate, Beijing.</font></b></li>    
-<li>2022, Outstanding Master's Thesis, Tsinghua University.</li>  
-<li>2022, Outstanding Graduate, Department of Automation, Tsinghua University.</li>
-<!-- <li>2022, 'ZhiZhuo Honor' and 'ZhiXin Honor' of <a href= "https://datawhale.club/" target="_blank">Datawhale</a>. [<a href= "./Files/Yang_2022_Dw_zhizhuo.jpeg" target="_blank">ZhiZhuo</a>][<a href= "./Files/Yang_2022_Dw_zhixin.jpeg" target="_blank">ZhiXin</a>]</li>  -->
-<li>2022, Internship First-class Scholarship, SIGS, Tsinghua University. (15,000 CNY)</li>
-<li>2022, Excellent Book Author for Q1 2022 in PTP, China. [<a href= "./Files/Yang_2022_xibao.jpeg" target="_blank">Picture</a>]</li>
-<!-- <li>2022, Outstanding volunteer of the Wechat Media Platform "Data Pai-THU". [<a href= "https://mp.weixin.qq.com/s/q861LzYoqqeCoU4gp6pdIw" target="_blank">Link</a>]</li> -->
-<!-- <li>2021, Social Work Scholarship, SIGS, Tsinghua University. </li> -->  
-<li><b><font color="#FF0000"> 2021, China National Scholarship.</font></b></li> 
-<li>2021, <a href= "https://datawhale.club/" target="_blank">Datawhale</a> Contributor.</li> 
-<li>2020, National Second Prize in the 17th National Postgraduate Mathematical Modelling Competition.</li>  
-<li>2020, Second-class Scholarship, Tsinghua University.</li>
-<li>2020, Kaggle Competitions Expert, Ranking Top 1,000 (0.67%).</li>
-<!-- <li>2020, Member of the Outstanding team of the Tsinghua University Postgraduate Anti-epidemic Service Team.</li> -->
-<li>2019, Outstanding Graduate, Huazhong University of Science and Technology.</li>
-<li>2018, First Prize in the 13th National Student Smart Car Competition, Wireless Energy Saving Category (<b><font color="#FF0000">National Champion</font></b>).</li>
-<li>2018, First-Class (Grand Prize) Goodix Scholarship (15,000 CNY).</li>
-<li>2018, National Encouragement Scholarship, Ministry of Education in China.</li>
-<!-- <li>2018, Outstanding Individual of Innovation and Entrepreneurship Activities, Huazhong University of Science and Technology.</li> -->
-<li>2017, First Prize in South China of the 12th National Student Smart Car Competition, Optoelectronic Balance Category.</li>
-</ul>
-</font>
-
-<A NAME="ActivitiesServices"><h2>Activities and Services</h2></A>
-<font size="3"> 
-<ul>
-<li>Reviewer of SLT 2026.</li>
-<li>Reviewer of Interspeech 2026.</li>
-<li>Reviewer of ACL 2025.</li>
-<li>Reviewer of WWW 2025.</li>
-<li>Reviewer of AAAI 2023, 2024, 2025, 2026, and 2027.</li>
-<li>Reviewer of SIGKDD 2023 and 2024.</li>
-<li>Reviewer of NeurIPS 2023, 2024, and 2025.</li>
-<li>Reviewer of SDM 2024.</li>
-<li>Program Committee Member of the <a href= "https://kdd-milets.github.io/milets2023/" target="_blank">9th-11th SIGKDD Workshop on Mining and Learning from Time Series (MILETS)</a>.</li>
-<li>Technical Program Committee Member of IJCNN 2023, 2024, and 2025.</li>
-<br />
-<li>Reviewer of Mechanical Systems and Signal Processing.</li>
-<li>Reviewer of Pattern Recognition.</li>
-<li>Reviewer of Ecological Informatics.</li>
-<li>Reviewer of Signal Processing.</li>
-<li>Reviewer of IEEE Transactions on Systems, Man and Cybernetics: Systems (TSMC).</li>
-<li>Reviewer of Information Fusion.</li>
-<li>Reviewer of Applied Soft Computing Journal.</li>
-<li>Reviewer of Information Processing and Management (IPM).</li>
-<li>Reviewer of ACM Transactions on Storage (TOS).</li>
-<li>Reviewer of IEEE Transactions on Big Data (TBD).</li>
-<li>Reviewer of Neural Networks.</li>
-<li>Reviewer of Measurement.</li>
-<li>Reviewer of Engineering Applications of Artificial Intelligence (EAAI).</li>
-<li>Reviewer of Computer Networks.</li>
-<li>Reviewer of ACM Transactions on Intelligent Systems and Technology (TIST).</li>
-<li>Reviewer of Knowledge-Based Systems (KBS).</li>
-<li>Reviewer of IEEE Transactions on Industrial Informatics (TII).</li>
-<li>Reviewer of IEEE Internet of Things Journal (IoT).</li>
-<li>Reviewer of IEEE Transactions on Intelligent Transportation Systems (TITS).</li>
-<li>Reviewer of IEEE Signal Processing Letters (SPL).</li>
-<li>Reviewer of IEEE Journal of Biomedical and Health Informatics (JBHI).</li>
-<li>Reviewer of ACM Transactions on Knowledge Discovery from Data (TKDD).</li>
-<li>Reviewer of Neurocomputing.</li>
-<li>Reviewer of IEEE Transactions on Circuits and Systems for Video Technology (TCSVT).</li>
-<li>Reviewer of IEEE Transactions on Cybernetics (TCYB).</li>
-<li>Reviewer of IEEE Transactions on Circuits and Systems I: Regular Papers (TCASI).</li>
-<li>Reviewer of IEEE Transactions on Neural Networks and Learning Systems (TNNLS).</li>
-<li>Reviewer of ACM Transactions on Multimedia Computing Communications and Applications (TOMM).</li>
-<li>Reviewer of Journal of Medical Internet Research.</li>
-<li>Reviewer of IEEE Transactions on Information Forensics and Security (TIFS).</li>
-<li>Reviewer of IEEE Transactions on Knowledge and Data Engineering (TKDE).</li>
-<li>Reviewer of IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI).</li>
-<li>Reviewer of IEEE/CAA Journal of Automatica Sinica.</li>
-<br />
-<li>2025.02, Co-leader of the <a href= "https://intelligent-earth.ox.ac.uk/" target="_blank">iECDT</a> Deep Learning Course, University of Oxford.</li>
-<li>2024.04-06, Teaching Assistant for the "Machine Learning" course at the Department of Computer Science, University of Oxford.</li>
-<li>2024.04-06, Teaching Assistant for the "Artificial Intelligence" course at the Department of Computer Science, University of Oxford.</li>
-<li>2020, Teaching Assistant for <a href= "http://niclane.org/" target="_blank">Nicholas Lane</a>'s "Introduction to Deep Learning" course at the <a href= "https://www.cam.ac.uk/" target="_blank">University of Cambridge</a>.</li>
-<li>2020, Teaching Assistant for <a href= "http://passat.crhc.illinois.edu/" target="_blank">Rakesh Kumar</a>'s "Artificial Intelligence for Undergraduates" course at <a href= "https://ece.illinois.edu/" target="_blank">UIUC</a>.</li>
-<br />
-<li>2023.03-2024.03, <a href= "https://mertonmcr.co.uk/" target="_blank">MCR</a> Social Secretary in Merton College, University of Oxford.</li>
-<li>2020.06-Now, <a href= "https://datawhale.club/" target="_blank">Datawhale member</a> (an open-source AI organization), helping data science enthusiasts get involved in the AI community.</li>
-<!-- <li>2020, During the Covid-19 epidemic, as a volunteer of the Tsinghua University Graduate Student Association's anti-epidemic activities, I provided one-to-one support to a child of frontline medical staff in Wuhan for her study.</li> -->
-<!-- <li>2020, During the Covid-19 epidemic, I recorded an original song 'Into the Spring' with TAP Choir. [<a href= "https://mp.weixin.qq.com/s/8mug1M1XVKXfzVVczobTSg" target="_blank">News</a>]</li>  -->
-<li>2019-2022, Member of the Tsinghua University Shenzhen TAP Choir.</li>
-<li>2019, Debate chair of the Shenzhen government-sponsored university debate tournament. [<a href= "./Files/Yang_2019_debate.png" target="_blank">Picture</a>]</li> 
-<!-- <li>2019, Member of the Tsinghua University Shenzhen TAP Choir, participating in the 'Ode to the Motherland' performance in Shenzhen (at Shenzhen Grand Theater). [<a href= "./Files/Yang_2019_ZGS.jpg" target="_blank">Picture</a>] [<a href= "./Files/Yang_2019_ZGS_2.jpg" target="_blank">Picture</a>]</li>  -->
-<!-- <li>2019, LINK Project, SIGS, Tsinghua University.
-    [<a href= "https://mp.weixin.qq.com/s/PhICmpvVPa_9FmxlFI6hLA" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/LNlt1EhkH-2vu5Bk5l2Y9A" target="_blank">Link2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/sPOTX3wr_JKoFtyZ1YF-DA" target="_blank">Link3</a>]
-</li>  -->
-<!-- <li>2018, Participants representing more than 100 universities took the oath at the 13th National Student Smart Car Competition South China Region. [<a href= "https://mp.weixin.qq.com/s/c4zsLmw7cPiQu2CXrkNxzA" target="_blank">News</a>]</li>  -->
-<li>2017, Top 10 Singer of the School of Artificial Intelligence and Automation, HUST.
-    [<a href= "https://mp.weixin.qq.com/s/YTVqZu-4K57TxGNujTE6GQ" target="_blank">Link</a>]
-</li>  
-<li>2015-2019, Member of the college hosting team; hosted two welcome parties and a graduation party.</li> 
-</ul>
-</font>
-
-<A NAME="InvitedTalksLiveStreams"><h2>Invited Talks and Live Streams</h2></A>
-<font size="3"> 
-<ul>
-<li>2026.03, Invited talk on time series foundation models and LLMs for time series, Shanghai AI Lab.
-</li> 
-<li>2026.03, Invited talk on sequence intelligence for real-world applications, Shanghai Jiao Tong University.
-</li> 
-<li>2024.12, Talk on "New Concepts, Methods, and Directions of AI-Enabled Digital Courses," organized by Beijing Normal University.
-</li> 
-<li>2024.08, Talk on time series and artificial intelligence at the 1st Computational Decision Neuroscience (CDN) Summer School and Decision Neuroscience Symposium.
-    [<a href= "https://mp.weixin.qq.com/s/mnjlHVaZtpJOkhdLBPeSGQ" target="_blank">Link</a>]
-</li> 
-<li>2024.05, AI+X University Tour at Northwestern Polytechnical University, Datawhale.
-    [<a href= "https://mp.weixin.qq.com/s/4J1WlRyCtT-VlYcBC3toqw" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/L-0R9ExgLyN3JI_HXP03OA" target="_blank">Link2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/LT_TGZC5mBVcTPa-4i3KoQ" target="_blank">Link3</a>]
-</li> 
-<li>2024.04, AI+X University Tour at Tsinghua University, Datawhale.
-    [<a href= "https://mp.weixin.qq.com/s/Pzvnr43OAAAEAgcTnB-pdw" target="_blank">Link</a>]
-</li> 
-<li>2024.04, PhD debate live stream on Mamba at AItime.
-    [<a href= "https://mp.weixin.qq.com/s/6uEFW0HnizDr4F705HcYNw" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/By0xmyAHk1x8ag0bv2anFA" target="_blank">Link2</a>]
-</li> 
-<li>2024.01, PhD debate live stream on Agent at AItime.
-    [<a href= "https://www.bilibili.com/video/BV165411q7gX/?spm_id_from=333.337.search-card.all.click" target="_blank">Video</a>]
-</li> 
-<li>2023.07, KDD paper-sharing presentation at AItime.
-    [<a href= "https://www.bilibili.com/video/BV18M4y1s7UN/?spm_id_from=333.337.search-card.all.click&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video</a>]
-    [<a href= "https://mp.weixin.qq.com/s/N3OkPlCQwN_c5sxxOZFy2A" target="_blank">Link</a>]
-    [<a href= "./Files/Yang-KDDAITIME-2023.jpg" target="_blank">Picture</a>]
-</li> 
-<li>2023.07, A presentation at WAIC 2023 Shanghai.
-    [<a href= "https://mp.weixin.qq.com/s/9-TE0dFngwRg4MmwYSoyIA" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/TpCpH0JViv4J6NOea3-Rig" target="_blank">Link2</a>]
-    [<a href= "./Files/Yang-WAIC1-2023.jpg" target="_blank">Picture1</a>]
-    [<a href= "./Files/Yang-WAIC2-2023.jpg" target="_blank">Picture2</a>]
-    [<a href= "https://www.bilibili.com/video/BV13x4y197ZN/?spm_id_from=333.788&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video</a>]
-</li> 
-<li>2023.07, Easy-RL book-sharing session at WAIC 2023 Shanghai.
-    [<a href= "https://mp.weixin.qq.com/s/aJukezDwfGISMnSYU1qArQ" target="_blank">Link</a>]
-    [<a href= "./Files/Yang-WAIC3-2023.jpg" target="_blank">Picture</a>]
-</li> 
-<li>2023.06, Presentation at Oxford Computer Science Conference 2023.
-    [<a href= "https://www.cs.ox.ac.uk/teaching/dphil/schedule.pdf" target="_blank">Link</a>]
-</li> 
-<li>2023.02, Experience-sharing article.
-    [<a href= "https://mp.weixin.qq.com/s/UkxYEznCKzqTw2eOCCCrUw" target="_blank">Link</a>]
-</li> 
-<li>2022.11, Video about Easy-RL and open source.
-    [<a href= "https://www.bilibili.com/video/BV1i84y1t7uA/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Link</a>]
-</li> 
-<li>2022.11, Live stream introducing AI and ML.
-    [<a href= "./Files/Yang_IntroAIML.jpeg" target="_blank">Poster</a>]
-</li>  
-<li>2022.11, <a href= "https://aistudio.baidu.com/aistudio/education/group/info/27444" target="_blank">Online tutorial</a> in collaboration with Baidu PaddlePaddle AI Studio (over 2,000 participants).
-    [<a href= "https://mp.weixin.qq.com/s/NME5FTJ2620pSP867SPgFA" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/NF365pEUV3Z9Y_GlN3E6pA" target="_blank">Link2</a>]
-    [<a href= "./Files/Yang_baidu_paddle.jpeg" target="_blank">Picture1</a>]
-    [<a href= "./Files/Yang_baidu_paddle2.jpeg" target="_blank">Picture2</a>]
-</li>  
-<li>2022.10, Experience sharing at SIGS, Tsinghua University.
-    [<a href= "https://mp.weixin.qq.com/s/IDYyGDE0mIogtbES_HmIbw" target="_blank">Link1</a>]
-</li>     
-<li>2022.09, Live stream about open source at <a href= "http://www.aitime.cn/" target="_blank">AI Time</a>.
-    [<a href= "https://mp.weixin.qq.com/s/2BZpccwPmAIu446Cm81DYw" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/dhRBjchqYu2R3a1alXt5Lw" target="_blank">Link2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/FIulkNTsNMYCOqjc-OWc5Q" target="_blank">Link3</a>]
-    [<a href= "./Files/Yang_2022_AITime_1.jpg" target="_blank">Picture1</a>]
-    [<a href= "./Files/Yang_2022_AITime_2.jpeg" target="_blank">Picture2</a>]
-</li>  
-<li>2022.09, New-student experience sharing at SIGS, Tsinghua University.
-</li>    
-<li>2022.09, Invited talk at the <a href= "https://www.worldaic.com.cn/" target="_blank">2022 World Artificial Intelligence Conference</a>. (Dishui Lake AI Developer Innovation Forum)
-    [<a href= "https://online2022.worldaic.com.cn/forumdetail?uuid=c412de9a58604519940f06cac98fd1fb&type=video" target="_blank">Video1</a>]
-    [<a href= "https://www.bilibili.com/video/BV1xW4y1B72o?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/xQwPAt6750uShbCiaAXV0w" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/d-xrmlGXz28SJsM-VaJLeg" target="_blank">Link2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/2I_tp4K3rkEeAPTT1dXgww" target="_blank">Link3</a>]
-    [<a href= "https://mp.weixin.qq.com/s/1br3Xs5-t2UjgH-wqEF04g" target="_blank">Link4</a>]
-</li>
-<li>2022.09, Invited talk at the <a href= "https://www.worldaic.com.cn/" target="_blank">2022 World Artificial Intelligence Conference</a>. (<a href= "http://www.aiwin.org.cn/" target="_blank">AIWIN</a> 5th Anniversary Gala and "AI Developer Nurturing and Growth" Forum)
-    [<a href= "https://online2022.worldaic.com.cn/forumdetail?uuid=ea28f4bd2a6b466d90345d2a8d4d7b12&type=video" target="_blank">Video</a>]
-    [<a href= "https://mp.weixin.qq.com/s/-q6T8cBOk6n4VRlhduZKMA" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/8XuF2O_nmArDGJBpE7xjgw" target="_blank">Link2</a>]
-</li>
-<li>2022.08, Internal invited talk at <a href= "http://www.aitime.cn/" target="_blank">AI Time</a>.
-</li>
-<li>2022.08, Graduate interview/story, SIGS, Tsinghua University.
-    [<a href= "https://mp.weixin.qq.com/s/e7yCVMBkmw9G0CTeViM_kQ" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/3tkRXxXQPXeV90py2NF_Aw" target="_blank">Link2</a>]
-    [<a href= "https://mp.weixin.qq.com/s/E4sHhiWZCihdIPpgrD78TQ" target="_blank">Link3</a>]
-</li>
-<li>2022.07, Bilibili program on reading classic IT books.
-    [<a href= "https://mp.weixin.qq.com/s/bM42g9uQxdbSG6edP243Og" target="_blank">Link</a>] 
-    [<a href= "https://www.bilibili.com/video/BV1Dr4y1M7VR?spm_id_from=333.999.0.0" target="_blank">Video1</a>] 
-    [<a href= "https://www.bilibili.com/video/BV1yv4y1M7Mj?spm_id_from=333.999.0.0&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video2</a>]
-    [<a href= "https://www.bilibili.com/video/BV1Dr4y1M7VR?spm_id_from=333.999.0.0&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video3</a>] 
-    [<a href= "https://www.bilibili.com/video/BV1qF411c79X?spm_id_from=333.999.0.0&vd_source=642fa389e9e78cff4881c038963ac312" target="_blank">Video4</a>] 
-    [<a href= "./Files/Yang_2022_Bilibili.jpeg" target="_blank">Picture</a>]
-</li>
-<li>2022.05, WeChat Media Platform "Gu-Yue-Ju" Easy-RL book live sharing.
-    [<a href= "https://mp.weixin.qq.com/s/a4Imkewd-Isrbo5hmf-faw" target="_blank">Link1</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/Vyecxr3M22MpgzUq4DlhDA" target="_blank">Link2</a>] 
-    [<a href= "./Files/Yang_2022_Guyueju.jpg" target="_blank">Picture</a>]
-</li>
-<li>2022.05, Ph.D. application experience sharing on "Bright Top" Forum.</li>
-<li>2022.05, "Bright Top" Forum Easy-RL book live sharing.</li>
-<li>2022.04, Easy-RL book live sharing with Posts and Telecommunications Press.
-    [<a href= "https://mp.weixin.qq.com/s/IjVGT56U6mWuNUOyBpa_3w" target="_blank">Link1</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/-Iu9YfFD5y1qeEaSiyy0TQ" target="_blank">Link2</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/K7Ued8dJ23gIy6B51dN7Ag" target="_blank">Link3</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/0EPoHUyj-tbQvvWLALBvHw" target="_blank">Link4</a>]
-    [<a href= "https://mp.weixin.qq.com/s/Oki4RLBjWDRHt02tEn5p6g" target="_blank">Link5</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/X78pucoPq4RJTkDV4hGykg" target="_blank">Link6</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/svAmAiP2JAs8k_qBbvrLGw" target="_blank">Link7</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/VHhb3QCXHmwuOaaAMn9u7w" target="_blank">Link8</a>]
-    [<a href= "https://mp.weixin.qq.com/s/F88p--uG3T3kOzEzxnJXEQ" target="_blank">Link9</a>]
-    [<a href= "https://mp.weixin.qq.com/s/5mMkjJlldIIUbnV3D6ZFrw" target="_blank">Link10</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/nrDVH11ZHhRpg-a2v-d6CQ" target="_blank">Link11</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/xfwZOSOc9BCXigsS8RwnAA" target="_blank">Link12</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/f2yJGOof0X-VQUjvjVePkw" target="_blank">Link13</a>]
-    [<a href= "https://mp.weixin.qq.com/s/pTo2QkxsfdCZcFN5bBglcg" target="_blank">Link14</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/zfaiATqU2PC0OYHNSeenvA" target="_blank">Link15</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/DX6x_F_DjzoQ-D0K9h4HXw" target="_blank">Link16</a>]
-    [<a href= "https://mp.weixin.qq.com/s/3FZ0ZGQBYWwUm0voJwM_Mg" target="_blank">Link17</a>]
-    [<a href= "https://mp.weixin.qq.com/s/WUSCpS1We3XNFp_wBrNrhQ" target="_blank">Link18</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/UP81cFbF73yZ-CWyqcXIgA" target="_blank">Link19</a>] 
-    [<a href= "https://mp.weixin.qq.com/s/wAxKF1M5Z4Sy7C-kWG-RJA" target="_blank">Link20</a>]
-    [<a href= "./Files/Yang_2022_easyrl1.png" target="_blank">Picture1</a>]
-    [<a href= "./Files/Yang_2022_easyrl2.jpeg" target="_blank">Picture2</a>]
-    [<a href= "./Files/Yang_2022_easyrl3.jpeg" target="_blank">Picture3</a>]
-    [<a href= "./Files/Yang_2022_easyrl4.jpeg" target="_blank">Picture4</a>]
-    [<a href= "./Files/Yang_2022_easyrl5.jpeg" target="_blank">Picture5</a>]
-    [<a href= "./Files/Yang_2022_easyrl6.jpeg" target="_blank">Picture6</a>]
-    [<a href= "./Files/Yang_2022_easyrl7.jpeg" target="_blank">Picture7</a>]
-    [<a href= "./Files/Yang_2022_easyrl8.jpeg" target="_blank">Picture8</a>]
-    [<a href= "./Files/Yang_2022_easyrl9.png" target="_blank">Picture9</a>]
-    [<a href= "./Files/Yang_2022_easyrl10.png" target="_blank">Picture10</a>]
-    [<a href= "./Files/Yang_2022_easyrl11.png" target="_blank">Picture11</a>]
-    [<a href= "./Files/Yang_2022_easyrl12.png" target="_blank">Picture12</a>]
-</li>
-<li>2022.03, Easy-RL book recommendation video.
-    [<a href= "https://mp.weixin.qq.com/s/DX6x_F_DjzoQ-D0K9h4HXw" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/f2yJGOof0X-VQUjvjVePkw" target="_blank">Link2</a>]
-    [<a href= "https://www.bilibili.com/video/BV1rb4y1x7Zd?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click" target="_blank">Video</a>]
-</li>
-<li>2021.11, China National Scholarship Sharing meeting, SIGS, Tsinghua University.
-    [<a href= "https://mp.weixin.qq.com/s/zpTlWnmxoq6DxQ3lRCBmzQ" target="_blank">Link1</a>]
-    [<a href= "https://mp.weixin.qq.com/s/PgZix8hhdDNsdV3-tIm0uQ" target="_blank">Link2</a>]
-</li>
-<li>2021.05, Ensemble learning tutorial live Q&A and case sharing, Datawhale.
-    [<a href= "https://mp.weixin.qq.com/s/MTQROZIz4kqq9Pcmp1syvA" target="_blank">Link</a>]
-    [<a href= "https://www.bilibili.com/video/BV1R54y137Q5?p=38" target="_blank">Video</a>]
-</li>
-<li>2021.01, Competition "Academic Trend Analysis" baseline live sharing, Alibaba Tianchi.
-    [<a href= "https://mp.weixin.qq.com/s/EPORF-OdQ4cLH1y1foLIHw" target="_blank">Link</a>]
-    [<a href= "https://tianchi.aliyun.com/course/live/1602" target="_blank">Video</a>]
-</li>
-
-</ul>
-</font>
-
-<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=080808&w=500&t=n&d=dJDHJ3-hyo0XeVx6oc7STY3ihPbjvz2CHCOP4-j6XOo&co=ffffff&cmo=3acc3a&cmn=ff5353&ct=808080'></script>
- 
-<div id="article"></div>
-<div id="back_top">
-<div class="arrow"></div>
-<div class="stick"></div>
-</div>
-
-</div>
-</div>
-
-<!--
-All Rights Reserved by Yiyuan Yang. Part of this page is generated by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
--->
 </body>
 </html>
