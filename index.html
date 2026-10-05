@@ -231,7 +231,7 @@ section { padding: 34px 0 4px; scroll-margin-top: 60px; }
 
 /* ---------- Stats ---------- */
 .stats {
-  display: grid; grid-template-columns: repeat(4, 1fr);
+  display: grid; grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--line); border-radius: 14px;
   background: var(--card); box-shadow: var(--shadow-sm);
   margin: 20px 0 6px; overflow: hidden;
@@ -469,9 +469,8 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
 @media (max-width: 720px) {
   body { font-size: 15px; }
   .main { padding: 2px 18px 22px; }
-  .stats { grid-template-columns: 1fr 1fr; }
-  .stat:nth-child(3) { border-left: 0; }
-  .stat:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+  .stat { padding: 12px 4px 10px; }
+  .stat b { font-size: 1.2rem; }
   .ri-grid, .proj-grid { grid-template-columns: 1fr; }
   .svc-cols { columns: 1; }
   .pub-idx { display: none; }
@@ -572,7 +571,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
       <a class="navlink" href="#ActivitiesServices">Service &amp; Activities</a>
       <a class="navlink" href="#InvitedTalksLiveStreams">Talks &amp; Media</a>
     </nav>
-    <div class="side-foot">Last updated: Sep 2026</div>
+    <div class="side-foot">Last updated: Oct 2026</div>
   </div>
 </aside>
 
@@ -585,6 +584,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <p>
       Yiyuan Yang is a D.Phil. (Ph.D.) student and <b>Clarendon Scholar</b> in the Department of Computer Science at the
       University of Oxford, specializing in data mining, time series, audio/speech, signal processing, and large language models.
+      He <b>passed his D.Phil. viva</b> (Ph.D. defense) in August 2026.
       He holds a master's degree from the Department of Automation at <b>Tsinghua University</b> and a bachelor's degree from the
       School of Artificial Intelligence and Automation (Innovation Honors Class) and Qiming College at
       <b>Huazhong University of Science and Technology</b>. He has also interned at the <b>Microsoft</b> Applied Sciences Group,
@@ -592,17 +592,16 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     </p>
     <p>
       Yiyuan is an avid open-source contributor, with projects amassing over <b>37,000 GitHub stars</b>. He has authored
-      <b>three books</b> based on his tutorials and published over <b>40 papers</b> in top journals
-      and conferences, including TKDE, CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, with over
-      <b>2,100 citations</b>. He also serves as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
+      <b>three books</b> based on his tutorials. His research has appeared in top journals and conferences, including TKDE,
+      CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, and has received over
+      <b>2,200 citations</b>. He also serves as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
       TIFS, TOS, TNNLS, TOMM, TCYB, TCSVT, TII, IoT, SPL, TITS, Neurocomputing, NeurIPS, KDD, WWW, AAAI, ACL, and SDM.
       In his free time, Yiyuan enjoys singing and playing various sports.
     </p>
   </div>
   <div class="stats">
-    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,100+</b><span>Citations</span></a>
-    <a class="stat" href="#Publications"><b>40+</b><span>Publications</span></a>
-    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>17</b><span>h-index</span></a>
+    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,200+</b><span>Citations</span></a>
+    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>18</b><span>h-index</span></a>
     <a class="stat" href="#Projects"><b>37,000+</b><span>GitHub Stars</span></a>
   </div>
 </section>
@@ -610,7 +609,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
 <section id="News">
   <h2 class="sec-head">News</h2>
   <div class="news-box">
-    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">💼 I will be joining the Superintelligence Lab at <b>Meta</b> (Bellevue, WA) as a Research Scientist Intern, working on speech/audio and multimodal LLMs, starting in October 2026.</span></div>
+    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">💼 I will be joining the Superintelligence Lab at <b>Meta</b> (Bellevue, WA) as a Research Scientist Intern, working on RSI and multimodal LLMs, starting in October 2026.</span></div>
     <div class="news-item"><span class="news-date">2026.09</span><span class="news-text">📄 <i>From Event Logs to Governed Action: A BlueSky Agenda for Agentic Process Mining</i> accepted at <b>ICDM 2026</b>.</span></div>
     <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">📣 I am on the job market!</span> Open to <b>Assistant Professor</b> positions in academia and <b>Research Scientist / Applied Scientist</b> roles in industry — feel free to <a href="mailto:yiyuan.yang@cs.ox.ac.uk">reach out</a>!</span></div>
     <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">🎓 Milestone:</span> Completed my D.Phil. (Ph.D.) viva at the <b>University of Oxford</b>!</span></div>
@@ -624,7 +623,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <div class="news-item"><span class="news-date">2025.09</span><span class="news-text">📄 Two papers accepted at <b>NeurIPS 2025</b>: <i>ScatterAD</i> and <i>Target Speaker Extraction</i>.</span></div>
     <div class="news-item"><span class="news-date">2025.06</span><span class="news-text">💼 Research internship at <b>Microsoft Research</b> on adaptive speech separation in conversational scenarios (Jun – Aug 2025).</span></div>
     <div class="news-item"><span class="news-date">2025.05</span><span class="news-text">📄 <i>Time-MQA</i> accepted at <b>ACL 2025</b> (main conference), our multivariate time-series imputation survey at <b>IJCAI 2025</b>, and <i>Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization</i> at <b>Interspeech 2025</b>.</span></div>
-    <div class="news-item"><span class="news-date">2024.12</span><span class="news-text">📚 Our book <i>深度学习详解</i> (LeeDL-Tutorial) was selected as one of <b>JD's 2024 Annual Best Books (overall Top 50)</b> and a PTP Excellent New Book of 2024.</span></div>
+    <div class="news-item"><span class="news-date">2024.12</span><span class="news-text">📚 Our book <i>深度学习详解</i> (LeeDL-Tutorial) was selected as one of <b>JD's 2024 Annual Best Books (overall Top 50)</b> and an Epubit 2024 Annual Influential New Book.</span></div>
   </div>
 </section>
 
@@ -640,7 +639,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <div class="ri-card">
       <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
       <h3>Time Series &amp; LLMs</h3>
-      <p>Time-series analysis, anomaly detection, and reasoning with large language models.</p>
+      <p>Time-series analysis, anomaly detection, and reasoning with large language models for decision support.</p>
     </div>
     <div class="ri-card">
       <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
@@ -684,7 +683,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <li>
       <span class="when">From 2026.10</span>
       <div class="what"><b>Research Scientist Intern</b>, Superintelligence Lab, Meta</div>
-      <div class="note">Speech/audio and multimodal LLMs · Bellevue, WA, USA</div>
+      <div class="note">RSI and multimodal LLMs · Bellevue, WA, USA</div>
     </li>
     <li>
       <span class="when">2026.04 – 2026.07</span>
@@ -1144,7 +1143,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
         <h4>LeeDL-Tutorial</h4>
         <p class="zh-title">深度学习详解 · Posts &amp; Telecom Press, 2024</p>
         <p class="bauthors">Q. Wang, <strong>Y. Yang</strong>, J. Jiang</p>
-        <p class="book-award">★ JD 2024 Annual Best Books (overall Top 50, 京东2024年度好书) · PTP Excellent New Book of 2024 (人民邮电出版社年度影响力新书)</p>
+        <p class="book-award">★ JD 2024 Annual Best Books (overall Top 50, 京东2024年度好书) · Epubit 2024 Annual Influential New Book, AI category (异步社区年度影响力新书奖)</p>
         <span class="plinks">
           <a class="plink" href="https://github.com/datawhalechina/leedl-tutorial" target="_blank" rel="noopener">GitHub Repo</a>
           <a class="plink" href="https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank" rel="noopener">E-book</a>
@@ -1160,7 +1159,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
         <h4>Easy-RL: Reinforcement Learning Tutorial</h4>
         <p class="zh-title">Easy-RL：强化学习教程（蘑菇书） · Posts &amp; Telecom Press, 2022</p>
         <p class="bauthors">Q. Wang, <strong>Y. Yang</strong>, J. Jiang</p>
-        <p class="book-award">★ PTP Excellent Book of 2022</p>
+        <p class="book-award">★ Epubit 2022 Annual Bestselling New Book, AI category (异步社区年度畅销新书奖) · PTP Excellent Book of Q1 2022 · PTP Key Book Selection</p>
         <span class="plinks">
           <a class="plink" href="https://github.com/datawhalechina/easy-rl" target="_blank" rel="noopener">GitHub Repo</a>
           <a class="plink" href="https://datawhalechina.github.io/easy-rl" target="_blank" rel="noopener">Online Version</a>
@@ -1259,7 +1258,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
         <span class="gh-badge" data-repo-forks="datawhalechina/leedl-tutorial" title="datawhalechina/leedl-tutorial"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">3,000+</span></span>
       </div>
       <p>A Chinese deep learning tutorial (深度学习详解), including <a href="https://github.com/datawhalechina/leedl-tutorial/releases" target="_blank" rel="noopener">an e-book</a> and <a href="https://github.com/datawhalechina/leedl-tutorial/tree/master/Homework" target="_blank" rel="noopener">code</a>.</p>
-      <p class="proj-fine">Topped Jingdong's new-AI-book chart for about 30 days. The print edition was named a <b>PTP Excellent New Book of 2024</b> and one of <b>JD's 2024 Annual Best Books (overall Top 50)</b>.</p>
+      <p class="proj-fine">Topped Jingdong's new-AI-book chart for about 30 days. The print edition was named an <b>Epubit 2024 Annual Influential New Book</b> and one of <b>JD's 2024 Annual Best Books (overall Top 50)</b>.</p>
       <div class="proj-links plinks">
         <a class="plink" href="https://book.douban.com/subject/36997460/" target="_blank" rel="noopener">Douban</a>
         <a class="plink" href="https://product.dangdang.com/29766946.html" target="_blank" rel="noopener">Dangdang</a>
@@ -1274,7 +1273,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
         <span class="gh-badge" data-repo-forks="datawhalechina/easy-rl" title="datawhalechina/easy-rl"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0z"/></svg><span class="gh-forks">2,200+</span></span>
       </div>
       <p>A reinforcement learning tutorial (蘑菇书) with <a href="https://github.com/datawhalechina/easy-rl/releases" target="_blank" rel="noopener">an e-book</a> and <a href="https://datawhalechina.github.io/easy-rl" target="_blank" rel="noopener">an online tutorial</a>, plus <a href="https://aistudio.baidu.com/aistudio/education/group/info/27444" target="_blank" rel="noopener">an online course</a> with Baidu PaddlePaddle AI Studio that attracted <b>2,000+ learners</b>.</p>
-      <p class="proj-fine">Topped the new-book charts for computer books on Dangdang and AI books on Jingdong within ten days, with related posts drawing 100,000+ reads. The book is held by the <a href="http://www.nlc.cn/" target="_blank" rel="noopener"><b>National Library of China</b></a> and the libraries of Tsinghua University, Shanghai Jiao Tong University, Zhejiang University, the Chinese Academy of Sciences, and Merton College, Oxford, among others. The e-book has been downloaded 10,000+ times, and the print edition was selected as a PTP key book and a PTP Excellent Book of Q1 2022.</p>
+      <p class="proj-fine">Topped the new-book charts for computer books on Dangdang and AI books on Jingdong within ten days, with related posts drawing 100,000+ reads. The book is held by the <a href="http://www.nlc.cn/" target="_blank" rel="noopener"><b>National Library of China</b></a> and the libraries of Tsinghua University, Shanghai Jiao Tong University, Zhejiang University, the Chinese Academy of Sciences, and Merton College, Oxford, among others. The e-book has been downloaded 10,000+ times, and the print edition won the Epubit 2022 Annual Bestselling New Book Award and was selected as a PTP key book and a PTP Excellent Book of Q1 2022.</p>
       <div class="proj-links plinks">
         <a class="plink" href="https://book.douban.com/subject/35781275" target="_blank" rel="noopener">Douban</a>
         <a class="plink" href="https://detail.tmall.com/item.htm?spm=a230r.1.14.63.73f8bf5d3pzHU3&amp;id=669396714456&amp;ns=1&amp;abbucket=17" target="_blank" rel="noopener">Taobao</a>
@@ -1322,7 +1321,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <li><span class="award-year">2025</span><span class="award-body">JEB Outstanding Paper Prize 2025 (Shortlisted), <i>Journal of Experimental Biology</i>, The Company of Biologists</span></li>
     <li><span class="award-year">2025</span><span class="award-body">Interspeech 2025 Conference Travel Grant</span></li>
     <li><span class="award-year">2025</span><span class="award-body">Graduate Research Grant, Merton College, University of Oxford</span></li>
-    <li><span class="award-year">2024</span><span class="award-body">2024 Excellent New Book (深度学习详解) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress; one of JD's 2024 Annual Best Books (overall Top 50)</span></li>
+    <li><span class="award-year">2024</span><span class="award-body">2024 Annual Influential New Book (深度学习详解) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress; one of JD's 2024 Annual Best Books (overall Top 50)</span></li>
     <li><span class="award-year">2023</span><span class="award-body">2022 Bestselling Book (Easy-RL：强化学习教程) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress <a href="https://mp.weixin.qq.com/s/qq5Ked9fYERNgP4iPigR4Q" target="_blank" rel="noopener">[Link]</a> <a href="./Files/2023_Yang_EasyRL_bestyearbook.jpg" target="_blank" rel="noopener">[Picture 1]</a> <a href="./Files/2023_Yang_bestyearauthor.jpg" target="_blank" rel="noopener">[Picture 2]</a> <a href="./Files/Yang-2023-EasyRLPTP1.jpeg" target="_blank" rel="noopener">[Certification]</a> <a href="./Files/Yang-2023-EasyRLPTP2.jpeg" target="_blank" rel="noopener">[Trophy]</a></span></li>
     <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title"><a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholar</a>, University of Oxford</span></span></li>
     <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Outstanding Graduate, Beijing</span></span></li>
@@ -1422,6 +1421,10 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
 <section id="InvitedTalksLiveStreams">
   <h2 class="sec-head">Invited Talks &amp; Live Streams</h2>
   <ul class="tl" style="margin-top: 14px;">
+    <li>
+      <span class="when">2026.09</span>
+      <div class="what">Invited talk on "From Detection to Decision: Trustworthy AI for Temporal Data and Decision Support", <b>City University of Hong Kong</b></div>
+    </li>
     <li>
       <span class="when">2026.03</span>
       <div class="what">Invited talk on time series foundation models and LLMs for time series, <b>Shanghai AI Lab</b></div>
@@ -1678,7 +1681,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
   <div class="map-wrap">
     <a href="https://info.flagcounter.com/8NLu" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/map/8NLu/size_m/txt_555555/border_DDDDDD/pageviews_1/viewers_0/flags_0/" alt="Visitor map by country" loading="lazy" /></a>
   </div>
-  <div class="foot-note">Last updated: September 2026 · Made with ❤️ at Oxford</div>
+  <div class="foot-note">Last updated: October 2026 · Made with ❤️ at Oxford</div>
 </footer>
 
 </main>
