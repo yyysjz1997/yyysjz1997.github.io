@@ -231,7 +231,7 @@ section { padding: 34px 0 4px; scroll-margin-top: 60px; }
 
 /* ---------- Stats ---------- */
 .stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   border: 1px solid var(--line); border-radius: 14px;
   background: var(--card); box-shadow: var(--shadow-sm);
   margin: 20px 0 6px; overflow: hidden;
@@ -239,6 +239,7 @@ section { padding: 34px 0 4px; scroll-margin-top: 60px; }
 .stat {
   padding: 14px 10px 12px; text-align: center;
   border-left: 1px solid var(--line-soft);
+  display: flex; flex-direction: column;
 }
 .stat:first-child { border-left: 0; }
 .stat b {
@@ -469,13 +470,17 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
 @media (max-width: 720px) {
   body { font-size: 15px; }
   .main { padding: 2px 18px 22px; }
-  .stat { padding: 12px 4px 10px; }
-  .stat b { font-size: 1.2rem; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .stat:nth-child(3) { border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
   .ri-grid, .proj-grid { grid-template-columns: 1fr; }
   .svc-cols { columns: 1; }
   .pub-idx { display: none; }
   .book-card { flex-direction: row; }
   .prose p, .proj-card p { text-align: left; }
+}
+@media (max-width: 360px) {
+  .stat span { font-size: .7rem; letter-spacing: .01em; }
 }
 @media print {
   .topbar, #toTop, .theme-btn, .map-wrap, .side-nav { display: none !important; }
@@ -587,7 +592,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
       He <b>passed his D.Phil. viva</b> (Ph.D. defense) in August 2026.
       He holds a master's degree from the Department of Automation at <b>Tsinghua University</b> and a bachelor's degree from the
       School of Artificial Intelligence and Automation (Innovation Honors Class) and Qiming College at
-      <b>Huazhong University of Science and Technology</b>. He is currently a Research Scientist Intern at <b>Meta</b>, working on
+      <b>Huazhong University of Science and Technology</b>. He is currently a Research Scientist Intern at <b>Meta Superintelligence Labs</b>, working on
       RSI and multimodal LLMs, and has previously interned at the <b>Microsoft</b> Applied Sciences Group,
       <b>Microsoft Research</b>, <b>Alibaba DAMO Academy</b>, and <b>Huawei Noah's Ark Lab</b>.
     </p>
@@ -595,22 +600,24 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
       Yiyuan is an avid open-source contributor, with projects amassing over <b>37,000 GitHub stars</b>. He has authored
       <b>three books</b> based on his tutorials. His research has appeared in top journals and conferences, including TKDE,
       CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, and has received over
-      <b>2,200 citations</b>. He also serves as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
+      <b>2,300 citations</b>. He also serves as an Area Chair for WWW 2027 and as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
       TIFS, TOS, TNNLS, TOMM, TCYB, TCSVT, TII, IoT, SPL, TITS, Neurocomputing, NeurIPS, KDD, WWW, AAAI, ACL, and SDM.
       In his free time, Yiyuan enjoys singing and playing various sports.
     </p>
   </div>
   <div class="stats">
-    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,200+</b><span>Citations</span></a>
+    <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,300+</b><span>Citations</span></a>
     <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>18</b><span>h-index</span></a>
     <a class="stat" href="#Projects"><b>37,000+</b><span>GitHub Stars</span></a>
+    <a class="stat" href="#EducationInternships"><b>5</b><span>Industry Internships</span></a>
   </div>
 </section>
 
 <section id="News">
   <h2 class="sec-head">News</h2>
   <div class="news-box">
-    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">💼 Started my Research Scientist internship at <b>Meta</b> in Bellevue, WA, working on RSI and multimodal LLMs.</span></div>
+    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">🌐 Invited to serve as an Area Chair for <b>The Web Conference (WWW) 2027</b>.</span></div>
+    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">💼 Started my Research Scientist internship at <b>Meta Superintelligence Labs</b> in Bellevue, WA, working on RSI and multimodal LLMs.</span></div>
     <div class="news-item"><span class="news-date">2026.09</span><span class="news-text">📄 <i>From Event Logs to Governed Action: A BlueSky Agenda for Agentic Process Mining</i> accepted at <b>ICDM 2026</b>.</span></div>
     <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">📣 I am on the job market!</span> Open to <b>Assistant Professor</b> positions in academia and <b>Research Scientist / Applied Scientist</b> roles in industry — feel free to <a href="mailto:yiyuan.yang@cs.ox.ac.uk">reach out</a>!</span></div>
     <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">🎓 Milestone:</span> Completed my D.Phil. (Ph.D.) viva at the <b>University of Oxford</b>!</span></div>
@@ -618,6 +625,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <div class="news-item"><span class="news-date">2026.07</span><span class="news-text"><span class="hot">🏆 Award:</span> Chinese Government Award for Outstanding Self-financed Students Abroad — <b>Class A Special Excellence</b> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council — no more than 20 recipients worldwide each year (US$10,000).</span></div>
     <div class="news-item"><span class="news-date">2026.06</span><span class="news-text"><span class="hot">🏆 Award:</span> Named one of the Most Anticipated Academic Rising Stars (最受瞩目学术新星) at BAAI QingYuan InnoVibe 2026. <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></div>
     <div class="news-item"><span class="news-date">2026.06</span><span class="news-text">📄 <i>Geometry-Informed Distributed Acoustic Scene Understanding</i> accepted at <b>Interspeech 2026</b>.</span></div>
+    <div class="news-item"><span class="news-date">2026.05</span><span class="news-text">🎤 Gave a talk on <i>Time-Series Foundation Models and LLM-based Reasoning</i> at <b>Microsoft UK</b>.</span></div>
     <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">📄 <i>Time-RA</i> (time series reasoning with LLM feedback) accepted to the Findings of <b>ACL 2026</b>.</span></div>
     <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">💼 Joined the Applied Sciences Group at <b>Microsoft</b> as an Applied Scientist Intern (Apr – Jul 2026).</span></div>
     <div class="news-item"><span class="news-date">2026.02</span><span class="news-text"><span class="hot">🏆 Award:</span> Our fiddler-crab bioacoustics study in the <i>Journal of Experimental Biology</i> was shortlisted for the JEB Outstanding Paper Prize 2025.</span></div>
@@ -683,7 +691,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
   <ul class="tl">
     <li>
       <span class="when">2026.10 – 2027.01</span>
-      <div class="what"><b>Research Scientist Intern</b>, Meta</div>
+      <div class="what"><b>Research Scientist Intern</b>, Meta Superintelligence Labs</div>
       <div class="note">Supervised by <a href="https://yuanluxu.github.io/" target="_blank" rel="noopener">Dr. Yuanlu Xu</a> · RSI and multimodal LLMs · Bellevue, WA, USA</div>
     </li>
     <li>
@@ -1349,6 +1357,7 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
   <div class="svc-block">
     <h3 class="subhead">Conference Reviewing &amp; Committees</h3>
     <p class="svc-inline">
+      <b>Area Chair:</b> The Web Conference (WWW 2027)<br />
       <b>Reviewer:</b> NeurIPS (2023–2025) · AAAI (2023–2027) · ACL (2025) · KDD (2023–2024) · WWW (2025) · Interspeech (2026) · SLT (2026) · SDM (2024)<br />
       <b>Program Committee:</b> <a href="https://kdd-milets.github.io/milets2023/" target="_blank" rel="noopener">9th–11th SIGKDD Workshop on Mining and Learning from Time Series (MILETS)</a><br />
       <b>Technical Program Committee:</b> IJCNN (2023–2025)
@@ -1425,6 +1434,10 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     <li>
       <span class="when">2026.09</span>
       <div class="what">Invited talk on "From Detection to Decision: Trustworthy AI for Temporal Data and Decision Support", <b>City University of Hong Kong</b></div>
+    </li>
+    <li>
+      <span class="when">2026.05</span>
+      <div class="what">Talk on "Time-Series Foundation Models and LLM-based Reasoning", <b>Microsoft UK</b></div>
     </li>
     <li>
       <span class="when">2026.03</span>
