@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,322 +20,179 @@
 <script>
 /* Theme: light by default; only honor an explicit saved choice */
 (function () {
-  var t = localStorage.getItem('theme') || 'light';
+  var t = 'light';
+  try { t = localStorage.getItem('theme') || 'light'; } catch (e) {}
   document.documentElement.setAttribute('data-theme', t);
 })();
 </script>
 <style>
 :root {
-  --page: #f1efeb;
-  --bg: #ffffff;
-  --side-bg: #f7f6f2;
-  --surface: #ffffff;
-  --card: #fbfaf8;
-  --text: #2b303b;
-  --muted: #6a7180;
-  --faint: #687080;
-  --heading: #1b2437;
-  --line: #e7e5df;
-  --line-soft: #efede8;
-  --accent: #1c5aa0;
-  --accent-strong: #133f72;
-  --accent-soft: #e9f0f8;
-  --gold: #8a5e0c;
-  --gold-soft: #f9f1dd;
-  --crimson: #b03a2e;
-  --crimson-soft: #fbeeec;
-  --green: #1d6f47;
-  --green-soft: #e7f3ec;
-  --slate: #5b6472;
-  --slate-soft: #eceef2;
+  --page: #f1efeb; --bg: #ffffff; --surface: #ffffff; --card: #fbfaf8;
+  --text: #2b303b; --muted: #6a7180; --faint: #687080; --heading: #1b2437;
+  --line: #e7e5df; --line-soft: #efede8;
+  --accent: #1c5aa0; --accent-strong: #133f72; --accent-soft: #e9f0f8;
+  --gold: #8a5e0c; --gold-soft: #f9f1dd; --crimson: #b03a2e; --crimson-soft: #fbeeec;
+  --green: #1d6f47; --green-soft: #e7f3ec; --slate: #5b6472; --slate-soft: #eceef2;
   --shadow: 0 1px 2px rgba(27, 36, 55, .05), 0 10px 28px -16px rgba(27, 36, 55, .18);
   --shadow-sm: 0 1px 2px rgba(27, 36, 55, .06);
   color-scheme: light;
 }
 html[data-theme="dark"] {
-  --page: #0a0e16;
-  --bg: #10151f;
-  --side-bg: #141a27;
-  --surface: #171e2c;
-  --card: #161d2a;
-  --text: #d9dfe9;
-  --muted: #98a2b3;
-  --faint: #8792a5;
-  --heading: #edf0f6;
-  --line: #29334a;
-  --line-soft: #222b3e;
-  --accent: #85abe2;
-  --accent-strong: #adc8ef;
-  --accent-soft: #1c2940;
-  --gold: #d5a64a;
-  --gold-soft: #2d2514;
-  --crimson: #dd8478;
-  --crimson-soft: #34211d;
-  --green: #6fbf94;
-  --green-soft: #17281f;
-  --slate: #a4adbd;
-  --slate-soft: #222a3b;
+  --page: #0a0e16; --bg: #10151f; --surface: #171e2c; --card: #161d2a;
+  --text: #d9dfe9; --muted: #98a2b3; --faint: #8792a5; --heading: #edf0f6;
+  --line: #29334a; --line-soft: #222b3e;
+  --accent: #85abe2; --accent-strong: #adc8ef; --accent-soft: #1c2940;
+  --gold: #d5a64a; --gold-soft: #2d2514; --crimson: #dd8478; --crimson-soft: #34211d;
+  --green: #6fbf94; --green-soft: #17281f; --slate: #a4adbd; --slate-soft: #222a3b;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -16px rgba(0,0,0,.55);
   --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 body {
-  margin: 0;
-  background: var(--page);
-  color: var(--text);
+  margin: 0; background: var(--page); color: var(--text);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  font-size: 15.5px;
-  line-height: 1.68;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  font-size: 15.5px; line-height: 1.68; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 ::selection { background: var(--accent-soft); }
+b, strong { font-weight: 600; }
 
-/* ============ Shell: sidebar + main ============ */
-.shell {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  max-width: 1210px;
-  margin: 0 auto;
-  background: var(--bg);
-  min-height: 100vh;
-  box-shadow: 0 0 0 1px var(--line-soft), 0 18px 60px -30px rgba(27, 36, 55, .25);
-}
+/* ---------- Sheet ---------- */
+.sheet { max-width: 860px; margin: 28px auto 40px; background: var(--bg); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 18px 60px -30px rgba(27, 36, 55, .25); padding: 26px 48px 40px; }
 
-/* ---------- Sidebar ---------- */
-.side {
-  background: var(--side-bg);
-  border-right: 1px solid var(--line);
-  padding: 44px 30px 30px;
-  text-align: center;
-}
-.side-inner { position: sticky; top: 0; max-height: 100vh; overflow-y: auto; padding: 4px 2px 10px; scrollbar-width: thin; }
-.avatar {
-  width: 172px; height: 172px; border-radius: 50%;
-  object-fit: cover; object-position: 50% 22%;
-  border: 4px solid var(--surface);
-  box-shadow: var(--shadow);
-  margin: 0 auto 16px; display: block;
-}
-.side h1 {
-  font-family: "Lora", Georgia, "Songti SC", serif;
-  font-size: 1.62rem; font-weight: 700; color: var(--heading);
-  margin: 0; line-height: 1.3; letter-spacing: .01em;
-}
-.side .zh-name {
-  font-family: "Lora", Georgia, "Songti SC", serif;
-  font-size: 1.14rem; font-weight: 600; color: var(--heading);
-  margin: 1px 0 10px;
-}
-.side .role { font-size: .88rem; color: var(--text); margin: 0 0 2px; line-height: 1.55; }
-.side .role b { color: var(--heading); }
-.side .org { font-size: .88rem; margin: 0 0 12px; line-height: 1.55; }
-.side-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0 0 16px; }
-.tag {
-  font-size: .72rem; font-weight: 600; letter-spacing: .02em;
-  padding: 3px 10px; border-radius: 999px;
-  background: var(--accent-soft); color: var(--accent);
-}
-.tag.gold { background: var(--gold-soft); color: var(--gold); }
-.tag.market { background: var(--crimson-soft); color: var(--crimson); }
-.icon-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0 0 14px; }
-.icon-btn {
-  width: 35px; height: 35px; border-radius: 50%;
-  display: inline-grid; place-items: center;
-  background: var(--surface); color: var(--muted);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-  transition: color .15s, border-color .15s, transform .15s;
-  cursor: pointer;
-}
+/* ---------- Top bar ---------- */
+.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
+.top .brand { font-family: "Lora", Georgia, "Songti SC", serif; font-weight: 700; color: var(--heading); font-size: 1.06rem; white-space: nowrap; }
+.top .brand:hover { text-decoration: none; color: var(--accent); }
+.top nav { display: flex; flex-wrap: nowrap; justify-content: flex-end; align-items: center; gap: 2px 2px; }
+.top nav a { color: var(--muted); font-size: .87rem; font-weight: 500; padding: 5px 9px; border-radius: 8px; white-space: nowrap; }
+.top nav a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+.top nav a.current { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+.top .theme-btn { width: 32px; height: 32px; margin-left: 8px; }
+
+/* ---------- Icon buttons ---------- */
+.icon-btn { width: 35px; height: 35px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--surface); color: var(--muted); border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: color .15s, border-color .15s, transform .15s; cursor: pointer; }
 .icon-btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
 .icon-btn svg { width: 16px; height: 16px; }
 .icon-btn .rg { font-family: Georgia, serif; font-weight: 700; font-size: .78rem; }
-.side .emails { font-size: .78rem; color: var(--muted); line-height: 1.9; margin: 0 0 18px; }
-.side .emails a { color: var(--muted); }
-.side .emails a:hover { color: var(--accent); }
-.side-nav { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 2px; }
-.side-nav a {
-  display: block; padding: 6px 12px; margin: 1px 0;
-  font-size: .87rem; font-weight: 500; color: var(--muted);
-  border-radius: 8px; border-left: 2.5px solid transparent;
-  text-align: left;
-}
-.side-nav a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
-.side-nav a.active { color: var(--accent); background: var(--accent-soft); border-left-color: var(--accent); font-weight: 600; }
-.side-foot { margin-top: 18px; font-size: .72rem; color: var(--faint); }
-
-/* ---------- Mobile top bar ---------- */
-.topbar {
-  display: none;
-  position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: saturate(160%) blur(12px);
-  -webkit-backdrop-filter: saturate(160%) blur(12px);
-  border-bottom: 1px solid var(--line-soft);
-}
-.topbar-inner { display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 50px; }
-.topbar .brand {
-  font-family: "Lora", Georgia, "Songti SC", serif;
-  font-weight: 700; font-size: .98rem; color: var(--heading); white-space: nowrap;
-}
-.topbar-links { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin-left: auto; }
-.topbar-links::-webkit-scrollbar { display: none; }
-.topbar-links a {
-  color: var(--muted); font-size: .8rem; font-weight: 500;
-  padding: 5px 8px; border-radius: 7px; white-space: nowrap;
-}
-.topbar-links a.active { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
-
-/* ---------- Theme button ---------- */
-.theme-btn { border: 1px solid var(--line); background: var(--surface); }
 html[data-theme="light"] .icon-sun { display: none; }
 html[data-theme="dark"] .icon-moon { display: none; }
-.topbar .theme-btn { width: 30px; height: 30px; flex: 0 0 auto; }
 
-/* ---------- Main ---------- */
-.main { min-width: 0; padding: 10px 48px 30px; }
-section { padding: 34px 0 4px; scroll-margin-top: 60px; }
-.sec-head {
-  font-family: "Lora", Georgia, "Songti SC", serif;
-  font-size: 1.5rem; font-weight: 700; color: var(--heading);
-  margin: 0 0 16px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-  position: relative; letter-spacing: .01em;
-}
-.sec-head::after {
-  content: ""; position: absolute; left: 0; bottom: -1px;
-  width: 58px; height: 2.5px; border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--gold));
-}
-.sec-sub { color: var(--muted); font-size: .9rem; margin: -6px 0 16px; }
-.subhead {
-  font-family: "Lora", Georgia, serif;
-  font-size: 1.08rem; font-weight: 600; color: var(--heading);
-  margin: 26px 0 12px; display: flex; align-items: baseline; gap: 8px;
-}
+/* ---------- Views ---------- */
+html.js .view { display: none; }
+html.js .view.active { display: block; }
+html:not(.js) .view + .view { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+
+/* ---------- Headings ---------- */
+.sec-head { font-family: "Lora", Georgia, "Songti SC", serif; font-size: 1.5rem; font-weight: 700; color: var(--heading); margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line); position: relative; letter-spacing: .01em; }
+.sec-head::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 58px; height: 2.5px; border-radius: 2px; background: linear-gradient(90deg, var(--accent), var(--gold)); }
+h2.page-title { font-size: 1.7rem; }
+.home-h { margin-top: 36px; }
+.head-note { font-family: "Inter", sans-serif; font-size: .76rem; font-weight: 500; color: var(--faint); margin-left: 8px; letter-spacing: .01em; }
+.page-sub, .sec-sub { color: var(--muted); font-size: .9rem; margin: -6px 0 16px; }
+.subhead { font-family: "Lora", Georgia, serif; font-size: 1.08rem; font-weight: 600; color: var(--heading); margin: 26px 0 12px; display: flex; align-items: baseline; gap: 8px; }
 .subhead .count { font-family: "Inter", sans-serif; font-size: .76rem; color: var(--faint); font-weight: 500; }
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: .84rem; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px 5px 10px; background: var(--surface); box-shadow: var(--shadow-sm); margin-bottom: 18px; transition: color .15s, border-color .15s; }
+.back:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+.back svg { width: 14px; height: 14px; }
+.back.bottom { margin: 28px 0 0; }
 
-/* ---------- Prose (justified, full width) ---------- */
-.prose p {
-  margin: 0 0 14px;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-}
+/* ---------- Hero ---------- */
+.hero { display: flex; gap: 26px; align-items: center; }
+.hero .photo { width: 188px; height: 188px; border-radius: 16px; object-fit: cover; object-position: 50% 22%; flex: none; border: 3px solid var(--surface); box-shadow: var(--shadow); }
+.hero h1 { font-family: "Lora", Georgia, "Songti SC", serif; font-weight: 700; font-size: 1.7rem; line-height: 1.2; margin: 0 0 3px; color: var(--heading); letter-spacing: .01em; }
+.hero h1 .zh { font-size: 1.15rem; font-weight: 600; margin-left: 10px; }
+.hero .role { margin: 0; font-size: .97rem; }
+.hero .role b { color: var(--heading); }
+.hero .org { margin: 1px 0 0; color: var(--muted); font-size: .88rem; }
+.hero .loc { display: flex; align-items: center; gap: 5px; margin: 3px 0 0; color: var(--muted); font-size: .88rem; }
+.hero .loc svg { width: 14px; height: 14px; color: var(--crimson); }
+.tag { font-size: .72rem; font-weight: 600; letter-spacing: .02em; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+.tag.gold { background: var(--gold-soft); color: var(--gold); }
+.tag.market { background: var(--crimson-soft); color: var(--crimson); }
+.hero > div { min-width: 0; }
+.icon-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 11px; }
+.emails { font-size: .76rem; color: var(--muted); margin: 9px 0 0; line-height: 1.7; overflow-wrap: anywhere; }
+.emails a { color: var(--muted); white-space: nowrap; }
+.emails a:hover { color: var(--accent); }
+.emails .sep { margin: 0 6px; color: var(--faint); }
 
-/* ---------- Stats ---------- */
-.stats {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--line); border-radius: 14px;
-  background: var(--card); box-shadow: var(--shadow-sm);
-  margin: 20px 0 6px; overflow: hidden;
-}
-.stat {
-  padding: 14px 10px 12px; text-align: center;
-  border-left: 1px solid var(--line-soft);
-  display: flex; flex-direction: column;
-}
+/* ---------- Prose / stats / callout ---------- */
+.prose { margin-top: 0; }
+.prose p { margin: 0 0 14px; text-align: justify; text-justify: inter-word; hyphens: auto; -webkit-hyphens: auto; }
+.prose b { color: var(--heading); }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--shadow-sm); margin: 18px 0 6px; overflow: hidden; }
+.stat { padding: 14px 8px 12px; text-align: center; border-left: 1px solid var(--line-soft); display: flex; flex-direction: column; }
 .stat:first-child { border-left: 0; }
-.stat b {
-  display: block; font-family: "Lora", Georgia, serif;
-  font-size: 1.42rem; font-weight: 700; color: var(--heading); line-height: 1.3;
-}
-.stat span { font-size: .75rem; color: var(--muted); font-weight: 500; letter-spacing: .03em; }
+.stat b { display: block; font-family: "Lora", Georgia, serif; font-size: 1.38rem; font-weight: 700; color: var(--heading); line-height: 1.3; }
+.stat span { font-size: .73rem; color: var(--muted); font-weight: 500; letter-spacing: .03em; }
 a.stat { text-decoration: none; transition: background .15s; }
 a.stat:hover { background: var(--accent-soft); text-decoration: none; }
+.callout { background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 10px; padding: 12px 16px; margin: 16px 0 4px; font-size: .94rem; }
+.callout b { color: var(--heading); }
 
-.callout {
-  background: var(--accent-soft);
-  border-left: 3px solid var(--accent);
-  border-radius: 10px; padding: 12px 16px; margin: 18px 0 8px;
-  font-size: .94rem;
-}
+/* ---------- Research interests (rows) ---------- */
+.topics { list-style: none; margin: 0; padding: 0; }
+.topics li { display: flex; gap: 14px; align-items: flex-start; padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+.topics li:last-child { border-bottom: 0; }
+.topics .ri-ico { flex: none; width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-top: 1px; }
+.topics .ri-ico svg { width: 17px; height: 17px; }
+.topics b { display: block; color: var(--heading); font-size: .97rem; margin-bottom: 1px; }
+.topics div > span { color: var(--muted); font-size: .9rem; }
 
 /* ---------- News ---------- */
-.news-box {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-  box-shadow: var(--shadow-sm);
-  max-height: 324px; overflow-y: auto; padding: 4px 0;
-}
-.news-item {
-  display: flex; gap: 14px; padding: 9px 18px;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: .92rem;
-}
-.news-item:last-child { border-bottom: 0; }
-.news-date {
-  flex: 0 0 84px; color: var(--faint); font-weight: 600;
-  font-size: .78rem; padding-top: 2px; letter-spacing: .02em;
-  font-variant-numeric: tabular-nums;
-}
-.news-text { flex: 1; }
-.news-text .hot { color: var(--crimson); font-weight: 600; }
+.news-box { background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-sm); padding: 4px 0; }
+.news { list-style: none; margin: 0; padding: 0; }
+.news li { display: flex; gap: 14px; padding: 9px 18px; border-bottom: 1px solid var(--line-soft); font-size: .92rem; }
+.news li:last-child { border-bottom: 0; }
+.news time { flex: 0 0 64px; color: var(--faint); font-weight: 600; font-size: .78rem; padding-top: 2px; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+.news b { color: var(--heading); }
+.news .hot { color: var(--crimson); font-weight: 600; }
+.more { display: inline-block; margin-top: 10px; font-size: .9rem; font-weight: 500; }
 
-/* ---------- Research interests ---------- */
-.ri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 4px 0 4px; }
-.ri-card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 13px;
-  padding: 16px 17px 13px; box-shadow: var(--shadow-sm);
-}
-.ri-card .ri-ico {
-  width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
-  background: var(--accent-soft); color: var(--accent); margin-bottom: 10px;
-}
-.ri-card .ri-ico svg { width: 18px; height: 18px; }
-.ri-card h3 { margin: 0 0 5px; font-size: .96rem; font-weight: 600; color: var(--heading); }
-.ri-card p { margin: 0; font-size: .85rem; color: var(--muted); }
+/* ---------- Explore rows ---------- */
+.sections { list-style: none; padding: 0; margin: 0; }
+.sections li { display: grid; grid-template-columns: 220px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line-soft); }
+.sections li:last-child { border-bottom: 0; }
+.sections a { font-weight: 600; }
+.sections span { color: var(--muted); font-size: .9rem; }
 
-/* ---------- Timeline ---------- */
+/* ---------- Affiliations ---------- */
+.affil { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px 10px; margin-top: 4px; }
+.affil a { display: flex; flex-direction: column; align-items: center; text-align: center; color: var(--text); gap: 7px; padding: 6px 4px; border-radius: 10px; transition: background .15s; }
+.affil a:hover { background: var(--accent-soft); text-decoration: none; }
+.affil img { width: 64px; height: 64px; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 7px; box-shadow: var(--shadow-sm); }
+.affil span { font-size: .76rem; font-weight: 600; color: var(--heading); line-height: 1.35; }
+.affil small { display: block; font-weight: 500; color: var(--muted); font-size: .72rem; margin-top: 1px; }
+
+/* ---------- Timeline (experience, talks) ---------- */
 .tl { list-style: none; margin: 4px 0 0; padding: 0 0 0 2px; }
-.tl > li {
-  position: relative; padding: 0 0 16px 24px;
-  border-left: 2px solid var(--line);
-  margin-left: 8px;
-}
+.tl > li { position: relative; padding: 0 0 16px 24px; border-left: 2px solid var(--line); margin-left: 8px; }
 .tl > li:last-child { padding-bottom: 4px; }
-.tl > li::before {
-  content: ""; position: absolute; left: -6.5px; top: 6px;
-  width: 11px; height: 11px; border-radius: 50%;
-  background: var(--bg); border: 2.5px solid var(--accent);
-}
-.tl .when {
-  display: inline-block; font-size: .77rem; font-weight: 700; color: var(--accent);
-  letter-spacing: .03em; margin-bottom: 1px;
-}
+.tl > li::before { content: ""; position: absolute; left: -6.5px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2.5px solid var(--accent); }
+.tl .when { display: inline-block; font-size: .77rem; font-weight: 700; color: var(--accent); letter-spacing: .03em; margin-bottom: 1px; }
 .tl .what { font-size: .94rem; }
 .tl .what b { color: var(--heading); }
 .tl .note { color: var(--muted); font-size: .86rem; }
+.tl.tl-logos > li { border-left: 0; margin-left: 0; padding: 0 0 18px 62px; min-height: 52px; }
+.tl.tl-logos > li::before { display: none; }
+.tl-logo { position: absolute; left: 0; top: 0; width: 46px; height: 46px; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 5px; box-shadow: var(--shadow-sm); }
+.talk-links { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+.talk-links .plink { font-size: .69rem; padding: 1px 7px; }
 
 /* ---------- Publications ---------- */
 .pub-list { margin: 0; padding: 0; list-style: none; }
-.pub {
-  display: flex; gap: 13px; padding: 12px 0;
-  border-bottom: 1px dashed var(--line);
-}
+.pub { display: flex; gap: 13px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
 .pub:last-child { border-bottom: 0; }
-.pub-idx {
-  flex: 0 0 26px; text-align: right;
-  color: var(--faint); font-size: .78rem; font-weight: 600; padding-top: 3px;
-  font-variant-numeric: tabular-nums;
-}
+.pub-idx { flex: 0 0 26px; text-align: right; color: var(--faint); font-size: .78rem; font-weight: 600; padding-top: 3px; font-variant-numeric: tabular-nums; }
 .pub-body { flex: 1; min-width: 0; }
-.pub-title {
-  margin: 0 0 3px; font-size: .97rem; font-weight: 600; color: var(--heading);
-  line-height: 1.45;
-}
+.pub-title { margin: 0 0 3px; font-size: .97rem; font-weight: 600; color: var(--heading); line-height: 1.45; }
 .pub-authors { margin: 0 0 6px; font-size: .86rem; color: var(--muted); }
 .pub-authors strong { color: var(--text); font-weight: 700; }
 .pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
-.venue {
-  font-size: .72rem; font-weight: 700; letter-spacing: .02em;
-  padding: 2.5px 9px; border-radius: 6px;
-}
+.venue { font-size: .72rem; font-weight: 700; letter-spacing: .02em; padding: 2.5px 9px; border-radius: 6px; }
 .v-conf { background: var(--accent-soft); color: var(--accent); }
 .v-jrnl { background: var(--green-soft); color: var(--green); }
 .v-book { background: var(--gold-soft); color: var(--gold); }
@@ -343,24 +200,12 @@ a.stat:hover { background: var(--accent-soft); text-decoration: none; }
 .pub-note { font-size: .77rem; color: var(--muted); }
 .pub-award { font-size: .79rem; color: var(--crimson); font-weight: 600; }
 .plinks { display: inline-flex; flex-wrap: wrap; gap: 6px; }
-.plink {
-  font-size: .72rem; font-weight: 600; color: var(--muted);
-  border: 1px solid var(--line); border-radius: 6px; padding: 1.5px 8px;
-  transition: color .12s, border-color .12s, background .12s;
-}
+.plink { font-size: .72rem; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 1.5px 8px; transition: color .12s, border-color .12s, background .12s; }
 .plink:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); text-decoration: none; }
-
-/* Books */
 .book-list { display: flex; flex-direction: column; gap: 14px; }
-.book-card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-  padding: 16px 18px; box-shadow: var(--shadow-sm); display: flex; gap: 18px;
-}
+.book-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow-sm); display: flex; gap: 18px; }
 .book-cover { flex: 0 0 92px; }
-.book-cover img {
-  width: 92px; height: 126px; object-fit: cover; border-radius: 7px; display: block;
-  box-shadow: var(--shadow); border: 1px solid var(--line-soft);
-}
+.book-cover img { width: 92px; height: 126px; object-fit: cover; border-radius: 7px; display: block; box-shadow: var(--shadow); border: 1px solid var(--line-soft); }
 .book-info { min-width: 0; }
 .book-info h4 { margin: 0 0 2px; font-size: .98rem; color: var(--heading); line-height: 1.4; }
 .book-info .zh-title { font-size: .82rem; color: var(--muted); margin: 0 0 4px; }
@@ -370,22 +215,11 @@ a.stat:hover { background: var(--accent-soft); text-decoration: none; }
 
 /* ---------- Projects ---------- */
 .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 4px; }
-.proj-card {
-  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-  padding: 17px 19px 15px; box-shadow: var(--shadow-sm);
-  transition: transform .15s, border-color .15s;
-  display: flex; flex-direction: column;
-}
+.proj-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 17px 19px 15px; box-shadow: var(--shadow-sm); transition: transform .15s, border-color .15s; display: flex; flex-direction: column; }
 .proj-card:hover { transform: translateY(-2px); border-color: var(--accent); }
 .proj-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
 .proj-top h3 { margin: 0; font-size: 1.02rem; font-weight: 700; margin-right: 2px; }
-.gh-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-size: .73rem; font-weight: 600; color: var(--muted);
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: 999px; padding: 2px 9px;
-  font-variant-numeric: tabular-nums; white-space: nowrap;
-}
+.gh-badge { display: inline-flex; align-items: center; gap: 4px; font-size: .73rem; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .gh-badge svg { width: 12px; height: 12px; flex: 0 0 auto; }
 .proj-card p { margin: 0 0 8px; font-size: .88rem; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .proj-fine { font-size: .79rem; color: var(--muted); margin: 2px 0 8px; }
@@ -393,11 +227,7 @@ a.stat:hover { background: var(--accent-soft); text-decoration: none; }
 
 /* ---------- Awards ---------- */
 .award-list { list-style: none; margin: 4px 0 0; padding: 0; }
-.award-list li {
-  display: flex; gap: 14px; padding: 7px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: .92rem;
-}
+.award-list li { display: flex; gap: 14px; padding: 7px 0; border-bottom: 1px solid var(--line-soft); font-size: .92rem; }
 .award-list li:last-child { border-bottom: 0; }
 .award-year { flex: 0 0 42px; font-weight: 700; color: var(--faint); font-size: .83rem; padding-top: 1px; font-variant-numeric: tabular-nums; }
 .award-body { flex: 1; }
@@ -407,323 +237,183 @@ a.stat:hover { background: var(--accent-soft); text-decoration: none; }
 
 /* ---------- Service ---------- */
 .svc-block { margin-bottom: 20px; }
-.svc-inline { font-size: .91rem; line-height: 1.9; }
-.svc-cols {
-  columns: 3; column-gap: 24px; font-size: .86rem; color: var(--text);
-  margin: 4px 0 0; padding: 0; list-style: none;
-}
+.svc-inline { font-size: .91rem; line-height: 1.9; margin: 0; }
+.svc-cols { columns: 3; column-gap: 24px; font-size: .86rem; color: var(--text); margin: 4px 0 0; padding: 0; list-style: none; }
 .svc-cols li { break-inside: avoid; padding: 2.5px 0; }
 .svc-list { list-style: none; margin: 4px 0 0; padding: 0; font-size: .92rem; }
 .svc-list li { padding: 5px 0 5px 18px; position: relative; }
-.svc-list li::before {
-  content: ""; position: absolute; left: 2px; top: 13px;
-  width: 6px; height: 6px; border-radius: 2px; background: var(--accent);
-  opacity: .55;
-}
+.svc-list li::before { content: ""; position: absolute; left: 2px; top: 13px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); opacity: .55; }
 
-/* ---------- Talks ---------- */
-.talk-links { display: inline-flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
-.talk-links .plink { font-size: .69rem; padding: 1px 7px; }
-
-/* ---------- Footer ---------- */
-footer {
-  margin-top: 44px; border-top: 1px solid var(--line);
-  padding: 26px 0 34px; text-align: center; color: var(--muted); font-size: .84rem;
-}
+/* ---------- Footer / misc ---------- */
+footer { margin-top: 44px; border-top: 1px solid var(--line); padding: 24px 0 6px; text-align: center; color: var(--muted); font-size: .84rem; }
 .map-wrap { display: flex; justify-content: center; margin: 16px auto 4px; opacity: .9; max-width: 400px; overflow: hidden; }
 .map-wrap img { max-width: 100%; height: auto; }
 footer .foot-note { margin-top: 10px; color: var(--faint); }
-
-/* ---------- Back to top ---------- */
-#toTop {
-  position: fixed; right: 22px; bottom: 26px; z-index: 40;
-  width: 40px; height: 40px; border-radius: 12px;
-  background: var(--surface); color: var(--muted);
-  border: 1px solid var(--line); box-shadow: var(--shadow);
-  cursor: pointer; display: grid; place-items: center;
-  opacity: 0; pointer-events: none; transform: translateY(8px);
-  transition: opacity .2s, transform .2s, color .15s, border-color .15s;
-}
+#toTop { position: fixed; right: 22px; bottom: 26px; z-index: 40; width: 40px; height: 40px; border-radius: 12px; background: var(--surface); color: var(--muted); border: 1px solid var(--line); box-shadow: var(--shadow); cursor: pointer; display: grid; place-items: center; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s, transform .2s, color .15s, border-color .15s; }
 #toTop.show { opacity: 1; pointer-events: auto; transform: none; }
 #toTop:hover { color: var(--accent); border-color: var(--accent); }
 #toTop svg { width: 17px; height: 17px; }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 1080px) {
-  .main { padding: 6px 34px 26px; }
+@media (max-width: 900px) {
+  .sheet { margin: 0; border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; padding: 20px 28px 34px; }
   .svc-cols { columns: 2; }
-  .ri-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 980px) {
-  .shell { grid-template-columns: 1fr; box-shadow: none; }
-  .topbar { display: block; }
-  .side {
-    border-right: 0; border-bottom: 1px solid var(--line);
-    padding: 30px 20px 22px;
-  }
-  .side-inner { position: static; max-height: none; overflow: visible; }
-  .side-nav { display: none; }
-  .side-foot { display: none; }
-  .avatar { width: 140px; height: 140px; }
-  section { scroll-margin-top: 58px; }
-}
-@media (max-width: 720px) {
+@media (max-width: 640px) {
   body { font-size: 15px; }
-  .main { padding: 2px 18px 22px; }
+  .sheet { padding: 16px 18px 30px; }
+  .top { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
+  .top nav { justify-content: flex-start; flex-wrap: wrap; }
+  .top nav a { padding: 4px 8px; font-size: .85rem; }
+  .hero { gap: 16px; align-items: flex-start; }
+  .hero .photo { width: 112px; height: 112px; border-radius: 12px; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero h1 { font-size: 1.55rem; }
+  .hero h1 .zh { display: block; margin: 2px 0 0; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat:nth-child(3) { border-left: 0; }
   .stat:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
-  .ri-grid, .proj-grid { grid-template-columns: 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
+  .sections li { grid-template-columns: 1fr; gap: 2px; }
+  .affil { grid-template-columns: repeat(3, 1fr); gap: 12px 6px; }
+  .news li { padding: 9px 12px; gap: 10px; }
+  .news time { flex-basis: 56px; }
   .svc-cols { columns: 1; }
   .pub-idx { display: none; }
   .book-card { flex-direction: row; }
   .prose p, .proj-card p { text-align: left; }
 }
 @media (max-width: 360px) {
-  .stat span { font-size: .7rem; letter-spacing: .01em; }
+  .stat span { font-size: .68rem; letter-spacing: .01em; }
 }
 @media print {
-  .topbar, #toTop, .theme-btn, .map-wrap, .side-nav { display: none !important; }
+  .top nav, .theme-btn, #toTop, .map-wrap, .back { display: none !important; }
   body { background: #fff; }
-  .shell { display: block; }
-  .side { border: 0; }
+  .sheet { box-shadow: none; border: 0; }
 }
 </style>
 </head>
 
 <body>
-
-<!-- Mobile top bar -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <span class="brand">Yiyuan Yang · 杨毅远</span>
-    <div class="topbar-links">
-      <a class="navlink" href="#Home">About</a>
-      <a class="navlink" href="#News">News</a>
-      <a class="navlink" href="#Interest">Research</a>
-      <a class="navlink" href="#EducationInternships">Background</a>
-      <a class="navlink" href="#Publications">Publications</a>
-      <a class="navlink" href="#Projects">Projects</a>
-      <a class="navlink" href="#HonorsAwards">Awards</a>
-      <a class="navlink" href="#ActivitiesServices">Service</a>
-      <a class="navlink" href="#InvitedTalksLiveStreams">Talks</a>
-    </div>
-    <button class="icon-btn theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
-    </button>
-  </div>
-</div>
-
-<div class="shell">
-
-<!-- ================= Sidebar ================= -->
-<aside class="side">
-  <div class="side-inner">
-    <img class="avatar" src="./Files/Yang_photo_2022.jpeg" alt="Portrait of Yiyuan Yang" />
-    <h1>Yiyuan Yang</h1>
-    <div class="zh-name">杨毅远</div>
-    <p class="role"><b>Ph.D. (D.Phil.) Candidate</b></p>
-    <p class="org">
-      <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a><br />
-      <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a>
-    </p>
-    <div class="side-chips">
-      <span class="tag gold">Clarendon Scholar</span>
-      <span class="tag">Merton College</span>
-      <span class="tag market" title="Assistant Professor (academia) · Research Scientist / Applied Scientist (industry)">💼 On the Job Market</span>
-    </div>
-    <div class="icon-row">
-      <a class="icon-btn" href="https://www.cs.ox.ac.uk/people/yiyuan.yang/" target="_blank" rel="noopener" title="Oxford Official Profile">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
-      </a>
-      <a class="icon-btn" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener" title="Google Scholar">
-        <svg viewBox="0 0 512 512" fill="currentColor"><path d="M256 411.12 0 202.667 256 0l256 202.667-256 208.453zM256 446c-52.7 0-95.4-42.7-95.4-95.4S203.3 255.3 256 255.3s95.4 42.7 95.4 95.4S308.7 446 256 446z"/></svg>
-      </a>
-      <a class="icon-btn" href="https://github.com/yyysjz1997" target="_blank" rel="noopener" title="GitHub">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-      </a>
-      <a class="icon-btn" href="https://www.linkedin.com/in/yiyuan-yang-8154941ab/" target="_blank" rel="noopener" title="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
-      </a>
-      <a class="icon-btn" href="https://www.researchgate.net/profile/Yiyuan-Yang-3" target="_blank" rel="noopener" title="ResearchGate">
-        <span class="rg">R<sup>G</sup></span>
-      </a>
-      <a class="icon-btn" href="./Files/weixin.jpeg" target="_blank" rel="noopener" title="WeChat">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg>
-      </a>
-      <a class="icon-btn" href="mailto:yiyuan.yang@cs.ox.ac.uk" title="Email">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
-      </a>
-      <button class="icon-btn theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg>
-      </button>
-    </div>
-    <p class="emails">
-      <a href="mailto:yiyuan.yang@cs.ox.ac.uk">yiyuan.yang@cs.ox.ac.uk</a> (primary)<br />
-      yyy1997sjz@gmail.com<br />
-      yangyy19@tsinghua.org.cn
-    </p>
-    <nav class="side-nav" aria-label="Sections">
-      <a class="navlink" href="#Home">About</a>
-      <a class="navlink" href="#News">News</a>
-      <a class="navlink" href="#Interest">Research Interests</a>
-      <a class="navlink" href="#EducationInternships">Education &amp; Experience</a>
-      <a class="navlink" href="#Publications">Publications</a>
-      <a class="navlink" href="#Projects">Open-Source Projects</a>
-      <a class="navlink" href="#HonorsAwards">Honors &amp; Awards</a>
-      <a class="navlink" href="#ActivitiesServices">Service &amp; Activities</a>
-      <a class="navlink" href="#InvitedTalksLiveStreams">Talks &amp; Media</a>
+<div class="sheet">
+  <header class="top">
+    <a class="brand" href="#">Yiyuan Yang · 杨毅远</a>
+    <nav aria-label="Pages">
+      <a href="#news">News</a>
+      <a href="#experience">Education</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#talks">Talks</a>
+      <a href="#honors">Honors</a>
+      <a href="#service">Service</a>
+      <button class="icon-btn theme-btn" title="Toggle dark mode" aria-label="Toggle dark mode"><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg></button>
     </nav>
-    <div class="side-foot">Last updated: Oct 2026</div>
+  </header>
+
+<main>
+<section class="view active" data-view="home">
+  <div class="hero">
+    <img class="photo" src="./Files/Yang_photo_2022.jpeg" alt="Portrait of Yiyuan Yang" />
+    <div>
+      <h1>Yiyuan Yang<span class="zh">杨毅远</span></h1>
+      <p class="role"><b>Research Scientist Intern</b>, Meta Superintelligence Labs</p>
+      <p class="org">Ph.D. (D.Phil.) Candidate, <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a>, <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a></p>
+      <p class="loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Currently in Bellevue, WA, USA</p>
+      <div class="icon-row">
+        <a class="icon-btn" href="https://www.cs.ox.ac.uk/people/yiyuan.yang/" target="_blank" rel="noopener" title="Oxford Official Profile" aria-label="Oxford Official Profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></a>
+        <a class="icon-btn" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar"><svg viewBox="0 0 512 512" fill="currentColor"><path d="M256 411.12 0 202.667 256 0l256 202.667-256 208.453zM256 446c-52.7 0-95.4-42.7-95.4-95.4S203.3 255.3 256 255.3s95.4 42.7 95.4 95.4S308.7 446 256 446z"/></svg></a>
+        <a class="icon-btn" href="https://github.com/yyysjz1997" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/yiyuan-yang-8154941ab/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45z"/></svg></a>
+        <a class="icon-btn" href="https://www.researchgate.net/profile/Yiyuan-Yang-3" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate"><span class="rg">R<sup>G</sup></span></a>
+        <a class="icon-btn" href="./Files/weixin.jpeg" target="_blank" rel="noopener" title="WeChat" aria-label="WeChat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.03zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg></a>
+        <a class="icon-btn" href="mailto:yiyuan.yang@cs.ox.ac.uk" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+      </div>
+      <p class="emails"><a href="mailto:yiyuan.yang@cs.ox.ac.uk">yiyuan.yang@cs.ox.ac.uk</a> (primary)<span class="sep">·</span><a href="mailto:yyy1997sjz@gmail.com">yyy1997sjz@gmail.com</a><span class="sep">·</span><a href="mailto:yangyy19@tsinghua.org.cn">yangyy19@tsinghua.org.cn</a></p>
+    </div>
   </div>
-</aside>
 
-<!-- ================= Main ================= -->
-<main class="main">
-
-<section id="Home">
-  <h2 class="sec-head">About Me</h2>
+  <h2 class="sec-head home-h">About Me</h2>
   <div class="prose">
-    <p>
-      Yiyuan Yang is a D.Phil. (Ph.D.) student and <b>Clarendon Scholar</b> in the Department of Computer Science at the
-      University of Oxford, specializing in data mining, time series, audio/speech, signal processing, and large language models.
-      He <b>passed his D.Phil. viva</b> (Ph.D. defense) in August 2026.
-      He holds a master's degree from the Department of Automation at <b>Tsinghua University</b> and a bachelor's degree from the
-      School of Artificial Intelligence and Automation (Innovation Honors Class) and Qiming College at
-      <b>Huazhong University of Science and Technology</b>. He is currently a Research Scientist Intern at <b>Meta Superintelligence Labs</b>, working on
-      RSI and multimodal LLMs, and has previously interned at the <b>Microsoft</b> Applied Sciences Group,
-      <b>Microsoft Research</b>, <b>Alibaba DAMO Academy</b>, and <b>Huawei Noah's Ark Lab</b>.
-    </p>
-    <p>
-      Yiyuan is an avid open-source contributor, with projects amassing over <b>37,000 GitHub stars</b>. He has authored
-      <b>three books</b> based on his tutorials. His research has appeared in top journals and conferences, including TKDE,
-      CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, and has received over
-      <b>2,300 citations</b>. He also serves as an Area Chair for WWW 2027 and as a reviewer for leading journals and conferences, including TPAMI, TKDE, TKDD,
-      TIFS, TOS, TNNLS, TOMM, TCYB, TCSVT, TII, IoT, SPL, TITS, Neurocomputing, NeurIPS, KDD, WWW, AAAI, ACL, and SDM.
-      In his free time, Yiyuan enjoys singing and playing various sports.
-    </p>
+    <p>Yiyuan Yang is a D.Phil. (Ph.D.) candidate in Computer Science at the University of Oxford, advised by <a href="https://www.cs.ox.ac.uk/people/niki.trigoni/" target="_blank" rel="noopener">Prof. Niki Trigoni</a> and <a href="https://www.cs.ox.ac.uk/people/andrew.markham/" target="_blank" rel="noopener">Prof. Andrew Markham</a>, and a <b>Clarendon Scholar</b> at Merton College; he passed his viva in August 2026. He is currently a Research Scientist Intern at <b>Meta Superintelligence Labs</b> in Bellevue, WA, working on RSI and multimodal LLMs. His research centers on <b>trustworthy AI for temporal and acoustic data — from detection to decision</b>, covering time-series analysis, anomaly detection and reasoning with LLMs, audio and speech processing, and real-world deployment in sensing systems.</p>
+    <p>His work has appeared in TKDE, CSUR, KDD, NeurIPS, ACL, AAAI, IJCAI, TNNLS, CIKM, ICASSP, and Interspeech, with over <b>2,300 citations</b>. He is a core contributor to <a href="https://pypots.com/" target="_blank" rel="noopener">PyPOTS</a> and the author of <b>three books</b> based on his tutorials, including <i>深度学习详解</i> (LeeDL-Tutorial) and <i>Easy-RL</i>; his open-source projects have gathered over <b>37,000 GitHub stars</b>. His honors include the <b>Chinese Government Award for Outstanding Self-financed Students Abroad</b> (Class A Special Excellence, 2026), the <b>Clarendon Scholarship</b>, and recognition as a <b>Most Anticipated Academic Rising Star</b> at BAAI QingYuan InnoVibe 2026. He serves as Area Chair and as a reviewer for leading journals and conferences.</p>
+    <p>Before Oxford, he received his M.Eng. from <b>Tsinghua University</b> (Department of Automation) and his B.Eng. from <b>Huazhong University of Science and Technology</b> (Innovation Honors Class, School of Artificial Intelligence and Automation, and Qiming College). He has also interned at <b>Microsoft</b> (Applied Sciences Group and Microsoft Research), <b>Alibaba DAMO Academy</b>, and <b>Huawei Noah's Ark Lab</b>. In his free time, he enjoys singing and playing various sports.</p>
   </div>
   <div class="stats">
     <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>2,300+</b><span>Citations</span></a>
     <a class="stat" href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener"><b>18</b><span>h-index</span></a>
-    <a class="stat" href="#Projects"><b>37,000+</b><span>GitHub Stars</span></a>
-    <a class="stat" href="#EducationInternships"><b>5</b><span>Industry Internships</span></a>
+    <a class="stat" href="#projects"><b>37,000+</b><span>GitHub Stars</span></a>
+    <a class="stat" href="#experience"><b>5</b><span>Industry Internships</span></a>
   </div>
-</section>
 
-<section id="News">
-  <h2 class="sec-head">News</h2>
-  <div class="news-box">
-    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">🌐 Invited to serve as an Area Chair for <b>The Web Conference (WWW) 2027</b>.</span></div>
-    <div class="news-item"><span class="news-date">2026.10</span><span class="news-text">💼 Started my Research Scientist internship at <b>Meta Superintelligence Labs</b> in Bellevue, WA, working on RSI and multimodal LLMs.</span></div>
-    <div class="news-item"><span class="news-date">2026.09</span><span class="news-text">📄 <i>From Event Logs to Governed Action: A BlueSky Agenda for Agentic Process Mining</i> accepted at <b>ICDM 2026</b>.</span></div>
-    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">📣 I am on the job market!</span> Open to <b>Assistant Professor</b> positions in academia and <b>Research Scientist / Applied Scientist</b> roles in industry — feel free to <a href="mailto:yiyuan.yang@cs.ox.ac.uk">reach out</a>!</span></div>
-    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text"><span class="hot">🎓 Milestone:</span> Completed my D.Phil. (Ph.D.) viva at the <b>University of Oxford</b>!</span></div>
-    <div class="news-item"><span class="news-date">2026.08</span><span class="news-text">📢 Presented our hands-on tutorial <i>End-to-End Learning for Partially-Observed Time Series with PyPOTS</i> at <b>KDD 2026</b> in Jeju, Korea.</span></div>
-    <div class="news-item"><span class="news-date">2026.07</span><span class="news-text"><span class="hot">🏆 Award:</span> Chinese Government Award for Outstanding Self-financed Students Abroad — <b>Class A Special Excellence</b> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council — no more than 20 recipients worldwide each year (US$10,000).</span></div>
-    <div class="news-item"><span class="news-date">2026.06</span><span class="news-text"><span class="hot">🏆 Award:</span> Named one of the Most Anticipated Academic Rising Stars (最受瞩目学术新星) at BAAI QingYuan InnoVibe 2026. <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></div>
-    <div class="news-item"><span class="news-date">2026.06</span><span class="news-text">📄 <i>Geometry-Informed Distributed Acoustic Scene Understanding</i> accepted at <b>Interspeech 2026</b>.</span></div>
-    <div class="news-item"><span class="news-date">2026.05</span><span class="news-text">🎤 Gave a talk on <i>Time-Series Foundation Models and LLM-based Reasoning</i> at <b>Microsoft UK</b>.</span></div>
-    <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">📄 <i>Time-RA</i> (time series reasoning with LLM feedback) accepted to the Findings of <b>ACL 2026</b>.</span></div>
-    <div class="news-item"><span class="news-date">2026.04</span><span class="news-text">💼 Joined the Applied Sciences Group at <b>Microsoft</b> as an Applied Scientist Intern (Apr – Jul 2026).</span></div>
-    <div class="news-item"><span class="news-date">2026.02</span><span class="news-text"><span class="hot">🏆 Award:</span> Our fiddler-crab bioacoustics study in the <i>Journal of Experimental Biology</i> was shortlisted for the JEB Outstanding Paper Prize 2025.</span></div>
-    <div class="news-item"><span class="news-date">2025.09</span><span class="news-text">📄 Two papers accepted at <b>NeurIPS 2025</b>: <i>ScatterAD</i> and <i>Target Speaker Extraction</i>.</span></div>
-    <div class="news-item"><span class="news-date">2025.06</span><span class="news-text">💼 Research internship at <b>Microsoft Research</b> on adaptive speech separation in conversational scenarios (Jun – Aug 2025).</span></div>
-    <div class="news-item"><span class="news-date">2025.05</span><span class="news-text">📄 <i>Time-MQA</i> accepted at <b>ACL 2025</b> (main conference), our multivariate time-series imputation survey at <b>IJCAI 2025</b>, and <i>Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization</i> at <b>Interspeech 2025</b>.</span></div>
-    <div class="news-item"><span class="news-date">2024.12</span><span class="news-text">📚 Our book <i>深度学习详解</i> (LeeDL-Tutorial) was selected as one of <b>JD's 2024 Annual Best Books (overall Top 50)</b> and an Epubit 2024 Annual Influential New Book.</span></div>
-  </div>
-</section>
+  <h2 class="sec-head home-h">News <span class="head-note">selected highlights</span></h2>
+  <div class="news-box"><ul class="news" id="home-news"></ul></div>
+  <a class="more" href="#news">All news →</a>
 
-<section id="Interest">
-  <h2 class="sec-head">Research Interests</h2>
-  <p class="sec-sub">Currently, I focus on the following research topics:</p>
-  <div class="ri-grid">
-    <div class="ri-card">
-      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
-      <h3>Spatio-Temporal Data Mining</h3>
-      <p>Spatio-temporal data mining and signal processing for real-world sensing systems.</p>
-    </div>
-    <div class="ri-card">
-      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-      <h3>Time Series &amp; LLMs</h3>
-      <p>Time-series analysis, anomaly detection, and reasoning with large language models for decision support.</p>
-    </div>
-    <div class="ri-card">
-      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></div>
-      <h3>Audio &amp; Multimodal Learning</h3>
-      <p>Acoustic scene understanding, speech enhancement, separation, and localization, and audio-centric multimodal learning.</p>
-    </div>
-    <div class="ri-card">
-      <div class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></div>
-      <h3>Real-World AI Deployment</h3>
-      <p>Deploying algorithms in real-world applications — efficient, robust, and fault-tolerant models for industrial sensing, monitoring, and production AI systems.</p>
-    </div>
-  </div>
-  <div class="callout">
-    <b>I love collaborating with others!</b> If you're interested in working together, feel free to reach out — don't hesitate! 😊
-  </div>
-</section>
+  <h2 class="sec-head home-h">Research Interests</h2>
+  <ul class="topics">
+    <li><span class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></span><div><b>Spatio-Temporal Data Mining</b><span>Spatio-temporal data mining and signal processing for real-world sensing systems.</span></div></li>
+    <li><span class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><b>Time Series &amp; LLMs</b><span>Time-series analysis, anomaly detection, and reasoning with large language models for decision support.</span></div></li>
+    <li><span class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span><div><b>Audio &amp; Multimodal Learning</b><span>Acoustic scene understanding, speech enhancement, separation, and localization, and audio-centric multimodal learning.</span></div></li>
+    <li><span class="ri-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span><div><b>Real-World AI Deployment</b><span>Deploying algorithms in real-world applications — efficient, robust, and fault-tolerant models for industrial sensing, monitoring, and production AI systems.</span></div></li>
+  </ul>
+  <div class="callout"><b>I love collaborating with others!</b> If you're interested in working together, feel free to reach out at <a href="mailto:yiyuan.yang@cs.ox.ac.uk">yiyuan.yang@cs.ox.ac.uk</a> — don't hesitate! 😊</div>
 
-<section id="EducationInternships">
-  <h2 class="sec-head">Education &amp; Experience</h2>
-  <h3 class="subhead">Education</h3>
-  <ul class="tl">
-    <li>
-      <span class="when">2023.01 – Present</span>
-      <div class="what"><b>D.Phil. in Computer Science</b>, <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a>, <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a> (<a href="https://www.merton.ox.ac.uk/" target="_blank" rel="noopener">Merton College</a>)</div>
-      <div class="note">Supervised by <a href="https://www.cs.ox.ac.uk/people/niki.trigoni/" target="_blank" rel="noopener">Prof. Niki Trigoni</a> and <a href="https://www.cs.ox.ac.uk/people/andrew.markham/" target="_blank" rel="noopener">Prof. Andrew Markham</a> · Fully funded by the <a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholarship</a> and Merton College Scholarship</div>
-    </li>
-    <li>
-      <span class="when">2019.09 – 2022.06</span>
-      <div class="what"><b>M.Eng.</b>, <a href="http://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a>, <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Tsinghua University</a></div>
-      <div class="note">GPA 3.98 / 4.0 · Rank 1 / 65</div>
-    </li>
-    <li>
-      <span class="when">2015.09 – 2019.06</span>
-      <div class="what"><b>B.Eng.</b>, <a href="https://aia.hust.edu.cn/" target="_blank" rel="noopener">School of Artificial Intelligence and Automation</a> &amp; Qiming College, <a href="http://english.hust.edu.cn/" target="_blank" rel="noopener">Huazhong University of Science and Technology</a></div>
-      <div class="note">Innovation Honors Class (Automation and Science) · GPA 3.91 / 4.0 (Top 1%)</div>
-    </li>
+  <h2 class="sec-head home-h">Explore</h2>
+  <ul class="sections">
+    <li><a href="#news">News →</a><span>All updates, newest first.</span></li>
+    <li><a href="#experience">Education &amp; Experience →</a><span>Oxford · Tsinghua · HUST · Cambridge, and internships at Meta, Microsoft, Alibaba, and Huawei.</span></li>
+    <li><a href="#publications">Publications →</a><span>Conference papers, journal articles, books, and preprints.</span></li>
+    <li><a href="#projects">Open-Source Projects →</a><span>PyPOTS, LeeDL-Tutorial, Easy-RL, and other community projects with 37,000+ stars.</span></li>
+    <li><a href="#talks">Talks &amp; Media →</a><span>Invited talks, tutorials, interviews, and live streams.</span></li>
+    <li><a href="#honors">Honors &amp; Awards →</a><span>Fellowships, scholarships, competition prizes, and book awards.</span></li>
+    <li><a href="#service">Academic Service →</a><span>Area chair, program committees, reviewing, teaching, and community work.</span></li>
   </ul>
 
-  <h3 class="subhead">Internships &amp; Exchange</h3>
-  <ul class="tl">
-    <li>
-      <span class="when">2026.10 – 2027.01</span>
-      <div class="what"><b>Research Scientist Intern</b>, Meta Superintelligence Labs</div>
-      <div class="note">Supervised by <a href="https://yuanluxu.github.io/" target="_blank" rel="noopener">Dr. Yuanlu Xu</a> · RSI and multimodal LLMs · Bellevue, WA, USA</div>
-    </li>
-    <li>
-      <span class="when">2026.04 – 2026.07</span>
-      <div class="what"><b>Applied Scientist Intern</b>, Applied Sciences Group, Microsoft</div>
-      <div class="note">Supervised by <a href="https://www.microsoft.com/applied-sciences/people/eric-sommerlade" target="_blank" rel="noopener">Dr. Eric Sommerlade</a> · LLM-driven code generation that automatically produces explanatory videos · Reading, UK</div>
-    </li>
-    <li>
-      <span class="when">2025.06 – 2025.08</span>
-      <div class="what"><b>Research Intern</b>, Microsoft Research</div>
-      <div class="note">Supervised by <a href="https://scholar.google.de/citations?user=UHUOlCwAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dr. Soumitro Chakrabarty</a> · Adaptive speech separation in conversational scenarios · Munich, Germany</div>
-    </li>
-    <li>
-      <span class="when">2022.10 – 2023.02</span>
-      <div class="what"><b>Research Intern</b>, Alibaba DAMO Academy</div>
-      <div class="note">Supervised by <a href="https://sites.google.com/site/qingsongwen8/" target="_blank" rel="noopener">Dr. Qingsong Wen</a> and <a href="https://scholar.google.com/citations?user=D_cOMBgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dr. Liang Sun</a> · Time-series anomaly detection — work that led to a granted patent and the DCdetector paper (KDD 2023) · Hangzhou, China</div>
-    </li>
-    <li>
-      <span class="when">2021.02 – 2021.08</span>
-      <div class="what"><b>Research Intern</b>, Noah's Ark Lab, Huawei</div>
-      <div class="note">Supervised by <a href="https://xijunlee.github.io/" target="_blank" rel="noopener">Dr. Xijun Li</a> and Dr. Mingxuan Yuan · GNN-based AIOps prediction pipelines for large-scale storage systems · Shenzhen, China</div>
-    </li>
-    <li>
-      <span class="when">2019.01 – 2019.02</span>
-      <div class="what"><b>Exchange Student</b>, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></div>
-    </li>
-  </ul>
+  <h2 class="sec-head home-h">Background</h2>
+  <p class="sec-sub">Universities, research labs, and open-source communities I have been part of.</p>
+  <div class="affil">
+    <a href="#experience" title="University of Oxford"><img src="./Files/logos/oxford.png" alt="University of Oxford" loading="lazy" /><span>University of Oxford<small>Department of Computer Science</small></span></a>
+    <a href="#experience" title="Tsinghua University"><img src="./Files/logos/tsinghua.png" alt="Tsinghua University" loading="lazy" /><span>Tsinghua University<small>Department of Automation</small></span></a>
+    <a href="#experience" title="Huazhong University of Science and Technology"><img src="./Files/logos/hust.png" alt="HUST" loading="lazy" /><span>Huazhong Univ. of Sci. &amp; Tech.<small>School of AI &amp; Automation</small></span></a>
+    <a href="#projects" title="Datawhale"><img src="./Files/logos/datawhale.png" alt="Datawhale" loading="lazy" /><span>Datawhale<small>Member &amp; contributor</small></span></a>
+    <a href="#projects" title="PyPOTS"><img src="./Files/logos/pypots.png" alt="PyPOTS" loading="lazy" /><span>PyPOTS<small>Core contributor</small></span></a>
+    <a href="#experience" title="Meta Superintelligence Labs"><img src="./Files/logos/meta.png" alt="Meta" loading="lazy" /><span>Meta<small>Superintelligence Labs</small></span></a>
+    <a href="#experience" title="Microsoft Applied Sciences Group"><img src="./Files/logos/microsoft.svg" alt="Microsoft" loading="lazy" /><span>Microsoft<small>Applied Sciences Group</small></span></a>
+    <a href="#experience" title="Microsoft Research"><img src="./Files/logos/microsoft.svg" alt="Microsoft" loading="lazy" /><span>Microsoft<small>Microsoft Research</small></span></a>
+    <a href="#experience" title="Alibaba DAMO Academy"><img src="./Files/logos/damo.png" alt="Alibaba DAMO Academy" loading="lazy" /><span>Alibaba<small>DAMO Academy</small></span></a>
+    <a href="#experience" title="Huawei Noah's Ark Lab"><img src="./Files/logos/noah.png" alt="Huawei Noah's Ark Lab" loading="lazy" /><span>Huawei<small>Noah's Ark Lab</small></span></a>
+  </div>
 </section>
 
-<section id="Publications">
-  <h2 class="sec-head">Selected Publications</h2>
-  <p class="sec-sub">Full list on my <a href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a>. * denotes equal contribution or corresponding author.</p>
+<section class="view" data-view="news">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">News</h2>
+  <p class="page-sub">All updates, newest first.</p>
+  <div class="news-box"><ul class="news">
+    <li data-featured="1"><time>2026.10</time><span>🌐 Invited to serve as an Area Chair for <b>The Web Conference (WWW) 2027</b>.</span></li>
+    <li data-featured="1"><time>2026.10</time><span>💼 Started my Research Scientist internship at <b>Meta Superintelligence Labs</b> in Bellevue, WA, working on RSI and multimodal LLMs.</span></li>
+    <li><time>2026.09</time><span>📄 <i>From Event Logs to Governed Action: A BlueSky Agenda for Agentic Process Mining</i> accepted at <b>ICDM 2026</b>.</span></li>
+    <li data-featured="1"><time>2026.08</time><span><span class="hot">🎓 Milestone:</span> Completed my D.Phil. (Ph.D.) viva at the <b>University of Oxford</b>!</span></li>
+    <li data-featured="1"><time>2026.08</time><span>📢 Presented our hands-on tutorial <i>End-to-End Learning for Partially-Observed Time Series with PyPOTS</i> at <b>KDD 2026</b> in Jeju, Korea.</span></li>
+    <li data-featured="1"><time>2026.07</time><span><span class="hot">🏆 Award:</span> Chinese Government Award for Outstanding Self-financed Students Abroad — <b>Class A Special Excellence</b> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council — no more than 20 recipients worldwide each year (US$10,000).</span></li>
+    <li data-featured="1"><time>2026.06</time><span><span class="hot">🏆 Award:</span> Named one of the Most Anticipated Academic Rising Stars (最受瞩目学术新星) at BAAI QingYuan InnoVibe 2026. <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></li>
+    <li><time>2026.06</time><span>📄 <i>Geometry-Informed Distributed Acoustic Scene Understanding</i> accepted at <b>Interspeech 2026</b>.</span></li>
+    <li><time>2026.05</time><span>🎤 Gave a talk on <i>Time-Series Foundation Models and LLM-based Reasoning</i> at <b>Microsoft UK</b>.</span></li>
+    <li><time>2026.04</time><span>📄 <i>Time-RA</i> (time series reasoning with LLM feedback) accepted to the Findings of <b>ACL 2026</b>.</span></li>
+    <li><time>2026.04</time><span>💼 Joined the Applied Sciences Group at <b>Microsoft</b> as an Applied Scientist Intern (Apr – Jul 2026).</span></li>
+    <li><time>2026.02</time><span><span class="hot">🏆 Award:</span> Our fiddler-crab bioacoustics study in the <i>Journal of Experimental Biology</i> was shortlisted for the JEB Outstanding Paper Prize 2025.</span></li>
+    <li><time>2025.09</time><span>📄 Two papers accepted at <b>NeurIPS 2025</b>: <i>ScatterAD</i> and <i>Target Speaker Extraction</i>.</span></li>
+    <li><time>2025.06</time><span>💼 Research internship at <b>Microsoft Research</b> on adaptive speech separation in conversational scenarios (Jun – Aug 2025).</span></li>
+    <li><time>2025.05</time><span>📄 <i>Time-MQA</i> accepted at <b>ACL 2025</b> (main conference), our multivariate time-series imputation survey at <b>IJCAI 2025</b>, and <i>Efficient and Microphone-Fault-Tolerant 3D Sound Source Localization</i> at <b>Interspeech 2025</b>.</span></li>
+    <li><time>2024.12</time><span>📚 Our book <i>深度学习详解</i> (LeeDL-Tutorial) was selected as one of <b>JD's 2024 Annual Best Books (overall Top 50)</b> and an Epubit 2024 Annual Influential New Book.</span></li>
+  </ul></div>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+</section>
+
+<section class="view" data-view="publications">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Publications</h2>
+  <p class="page-sub">Full list on my <a href="https://scholar.google.com/citations?user=FUuGvZIAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a>. * denotes equal contribution or corresponding author.</p>
 
   <h3 class="subhead">Conference Papers <span class="count">20 entries</span></h3>
   <ul class="pub-list">
@@ -1239,11 +929,13 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     </li>
 
   </ul>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
 </section>
 
-<section id="Projects">
-  <h2 class="sec-head">Open-Source Projects</h2>
-  <p class="sec-sub">Community projects with 37,000+ GitHub stars in total. Star counts update live.</p>
+<section class="view" data-view="projects">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Open-Source Projects</h2>
+  <p class="page-sub">Community projects with 37,000+ GitHub stars in total. Star counts update live.</p>
   <div class="proj-grid">
 
     <div class="proj-card">
@@ -1318,119 +1010,14 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
     </div>
 
   </div>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
 </section>
 
-<section id="HonorsAwards">
-  <h2 class="sec-head">Honors &amp; Awards</h2>
-  <ul class="award-list">
-    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Chinese Government Award for Outstanding Self-financed Students Abroad — Class A Special Excellence Award</span> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council · no more than 20 recipients worldwide per year · US$10,000 <a href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%BC%98%E7%A7%80%E8%87%AA%E8%B4%B9%E7%95%99%E5%AD%A6%E7%94%9F%E5%A5%96%E5%AD%A6%E9%87%91/9083689" target="_blank" rel="noopener">(Intro)</a></span></li>
-    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Most Anticipated Academic Rising Star, QingYuan InnoVibe 2026</span> (青源InnoVibe 2026——最受瞩目学术新星), <a href="https://www.baai.ac.cn/en" target="_blank" rel="noopener">Beijing Academy of Artificial Intelligence (BAAI)</a> <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></li>
-    <li><span class="award-year">2026</span><span class="award-body">Google PhD Fellowship Nominee (nominated by the University of Oxford)</span></li>
-    <li><span class="award-year">2026</span><span class="award-body">JEB Outstanding Paper Prize 2025 (Shortlisted), <i>Journal of Experimental Biology</i>, The Company of Biologists</span></li>
-    <li><span class="award-year">2026</span><span class="award-body">2025 Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress</span></li>
-    <li><span class="award-year">2025</span><span class="award-body">Interspeech 2025 Conference Travel Grant</span></li>
-    <li><span class="award-year">2025</span><span class="award-body">Graduate Research Grant, Merton College, University of Oxford</span></li>
-    <li><span class="award-year">2024</span><span class="award-body">2024 Annual Influential New Book (深度学习详解) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress; one of JD's 2024 Annual Best Books (overall Top 50)</span></li>
-    <li><span class="award-year">2023</span><span class="award-body">2022 Annual Bestselling New Book (Easy-RL：强化学习教程) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress <a href="https://mp.weixin.qq.com/s/qq5Ked9fYERNgP4iPigR4Q" target="_blank" rel="noopener">[Link]</a> <a href="./Files/2023_Yang_EasyRL_bestyearbook.jpg" target="_blank" rel="noopener">[Picture 1]</a> <a href="./Files/2023_Yang_bestyearauthor.jpg" target="_blank" rel="noopener">[Picture 2]</a> <a href="./Files/Yang-2023-EasyRLPTP1.jpeg" target="_blank" rel="noopener">[Certification]</a> <a href="./Files/Yang-2023-EasyRLPTP2.jpeg" target="_blank" rel="noopener">[Trophy]</a></span></li>
-    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title"><a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholar</a>, University of Oxford</span></span></li>
-    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Outstanding Graduate, Beijing</span></span></li>
-    <li><span class="award-year">2022</span><span class="award-body">Outstanding Master's Thesis, Tsinghua University</span></li>
-    <li><span class="award-year">2022</span><span class="award-body">Outstanding Graduate, Department of Automation, Tsinghua University</span></li>
-    <li><span class="award-year">2022</span><span class="award-body">First-Class Internship Scholarship, SIGS, Tsinghua University (15,000 CNY)</span></li>
-    <li><span class="award-year">2022</span><span class="award-body">PTP Excellent Book Author, Q1 2022 <a href="./Files/Yang_2022_xibao.jpeg" target="_blank" rel="noopener">[Picture]</a></span></li>
-    <li class="major"><span class="award-year">2021</span><span class="award-body"><span class="award-star">★</span><span class="award-title">China National Scholarship</span></span></li>
-    <li><span class="award-year">2021</span><span class="award-body"><a href="https://www.datawhale.cn/" target="_blank" rel="noopener">Datawhale</a> Contributor</span></li>
-    <li><span class="award-year">2020</span><span class="award-body">National Second Prize, 17th National Postgraduate Mathematical Modeling Competition</span></li>
-    <li><span class="award-year">2020</span><span class="award-body">Second-Class Scholarship, Tsinghua University</span></li>
-    <li><span class="award-year">2020</span><span class="award-body">Kaggle Competitions Expert, top 1,000 worldwide (0.67%)</span></li>
-    <li><span class="award-year">2019</span><span class="award-body">Outstanding Graduate, Huazhong University of Science and Technology</span></li>
-    <li class="major"><span class="award-year">2018</span><span class="award-body"><span class="award-star">★</span><span class="award-title">First Prize (National Champion), 13th National Student Smart Car Competition</span>, Wireless Energy Saving Category</span></li>
-    <li><span class="award-year">2018</span><span class="award-body">First-Class (Grand Prize) Goodix Scholarship (15,000 CNY)</span></li>
-    <li><span class="award-year">2018</span><span class="award-body">National Encouragement Scholarship, Ministry of Education of China</span></li>
-    <li><span class="award-year">2017</span><span class="award-body">First Prize in South China, 12th National Student Smart Car Competition, Optoelectronic Balance Category</span></li>
-  </ul>
-</section>
-
-<section id="ActivitiesServices">
-  <h2 class="sec-head">Academic Service &amp; Activities</h2>
-
-  <div class="svc-block">
-    <h3 class="subhead">Conference Reviewing &amp; Committees</h3>
-    <p class="svc-inline">
-      <b>Area Chair:</b> The Web Conference (WWW 2027)<br />
-      <b>Reviewer:</b> NeurIPS (2023–2025) · AAAI (2023–2027) · ACL (2025) · KDD (2023–2024) · WWW (2025) · Interspeech (2026) · SLT (2026) · SDM (2024)<br />
-      <b>Program Committee:</b> <a href="https://kdd-milets.github.io/milets2023/" target="_blank" rel="noopener">9th–11th SIGKDD Workshop on Mining and Learning from Time Series (MILETS)</a><br />
-      <b>Technical Program Committee:</b> IJCNN (2023–2025)
-    </p>
-  </div>
-
-  <div class="svc-block">
-    <h3 class="subhead">Journal Reviewing <span class="count">30+ journals</span></h3>
-    <ul class="svc-cols">
-      <li>IEEE TPAMI</li>
-      <li>IEEE TKDE</li>
-      <li>IEEE TMC</li>
-      <li>ACM TKDD</li>
-      <li>IEEE TIFS</li>
-      <li>ACM TOS</li>
-      <li>IEEE TNNLS</li>
-      <li>ACM TOMM</li>
-      <li>ACM TIST</li>
-      <li>IEEE TCYB</li>
-      <li>IEEE TCSVT</li>
-      <li>IEEE TCAS-I</li>
-      <li>IEEE TII</li>
-      <li>IEEE IoT Journal</li>
-      <li>IEEE TITS</li>
-      <li>IEEE TSMC</li>
-      <li>IEEE TBD</li>
-      <li>IEEE SPL</li>
-      <li>IEEE JBHI</li>
-      <li>IEEE/CAA J. Automatica Sinica</li>
-      <li>Information Fusion</li>
-      <li>Pattern Recognition</li>
-      <li>Neural Networks</li>
-      <li>Neurocomputing</li>
-      <li>Knowledge-Based Systems</li>
-      <li>Signal Processing</li>
-      <li>Mechanical Systems and Signal Processing</li>
-      <li>Information Processing &amp; Management</li>
-      <li>Applied Soft Computing</li>
-      <li>Engineering Applications of AI</li>
-      <li>Computer Networks</li>
-      <li>Ecological Informatics</li>
-      <li>Measurement</li>
-      <li>J. of Medical Internet Research</li>
-    </ul>
-  </div>
-
-  <div class="svc-block">
-    <h3 class="subhead">Teaching</h3>
-    <ul class="svc-list">
-      <li><b>2025.02</b> — Co-leader of the <a href="https://intelligent-earth.ox.ac.uk/" target="_blank" rel="noopener">iECDT</a> Deep Learning Course, University of Oxford</li>
-      <li><b>2024.04 – 06</b> — Teaching Assistant, "Machine Learning", Department of Computer Science, University of Oxford</li>
-      <li><b>2024.04 – 06</b> — Teaching Assistant, "Artificial Intelligence", Department of Computer Science, University of Oxford</li>
-      <li><b>2020</b> — Teaching Assistant for <a href="http://niclane.org/" target="_blank" rel="noopener">Nicholas Lane</a>'s "Introduction to Deep Learning" course, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></li>
-      <li><b>2020</b> — Teaching Assistant for <a href="http://passat.crhc.illinois.edu/" target="_blank" rel="noopener">Rakesh Kumar</a>'s "Artificial Intelligence for Undergraduates" course, <a href="https://ece.illinois.edu/" target="_blank" rel="noopener">UIUC</a></li>
-    </ul>
-  </div>
-
-  <div class="svc-block">
-    <h3 class="subhead">Community &amp; Leadership</h3>
-    <ul class="svc-list">
-      <li><b>2023.03 – 2024.03</b> — <a href="https://mertonmcr.co.uk/" target="_blank" rel="noopener">MCR</a> Social Secretary, Merton College, University of Oxford</li>
-      <li><b>2020.06 – Now</b> — <a href="https://www.datawhale.cn/" target="_blank" rel="noopener">Datawhale member</a> (an open-source AI organization), helping data science enthusiasts get involved in the AI community</li>
-      <li><b>2019 – 2022</b> — Member of the Tsinghua University Shenzhen TAP Choir</li>
-      <li><b>2019</b> — Debate chair of the Shenzhen government-sponsored university debate tournament <a href="./Files/Yang_2019_debate.png" target="_blank" rel="noopener">[Picture]</a></li>
-      <li><b>2017</b> — Top 10 Singer of the School of Artificial Intelligence and Automation, HUST <a href="https://mp.weixin.qq.com/s/YTVqZu-4K57TxGNujTE6GQ" target="_blank" rel="noopener">[Link]</a></li>
-      <li><b>2015 – 2019</b> — Member of the college emcee team; hosted two welcome parties and a graduation gala</li>
-    </ul>
-  </div>
-</section>
-
-<section id="InvitedTalksLiveStreams">
-  <h2 class="sec-head">Invited Talks &amp; Live Streams</h2>
-  <ul class="tl" style="margin-top: 14px;">
+<section class="view" data-view="talks">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Invited Talks &amp; Live Streams</h2>
+  <p class="page-sub">Invited talks, tutorials, interviews, and live streams, newest first.</p>
+  <ul class="tl">
     <li>
       <span class="when">2026.09</span>
       <div class="what">Invited talk on "From Detection to Decision: Trustworthy AI for Temporal Data and Decision Support", <b>City University of Hong Kong</b></div>
@@ -1688,32 +1275,241 @@ footer .foot-note { margin-top: 10px; color: var(--faint); }
       </div>
     </li>
   </ul>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
 </section>
+
+<section class="view" data-view="honors">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Honors &amp; Awards</h2>
+  <p class="page-sub">Fellowships, scholarships, competition prizes, and book awards, newest first. ★ marks major honors.</p>
+  <ul class="award-list">
+    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Chinese Government Award for Outstanding Self-financed Students Abroad — Class A Special Excellence Award</span> (国家优秀自费留学生奖学金·特别优秀奖), China Scholarship Council · no more than 20 recipients worldwide per year · US$10,000 <a href="https://baike.baidu.com/item/%E5%9B%BD%E5%AE%B6%E4%BC%98%E7%A7%80%E8%87%AA%E8%B4%B9%E7%95%99%E5%AD%A6%E7%94%9F%E5%A5%96%E5%AD%A6%E9%87%91/9083689" target="_blank" rel="noopener">(Intro)</a></span></li>
+    <li class="major"><span class="award-year">2026</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Most Anticipated Academic Rising Star, QingYuan InnoVibe 2026</span> (青源InnoVibe 2026——最受瞩目学术新星), <a href="https://www.baai.ac.cn/en" target="_blank" rel="noopener">Beijing Academy of Artificial Intelligence (BAAI)</a> <a href="https://mp.weixin.qq.com/s/VwzvuyToY79B2DtWmenjVQ" target="_blank" rel="noopener">[Link]</a></span></li>
+    <li><span class="award-year">2026</span><span class="award-body">Google PhD Fellowship Nominee (nominated by the University of Oxford)</span></li>
+    <li><span class="award-year">2026</span><span class="award-body">JEB Outstanding Paper Prize 2025 (Shortlisted), <i>Journal of Experimental Biology</i>, The Company of Biologists</span></li>
+    <li><span class="award-year">2026</span><span class="award-body">2025 Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress</span></li>
+    <li><span class="award-year">2025</span><span class="award-body">Interspeech 2025 Conference Travel Grant</span></li>
+    <li><span class="award-year">2025</span><span class="award-body">Graduate Research Grant, Merton College, University of Oxford</span></li>
+    <li><span class="award-year">2024</span><span class="award-body">2024 Annual Influential New Book (深度学习详解) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress; one of JD's 2024 Annual Best Books (overall Top 50)</span></li>
+    <li><span class="award-year">2023</span><span class="award-body">2022 Annual Bestselling New Book (Easy-RL：强化学习教程) and Influential Author, <a href="https://www.epubit.com/" target="_blank" rel="noopener">Epubit</a>, PTPress <a href="https://mp.weixin.qq.com/s/qq5Ked9fYERNgP4iPigR4Q" target="_blank" rel="noopener">[Link]</a> <a href="./Files/2023_Yang_EasyRL_bestyearbook.jpg" target="_blank" rel="noopener">[Picture 1]</a> <a href="./Files/2023_Yang_bestyearauthor.jpg" target="_blank" rel="noopener">[Picture 2]</a> <a href="./Files/Yang-2023-EasyRLPTP1.jpeg" target="_blank" rel="noopener">[Certification]</a> <a href="./Files/Yang-2023-EasyRLPTP2.jpeg" target="_blank" rel="noopener">[Trophy]</a></span></li>
+    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title"><a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholar</a>, University of Oxford</span></span></li>
+    <li class="major"><span class="award-year">2022</span><span class="award-body"><span class="award-star">★</span><span class="award-title">Outstanding Graduate, Beijing</span></span></li>
+    <li><span class="award-year">2022</span><span class="award-body">Outstanding Master's Thesis, Tsinghua University</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">Outstanding Graduate, Department of Automation, Tsinghua University</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">First-Class Internship Scholarship, SIGS, Tsinghua University (15,000 CNY)</span></li>
+    <li><span class="award-year">2022</span><span class="award-body">PTP Excellent Book Author, Q1 2022 <a href="./Files/Yang_2022_xibao.jpeg" target="_blank" rel="noopener">[Picture]</a></span></li>
+    <li class="major"><span class="award-year">2021</span><span class="award-body"><span class="award-star">★</span><span class="award-title">China National Scholarship</span></span></li>
+    <li><span class="award-year">2021</span><span class="award-body"><a href="https://www.datawhale.cn/" target="_blank" rel="noopener">Datawhale</a> Contributor</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">National Second Prize, 17th National Postgraduate Mathematical Modeling Competition</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">Second-Class Scholarship, Tsinghua University</span></li>
+    <li><span class="award-year">2020</span><span class="award-body">Kaggle Competitions Expert, top 1,000 worldwide (0.67%)</span></li>
+    <li><span class="award-year">2019</span><span class="award-body">Outstanding Graduate, Huazhong University of Science and Technology</span></li>
+    <li class="major"><span class="award-year">2018</span><span class="award-body"><span class="award-star">★</span><span class="award-title">First Prize (National Champion), 13th National Student Smart Car Competition</span>, Wireless Energy Saving Category</span></li>
+    <li><span class="award-year">2018</span><span class="award-body">First-Class (Grand Prize) Goodix Scholarship (15,000 CNY)</span></li>
+    <li><span class="award-year">2018</span><span class="award-body">National Encouragement Scholarship, Ministry of Education of China</span></li>
+    <li><span class="award-year">2017</span><span class="award-body">First Prize in South China, 12th National Student Smart Car Competition, Optoelectronic Balance Category</span></li>
+  </ul>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+</section>
+
+<section class="view" data-view="service">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Academic Service &amp; Activities</h2>
+  <p class="page-sub">Area chair and reviewing duties, program committees, teaching, and community roles.</p>
+  <div class="svc-block">
+    <h3 class="subhead">Conference Reviewing &amp; Committees</h3>
+    <p class="svc-inline">
+      <b>Area Chair:</b> The Web Conference (WWW 2027)<br />
+      <b>Reviewer:</b> NeurIPS (2023–2025) · AAAI (2023–2027) · ACL (2025) · KDD (2023–2024) · WWW (2025) · Interspeech (2026) · SLT (2026) · SDM (2024)<br />
+      <b>Program Committee:</b> <a href="https://kdd-milets.github.io/milets2023/" target="_blank" rel="noopener">9th–11th SIGKDD Workshop on Mining and Learning from Time Series (MILETS)</a><br />
+      <b>Technical Program Committee:</b> IJCNN (2023–2025)
+    </p>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Journal Reviewing <span class="count">30+ journals</span></h3>
+    <ul class="svc-cols">
+      <li>IEEE TPAMI</li>
+      <li>IEEE TKDE</li>
+      <li>IEEE TMC</li>
+      <li>ACM TKDD</li>
+      <li>IEEE TIFS</li>
+      <li>ACM TOS</li>
+      <li>IEEE TNNLS</li>
+      <li>ACM TOMM</li>
+      <li>ACM TIST</li>
+      <li>IEEE TCYB</li>
+      <li>IEEE TCSVT</li>
+      <li>IEEE TCAS-I</li>
+      <li>IEEE TII</li>
+      <li>IEEE IoT Journal</li>
+      <li>IEEE TITS</li>
+      <li>IEEE TSMC</li>
+      <li>IEEE TBD</li>
+      <li>IEEE SPL</li>
+      <li>IEEE JBHI</li>
+      <li>IEEE/CAA J. Automatica Sinica</li>
+      <li>Information Fusion</li>
+      <li>Pattern Recognition</li>
+      <li>Neural Networks</li>
+      <li>Neurocomputing</li>
+      <li>Knowledge-Based Systems</li>
+      <li>Signal Processing</li>
+      <li>Mechanical Systems and Signal Processing</li>
+      <li>Information Processing &amp; Management</li>
+      <li>Applied Soft Computing</li>
+      <li>Engineering Applications of AI</li>
+      <li>Computer Networks</li>
+      <li>Ecological Informatics</li>
+      <li>Measurement</li>
+      <li>J. of Medical Internet Research</li>
+    </ul>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Teaching</h3>
+    <ul class="svc-list">
+      <li><b>2025.02</b> — Co-leader of the <a href="https://intelligent-earth.ox.ac.uk/" target="_blank" rel="noopener">iECDT</a> Deep Learning Course, University of Oxford</li>
+      <li><b>2024.04 – 06</b> — Teaching Assistant, "Machine Learning", Department of Computer Science, University of Oxford</li>
+      <li><b>2024.04 – 06</b> — Teaching Assistant, "Artificial Intelligence", Department of Computer Science, University of Oxford</li>
+      <li><b>2020</b> — Teaching Assistant for <a href="http://niclane.org/" target="_blank" rel="noopener">Nicholas Lane</a>'s "Introduction to Deep Learning" course, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></li>
+      <li><b>2020</b> — Teaching Assistant for <a href="http://passat.crhc.illinois.edu/" target="_blank" rel="noopener">Rakesh Kumar</a>'s "Artificial Intelligence for Undergraduates" course, <a href="https://ece.illinois.edu/" target="_blank" rel="noopener">UIUC</a></li>
+    </ul>
+  </div>
+
+  <div class="svc-block">
+    <h3 class="subhead">Community &amp; Leadership</h3>
+    <ul class="svc-list">
+      <li><b>2023.03 – 2024.03</b> — <a href="https://mertonmcr.co.uk/" target="_blank" rel="noopener">MCR</a> Social Secretary, Merton College, University of Oxford</li>
+      <li><b>2020.06 – Now</b> — <a href="https://www.datawhale.cn/" target="_blank" rel="noopener">Datawhale member</a> (an open-source AI organization), helping data science enthusiasts get involved in the AI community</li>
+      <li><b>2019 – 2022</b> — Member of the Tsinghua University Shenzhen TAP Choir</li>
+      <li><b>2019</b> — Debate chair of the Shenzhen government-sponsored university debate tournament <a href="./Files/Yang_2019_debate.png" target="_blank" rel="noopener">[Picture]</a></li>
+      <li><b>2017</b> — Top 10 Singer of the School of Artificial Intelligence and Automation, HUST <a href="https://mp.weixin.qq.com/s/YTVqZu-4K57TxGNujTE6GQ" target="_blank" rel="noopener">[Link]</a></li>
+      <li><b>2015 – 2019</b> — Member of the college emcee team; hosted two welcome parties and a graduation gala</li>
+    </ul>
+  </div>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+</section>
+
+<section class="view" data-view="experience">
+  <a class="back" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+  <h2 class="sec-head page-title">Education &amp; Experience</h2>
+  <p class="page-sub">Degrees, research internships, and exchange, newest first.</p>
+  <h3 class="subhead">Education</h3>
+  <ul class="tl tl-logos">
+    <li><img class="tl-logo" src="./Files/logos/oxford.png" alt="" loading="lazy" />
+      <span class="when">2023.01 – Present</span>
+      <div class="what"><b>D.Phil. in Computer Science</b>, <a href="https://www.cs.ox.ac.uk/" target="_blank" rel="noopener">Department of Computer Science</a>, <a href="https://www.ox.ac.uk/" target="_blank" rel="noopener">University of Oxford</a> (<a href="https://www.merton.ox.ac.uk/" target="_blank" rel="noopener">Merton College</a>)</div>
+      <div class="note">Supervised by <a href="https://www.cs.ox.ac.uk/people/niki.trigoni/" target="_blank" rel="noopener">Prof. Niki Trigoni</a> and <a href="https://www.cs.ox.ac.uk/people/andrew.markham/" target="_blank" rel="noopener">Prof. Andrew Markham</a> · Fully funded by the <a href="https://www.ox.ac.uk/clarendon" target="_blank" rel="noopener">Clarendon Scholarship</a> and Merton College Scholarship</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/tsinghua.png" alt="" loading="lazy" />
+      <span class="when">2019.09 – 2022.06</span>
+      <div class="what"><b>M.Eng.</b>, <a href="http://www.au.tsinghua.edu.cn/" target="_blank" rel="noopener">Department of Automation</a>, <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Tsinghua University</a></div>
+      <div class="note">GPA 3.98 / 4.0 · Rank 1 / 65</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/hust.png" alt="" loading="lazy" />
+      <span class="when">2015.09 – 2019.06</span>
+      <div class="what"><b>B.Eng.</b>, <a href="https://aia.hust.edu.cn/" target="_blank" rel="noopener">School of Artificial Intelligence and Automation</a> &amp; Qiming College, <a href="http://english.hust.edu.cn/" target="_blank" rel="noopener">Huazhong University of Science and Technology</a></div>
+      <div class="note">Innovation Honors Class (Automation and Science) · GPA 3.91 / 4.0 (Top 1%)</div>
+    </li>
+  </ul>
+
+  <h3 class="subhead">Internships &amp; Exchange</h3>
+  <ul class="tl tl-logos">
+    <li><img class="tl-logo" src="./Files/logos/meta.png" alt="" loading="lazy" />
+      <span class="when">2026.10 – 2027.01</span>
+      <div class="what"><b>Research Scientist Intern</b>, Meta Superintelligence Labs</div>
+      <div class="note">Supervised by <a href="https://yuanluxu.github.io/" target="_blank" rel="noopener">Dr. Yuanlu Xu</a> · RSI and multimodal LLMs · Bellevue, WA, USA</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/microsoft.svg" alt="" loading="lazy" />
+      <span class="when">2026.04 – 2026.07</span>
+      <div class="what"><b>Applied Scientist Intern</b>, Applied Sciences Group, Microsoft</div>
+      <div class="note">Supervised by <a href="https://www.microsoft.com/applied-sciences/people/eric-sommerlade" target="_blank" rel="noopener">Dr. Eric Sommerlade</a> · LLM-driven code generation that automatically produces explanatory videos · Reading, UK</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/microsoft.svg" alt="" loading="lazy" />
+      <span class="when">2025.06 – 2025.08</span>
+      <div class="what"><b>Research Intern</b>, Microsoft Research</div>
+      <div class="note">Supervised by <a href="https://scholar.google.de/citations?user=UHUOlCwAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dr. Soumitro Chakrabarty</a> · Adaptive speech separation in conversational scenarios · Munich, Germany</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/damo.png" alt="" loading="lazy" />
+      <span class="when">2022.10 – 2023.02</span>
+      <div class="what"><b>Research Intern</b>, Alibaba DAMO Academy</div>
+      <div class="note">Supervised by <a href="https://sites.google.com/site/qingsongwen8/" target="_blank" rel="noopener">Dr. Qingsong Wen</a> and <a href="https://scholar.google.com/citations?user=D_cOMBgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Dr. Liang Sun</a> · Time-series anomaly detection — work that led to a granted patent and the DCdetector paper (KDD 2023) · Hangzhou, China</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/noah.png" alt="" loading="lazy" />
+      <span class="when">2021.02 – 2021.08</span>
+      <div class="what"><b>Research Intern</b>, Noah's Ark Lab, Huawei</div>
+      <div class="note">Supervised by <a href="https://xijunlee.github.io/" target="_blank" rel="noopener">Dr. Xijun Li</a> and Dr. Mingxuan Yuan · GNN-based AIOps prediction pipelines for large-scale storage systems · Shenzhen, China</div>
+    </li>
+    <li><img class="tl-logo" src="./Files/logos/cambridge.png" alt="" loading="lazy" />
+      <span class="when">2019.01 – 2019.02</span>
+      <div class="what"><b>Exchange Student</b>, <a href="https://www.cam.ac.uk/" target="_blank" rel="noopener">University of Cambridge</a></div>
+    </li>
+  </ul>
+  <a class="back bottom" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to Home</a>
+</section>
+</main>
 
 <footer>
   <div>© 2015 – 2026 Yiyuan Yang (杨毅远) · All rights reserved</div>
   <div class="map-wrap">
     <a href="https://info.flagcounter.com/8NLu" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/map/8NLu/size_m/txt_555555/border_DDDDDD/pageviews_1/viewers_0/flags_0/" alt="Visitor map by country" loading="lazy" /></a>
   </div>
-  <div class="foot-note">Last updated: October 2026 · Made with ❤️ at Oxford</div>
+  <div class="foot-note">Last updated: October 2026</div>
 </footer>
-
-</main>
-</div><!-- /shell -->
+</div>
 
 <button id="toTop" title="Back to top" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
 </button>
 
 <script>
-/* ---------- Theme toggle (all instances) ---------- */
+document.documentElement.classList.add('js');
+
+/* ---------- Theme toggle ---------- */
 document.querySelectorAll('.theme-btn').forEach(function (btn) {
   btn.addEventListener('click', function () {
     var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
   });
 });
+
+/* ---------- Views: #publications, #talks, … show one section at a time ---------- */
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll('.view'));
+  var names = views.map(function (v) { return v.getAttribute('data-view'); });
+  var legacy = { home: 'home', interest: 'home', news: 'news', educationinternships: 'experience', publications: 'publications',
+                 projects: 'projects', honorsawards: 'honors', activitiesservices: 'service', invitedtalkslivestreams: 'talks' };
+  var titles = { news: 'News', publications: 'Publications', projects: 'Open-Source Projects', talks: 'Invited Talks & Live Streams',
+                 honors: 'Honors & Awards', service: 'Academic Service & Activities', experience: 'Education & Experience' };
+  var current = null;
+  function resolve() {
+    var h = (location.hash || '').replace(/^#\/?/, '').toLowerCase();
+    if (!h) return 'home';
+    if (names.indexOf(h) > -1) return h;
+    return legacy[h] || 'home';
+  }
+  function show() {
+    var id = resolve();
+    views.forEach(function (v) { v.classList.toggle('active', v.getAttribute('data-view') === id); });
+    document.querySelectorAll('.top nav a').forEach(function (a) { a.classList.toggle('current', a.getAttribute('href') === '#' + id); });
+    document.title = id === 'home' ? 'Yiyuan Yang (杨毅远)' : titles[id] + ' · Yiyuan Yang';
+    if (current !== null && current !== id) window.scrollTo(0, 0);
+    current = id;
+  }
+  window.addEventListener('hashchange', show);
+  show();
+})();
+
+/* ---------- Home shows the featured news items ---------- */
+(function () {
+  var full = document.querySelector('[data-view="news"] .news'), home = document.getElementById('home-news');
+  if (!full || !home) return;
+  var picked = Array.prototype.slice.call(full.querySelectorAll('li[data-featured]'));
+  if (!picked.length) picked = Array.prototype.slice.call(full.children, 0, 5);
+  picked.forEach(function (li) { home.appendChild(li.cloneNode(true)); });
+})();
 
 /* ---------- Live GitHub stats (progressive enhancement) ---------- */
 (function () {
@@ -1748,37 +1544,12 @@ document.querySelectorAll('.theme-btn').forEach(function (btn) {
   });
 })();
 
-/* ---------- Scroll spy (sidebar + topbar) ---------- */
-(function () {
-  var links = Array.prototype.slice.call(document.querySelectorAll('.navlink'));
-  var ids = [];
-  links.forEach(function (a) {
-    var id = a.getAttribute('href').slice(1);
-    if (ids.indexOf(id) === -1) ids.push(id);
-  });
-  var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
-  var onScroll = function () {
-    var y = window.scrollY + 100;
-    var current = sections.length ? sections[0].id : '';
-    sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
-    links.forEach(function (a) {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-
 /* ---------- Back to top ---------- */
 (function () {
   var btn = document.getElementById('toTop');
-  window.addEventListener('scroll', function () {
-    btn.classList.toggle('show', window.scrollY > 500);
-  }, { passive: true });
+  window.addEventListener('scroll', function () { btn.classList.toggle('show', window.scrollY > 600); }, { passive: true });
   btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
-
 </script>
-
 </body>
 </html>
